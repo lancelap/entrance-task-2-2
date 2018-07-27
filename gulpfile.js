@@ -85,7 +85,7 @@ gulp.task('images', function() {
 })
 
 gulp.task('symbols', function() {
-  return gulp.src(bases.src + 'img/icons/*.svg')
+  return gulp.src(bases.src + 'img/**/*.svg')
     .pipe(svgmin({
             plugins: [{
                 removeDoctype: true
