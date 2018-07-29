@@ -16,15 +16,21 @@ html(lang="en")
 
     header.header
       a(href="#")
-        +picture('', 110, 'yandex_home', 'Яндекс Дом')
+        +picture('header__logo', 110, 'yandex_home', 'Яндекс Дом')
 
-      ul
-        li
-          a(href="#") Сводка
-        li
-          a(href="#") Устройства
-        li
-          a(href="#") Сценарии
+      .header__nav
+        nav(class="main-nav main-nav--closed")
+          ul.main-nav__list
+            li.main-nav__list-item
+              a(href="#") Сводка
+            li.main-nav__list-item
+              a(href="#") Устройства
+            li.main-nav__list-item
+              a(href="#") Сценарии
+
+          button.main-nav__toggle
+           +picture('main-nav__burger', 16, 'icon_list_m', 'open')
+           +picture('main-nav__cross', 16, 'icon_list_m', 'close')
 
     section.general
       h1(class="general__greeting")
@@ -68,3 +74,5 @@ html(lang="en")
 
       -var arrDevices = [['Xiaomi Yeelight LED Smart Bulb', 'Включено'], ['D-Link Omna 180 Cam', 'Включится в 17:00'], ['Elgato Eve Degree Connected', 'Выключено до 17:00'], ['LIFX Mini Day & Dusk A60 E27', 'Выключено до 17:00'], ['Xiaomi Mi Air Purifier 2S', 'Включено'], ['Philips Zhirui', 'Выключено'], ['Xiaomi Mi Air Purifier 2S', 'Включено']]
       +featured-stuff__item(arrDevices)
+  
+  script(src="js/script.js")

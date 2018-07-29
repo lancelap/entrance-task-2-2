@@ -1,5 +1,18 @@
 .header {
+  @include wrapper();
+  position: relative;
   padding-top: 12px;
-  padding-bottom: 12px;
-  background-color: #ffffff;
+  padding-bottom: 11px;
+}
+
+.header__logo {
+  width: 110px;
+  height: 37px;
+}
+
+.header__nav {
+ position: absolute;
+ top: 0;
+ right: 0;
+ left: 0;
 }
