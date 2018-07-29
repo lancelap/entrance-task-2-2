@@ -1,12 +1,38 @@
 .general {
+  // margin: 0 auto;
+}
+
+.general__card {
+  width: 295px;
+  margin: 0 auto;
+  padding: 20px;
+  background-image: url('../img/bg@1x.png');
+  background-color: #ffffff;
+  color: #000000;
+  background-size: cover;
+  border-radius: 20px;
+
+  @media #{$retina} {
+    background-image: url('../img/bg@2x.png');
+  }
 }
 
 .general__greeting {
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: 18px;
+  line-height: 21px
+}
 
+.general__condition {
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 12px;
+  line-height: 14px
 }
 
 .general__weather {
-  
+  color: #858585
 }
 
 .general__next-scripts {

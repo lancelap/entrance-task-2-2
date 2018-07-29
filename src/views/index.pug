@@ -33,23 +33,24 @@ html(lang="en")
            +picture('main-nav__cross', 16, 'icon_list_m', 'close')
 
     section.general
-      h1(class="general__greeting")
-        | Привет, Геннадий!
+      .general__card
+        h1(class="general__greeting")
+          | Привет, Геннадий!
 
-      p Двери и окна закрыты, сигнализация включена.
+        p.general__condition Двери и окна закрыты, сигнализация включена.
 
-      .general__weather
-        .weather
-          p Дома
-          p +23
+        .general__weather
+          .weather
+            p Дома
+            p +23
 
-        .weather
-          p За окном
-          p +19
+          .weather
+            p За окном
+            p +19
 
-      .general__next-scripts
-        -var arrNextScripts = [['Philips Cooler', 'Начнет охлаждать в 16:30'], ['Xiaomi Yeelight LED Smart Bulb', 'Включится в 17:00']]
-        +featured-stuff__item(arrNextScripts)
+        .general__next-scripts
+          -var arrNextScripts = [['Philips Cooler', 'Начнет охлаждать в 16:30'], ['Xiaomi Yeelight LED Smart Bulb', 'Включится в 17:00']]
+          +featured-stuff__item(arrNextScripts)
 
     section.featured-stuff
       h2 Избранные сценарии
