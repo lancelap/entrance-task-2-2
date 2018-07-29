@@ -34,6 +34,15 @@ gulp.task("copy-img", () => {
     .pipe(gulp.dest(bases.build + 'img/'));
 });
 
+gulp.task("copy-js", () => {
+  return gulp.src([
+      bases.src + "js/**",
+    ], {
+      base: ""
+    })
+    .pipe(gulp.dest(bases.build + 'js/'));
+});
+
 gulp.task("views", function () {
   return gulp.src(bases.src + 'views/*.pug')
     .pipe(plumber({
@@ -89,17 +98,6 @@ gulp.task('images', function() {
 
 gulp.task('symbols', function() {
   return gulp.src(bases.src + 'img/**/*.svg')
-    // .pipe(svgmin({
-    //         plugins: [{
-    //             removeDoctype: true
-    //         }, {
-    //             removeComments: true
-    //         }, {
-    //             cleanupNumericValues: {
-    //                 floatPrecision: 2
-    //             }
-    //         }]
-    //     }))
     .pipe(svgmin(function (file) {
       const prefix = path.basename(file.relative, path.extname(file.relative));
         return {
@@ -130,6 +128,7 @@ gulp.task('build', function(done) {
   run(
     'clean',
     'copy-img',
+    'copy-js',
     'images',
     'symbols',
     'style',
