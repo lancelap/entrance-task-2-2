@@ -13,7 +13,8 @@ const svgmin = require('gulp-svgmin');
 const pug = require('gulp-pug');
 const del = require('del');
 const run = require('run-sequence');
-var ghPages = require('gulp-gh-pages');
+const ghPages = require('gulp-gh-pages');
+const path = require('path');
 
 const bases = {
   src: 'src/',
@@ -41,7 +42,9 @@ gulp.task("views", function () {
         this.emit('end');
       }
     }))
-    .pipe(pug())
+    .pipe(pug({
+      pretty: true
+    }))
     .pipe(gulp.dest(bases.build))
     .pipe(browserSync.reload({stream: true}));
 });
@@ -86,20 +89,33 @@ gulp.task('images', function() {
 
 gulp.task('symbols', function() {
   return gulp.src(bases.src + 'img/**/*.svg')
-    .pipe(svgmin({
-            plugins: [{
-                removeDoctype: true
-            }, {
-                removeComments: true
-            }, {
-                cleanupNumericValues: {
-                    floatPrecision: 2
-                }
-            }]
-        }))
-    .pipe(svgstore({
-      inlineSvg: true
-    }))
+    // .pipe(svgmin({
+    //         plugins: [{
+    //             removeDoctype: true
+    //         }, {
+    //             removeComments: true
+    //         }, {
+    //             cleanupNumericValues: {
+    //                 floatPrecision: 2
+    //             }
+    //         }]
+    //     }))
+    .pipe(svgmin(function (file) {
+      const prefix = path.basename(file.relative, path.extname(file.relative));
+        return {
+          plugins: [{
+            cleanupIDs: {
+              prefix: prefix + '-',
+              minify: true
+            }
+          }, {
+            removeDoctype: true
+          }, {
+            removeComments: true
+          }]
+        }
+      }))
+    .pipe(svgstore({ inlineSvg: true }))
     .pipe(rename('symbols.svg'))
     .pipe(gulp.dest(bases.build + 'img'))
     .pipe(browserSync.reload({stream: true}))
