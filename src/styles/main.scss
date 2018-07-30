@@ -1,8 +1,11 @@
-@import "normalize";
+@import "normalize.css";
 @import "mixins";
 @import "variables";
 @import "blocks/header";
 @import "blocks/page";
 @import "blocks/general";
-@import "blocks/featured-stuff";
+@import "blocks/featured-list";
+@import "blocks/featured-item";
+@import "blocks/icon-picture";
 @import "blocks/main-nav";
+@import "blocks/weather";

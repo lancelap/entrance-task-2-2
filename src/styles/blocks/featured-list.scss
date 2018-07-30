@@ -1,0 +1,15 @@
+.featured-list {
+ @include reset-list();
+ display: flex;
+ flex-flow: row nowrap;
+ overflow-x: scroll;
+ overflow-y: auto;
+}
+
+.featured-list__item {
+  flex-basis: 170px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+

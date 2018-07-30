@@ -1,5 +1,5 @@
 include mixins/picture
-include mixins/featured-stuff__item
+include mixins/featured-stuff
 
 <!DOCTYPE html>
 html(lang="en")
@@ -29,34 +29,34 @@ html(lang="en")
               a(href="#") Сценарии
 
           button.main-nav__toggle
-           +picture('main-nav__burger', 16, 'icon_list_m', 'open')
-           +picture('main-nav__cross', 16, 'icon_list_m', 'close')
+           +picture('main-nav__burger', 16, 'icon_list_m', 'burger menu')
+           +picture('main-nav__cross', 16, 'icon_list_m', 'burger menu')
 
     section.general
-      .general__card
-        h1(class="general__greeting")
-          | Привет, Геннадий!
+      h1(class="general__greeting")
+        | Привет, Геннадий!
 
-        p.general__condition Двери и окна закрыты, сигнализация включена.
+      p.general__condition Двери и окна закрыты, сигнализация включена.
 
-        .general__weather
-          .weather
-            p Дома
-            p +23
+      .general__weather
+        .general__weather-item.weather
+          p.weather__place Дома
+          p.weather__info +23
 
-          .weather
-            p За окном
-            p +19
+        .general__weather-item.weather
+          p.weather__place За окном
+          p.weather__info +19
+            +picture('', 16, 'cloud-drizzle', 'Небольшие осадки')
 
-        .general__next-scripts
-          -var arrNextScripts = [['Philips Cooler', 'Начнет охлаждать в 16:30'], ['Xiaomi Yeelight LED Smart Bulb', 'Включится в 17:00']]
-          +featured-stuff__item(arrNextScripts)
+      .general__next-scripts
+        -var arrNextScripts = [['Philips Cooler', 'Начнет охлаждать в 16:30', 'icon_temperature'], ['Xiaomi Yeelight LED Smart Bulb', 'Включится в 17:00', 'icon_sun'], ['Philips Cooler', 'Начнет охлаждать в 16:30', 'icon_temperature'], ['Xiaomi Yeelight LED Smart Bulb', 'Включится в 17:00', 'icon_sun']]
+        +featured-stuff(arrNextScripts)
 
     section.featured-stuff
       h2 Избранные сценарии
 
       -var arrScripts = [['Выключить весь свет в доме и во дворе'], ['Я ухожу'], ['Включить свет \u2028в коридоре'], ['Набрать горячую ванну', 'Начнётся в 18:00'], ['Сделать пол тёплым во всей квартире']]
-      +featured-stuff__item(arrScripts)
+      +featured-stuff(arrScripts)
 
     section.fatured-stuff
       h2 Избранные устройства
@@ -74,6 +74,6 @@ html(lang="en")
           a(href="#") Камеры
 
       -var arrDevices = [['Xiaomi Yeelight LED Smart Bulb', 'Включено'], ['D-Link Omna 180 Cam', 'Включится в 17:00'], ['Elgato Eve Degree Connected', 'Выключено до 17:00'], ['LIFX Mini Day & Dusk A60 E27', 'Выключено до 17:00'], ['Xiaomi Mi Air Purifier 2S', 'Включено'], ['Philips Zhirui', 'Выключено'], ['Xiaomi Mi Air Purifier 2S', 'Включено']]
-      +featured-stuff__item(arrDevices)
+      +featured-stuff(arrDevices)
   
   script(src="js/script.js")

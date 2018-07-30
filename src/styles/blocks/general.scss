@@ -1,14 +1,11 @@
 .general {
-  // margin: 0 auto;
-}
-
-.general__card {
   width: 295px;
   margin: 0 auto;
   padding: 20px;
-  background-image: url('../img/bg@1x.png');
-  background-color: #ffffff;
+  padding-top: 22px;
   color: #000000;
+  background-image: url('../img/bg@1x.png');
+  background-color: #f0efeb;
   background-size: cover;
   border-radius: 20px;
 
@@ -32,9 +29,14 @@
 }
 
 .general__weather {
-  color: #858585
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.general__weather-item {
+  margin-right: 20px;
 }
 
 .general__next-scripts {
-  
+  margin-right: -20px;
 }

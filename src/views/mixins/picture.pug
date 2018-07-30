@@ -1,4 +1,4 @@
 mixin picture(className, width, imgSrc, alt)
-  picture
+  picture(class='icon-picture '+className)
     source(srcset=`/img/${imgSrc}.svg`, type="image/svg+xml")
-    img(class=''+className width=''+width src=`/img/${imgSrc}@1x.png`, alt=''+alt, srcset=`/img/${imgSrc}@2x.png 2x`)
+    img(width=''+width src=`/img/${imgSrc}@1x.png`, alt=''+alt, srcset=`/img/${imgSrc}@2x.png 2x`)
