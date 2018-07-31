@@ -25,13 +25,14 @@ gulp.task('clean', () => {
   return del(bases.build);
 });
 
-gulp.task("copy-img", () => {
+gulp.task("copy", () => {
   return gulp.src([
       bases.src + "img/**",
+      bases.src + "js/**",
     ], {
-      base: ""
+      base: bases.src
     })
-    .pipe(gulp.dest(bases.build + 'img/'));
+    .pipe(gulp.dest(bases.build));
 });
 
 gulp.task("copy-js", () => {
@@ -127,10 +128,9 @@ gulp.task('deploy', function() {
 gulp.task('build', function(done) {
   run(
     'clean',
-    'copy-img',
-    'copy-js',
+    'copy',
     'images',
-    'symbols',
+    // 'symbols',
     'style',
     'views',
     done
