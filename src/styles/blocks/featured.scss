@@ -1,0 +1,23 @@
+.featured {
+  position: relative;
+}
+
+.featured__title {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #333333;
+
+  &--with-nav {
+    margin-right: 70px;
+  }
+}
+
+.featured__nav {
+  position: absolute;
+  top: -6px;
+  right: 0;
+  width: 70px;
+}

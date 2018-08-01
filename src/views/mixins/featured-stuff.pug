@@ -1,13 +1,16 @@
 include picture
 
-mixin featured-stuff(items)
+mixin featured-stuff(items, modifier)
+  -var itemClass = 'featured-item featured-list__item'
+  if modifier !== undefined
+    -itemClass = `featured-item featured-list__item featured-list__item--${modifier}`
   ul.featured-list
     each item in items
-      li.featured-list__item.featured-item
+      li(class=itemClass)
         -var name = item[0]
         -var state = item[1]
         -var icon = item[2]
-        +picture('featured-item__icon', 22, icon, icon)
+        +picture('featured-item__icon', 22, 22, icon, icon)
         .featured-item__info
           p.featured-item__name #{name}
           if state != '' 

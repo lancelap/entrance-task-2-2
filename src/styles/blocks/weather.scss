@@ -11,9 +11,33 @@
 }
 
 .weather__info {
+  position: relative;
+  display: inline-block;
   margin: 0;
   color: #333333;
   font-size: 24px;
   font-weight: 700;
   line-height: 28px;
+
+  &--with-icon {
+    padding-right: 25px;
+  }
+}
+
+.weather__icon-cloud-drizzle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  background-image: url('../img/cloud-drizzle@1x.png');
+  background-image: url('../img/cloud-drizzle.svg');
+  background-size: 20px 20px;
+
+  @media #{$retina} {
+    background-image: url('../img/cloud-drizzle@2x.png');
+    background-image: url('../img/cloud-drizzle.svg');
+  }
 }

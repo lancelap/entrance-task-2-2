@@ -1,13 +1,23 @@
 const mainNav = document.querySelector(".main-nav");
 const navToggle = document.querySelector(".main-nav__toggle");
 
-navToggle.addEventListener("click", function(event) {
-  if (mainNav.classList.contains("main-nav--closed")) {
-    mainNav.classList.remove("main-nav--closed");
-    mainNav.classList.add("main-nav--opened");
-  } else {
-    mainNav.classList.add("main-nav--closed");
-    mainNav.classList.remove("main-nav--opened");
-  }
+const featuredNav = document.querySelector(".featured-nav");
+const featuredNavToggle = document.querySelector(".featured-nav__toggle");
 
-});
+function toggle(nav, toggle, classNameNav) {
+  toggle.addEventListener("click", function(event) {
+    if (nav.classList.contains(classNameNav + "--closed")) {
+      nav.classList.remove(classNameNav + "--closed");
+      nav.classList.add(classNameNav + "--opened");
+    } else if(nav.classList.contains(classNameNav + "--opened")) {
+      nav.classList.add(classNameNav + "--closed");
+      nav.classList.remove(classNameNav + "--opened");
+    } else {
+      nav.classList.add(classNameNav + "--opened");
+    }
+  });
+}
+
+toggle(mainNav, navToggle, "main-nav");
+toggle(featuredNav, featuredNavToggle, "featured-nav");
+

@@ -11,15 +11,11 @@ html(lang="en")
     link(rel="stylesheet", href="css/style.min.css")
 
   body.page
-    div(style="display: none")
-      include ../../build/img/symbols.svg
-
     header.header
       a(href="#")
-        +picture('header__logo', 110, 'yandex_home', 'Яндекс Дом')
-
+        +picture('header__logo', 110, 38, 'yandex_home', 'Яндекс Дом')
       .header__nav
-        nav(class="main-nav main-nav--closed")
+        nav.main-nav
           ul.main-nav__list
             li.main-nav__list-item
               a(href="#") Сводка
@@ -29,51 +25,58 @@ html(lang="en")
               a(href="#") Сценарии
 
           button.main-nav__toggle
-           +picture('main-nav__burger', 16, 'icon_list_m', 'burger menu')
-           +picture('main-nav__cross', 16, 'icon_list_m', 'burger menu')
+            .main-nav__burger
 
-    section.general
-      h1(class="general__greeting")
-        | Привет, Геннадий!
-
-      p.general__condition Двери и окна закрыты, сигнализация включена.
-
-      .general__weather
-        .general__weather-item.weather
-          p.weather__place Дома
-          p.weather__info +23
-
-        .general__weather-item.weather
-          p.weather__place За окном
-          p.weather__info +19
-            +picture('', 16, 'cloud-drizzle', 'Небольшие осадки')
-
-      .general__next-scripts
+    .page__inner
+      section.general
+        h1(class="general__greeting")
+          | Привет, Геннадий!
+  
+        p.general__condition Двери и окна закрыты, сигнализация включена.
+  
+        .general__weather
+          .general__weather-item.weather
+            p.weather__place Дома
+            p.weather__info +23
+  
+          .general__weather-item.weather
+            p.weather__place За окном
+            p.weather__info.weather__info--with-icon +19
+              span.weather__icon-cloud-drizzle
+   
         -var arrNextScripts = [['Philips Cooler', 'Начнет охлаждать в 16:30', 'icon_temperature'], ['Xiaomi Yeelight LED Smart Bulb', 'Включится в 17:00', 'icon_sun'], ['Philips Cooler', 'Начнет охлаждать в 16:30', 'icon_temperature'], ['Xiaomi Yeelight LED Smart Bulb', 'Включится в 17:00', 'icon_sun']]
-        +featured-stuff(arrNextScripts)
+        .page__negative-margin
+          +featured-stuff(arrNextScripts)
 
-    section.featured-stuff
-      h2 Избранные сценарии
+    .page__inner
+      section.featured
+        h2.featured__title Избранные сценарии
+  
+        -var arrScripts = [['Выключить весь свет в доме и во дворе', '', 'icon_sun_2'], ['Я ухожу', '', 'icon_scheduled'], ['Включить свет \u2028в коридоре', '', 'icon_sun_2'], ['Набрать горячую ванну', 'Начнётся в 18:00', 'icon_temperature_2'], ['Сделать пол тёплым во всей квартире', '', 'icon_temperature_2']]
+        .page__negative-margin
+          +featured-stuff(arrScripts, 'scripts')
 
-      -var arrScripts = [['Выключить весь свет в доме и во дворе'], ['Я ухожу'], ['Включить свет \u2028в коридоре'], ['Набрать горячую ванну', 'Начнётся в 18:00'], ['Сделать пол тёплым во всей квартире']]
-      +featured-stuff(arrScripts)
-
-    section.fatured-stuff
-      h2 Избранные устройства
-
-      ul
-        li
-          a(href="#") Все
-        li
-          a(href="#") Кухня
-        li
-          a(href="#") Зал
-        li
-          a(href="#") Лампочки
-        li
-          a(href="#") Камеры
-
-      -var arrDevices = [['Xiaomi Yeelight LED Smart Bulb', 'Включено'], ['D-Link Omna 180 Cam', 'Включится в 17:00'], ['Elgato Eve Degree Connected', 'Выключено до 17:00'], ['LIFX Mini Day & Dusk A60 E27', 'Выключено до 17:00'], ['Xiaomi Mi Air Purifier 2S', 'Включено'], ['Philips Zhirui', 'Выключено'], ['Xiaomi Mi Air Purifier 2S', 'Включено']]
-      +featured-stuff(arrDevices)
+    .page__inner
+      section.featured
+        h2.featured__title.featured__title--with-nav Избранные устройства 
+        
+        .featured__nav
+          nav.featured-nav
+            button.featured-nav__toggle(href="#") Все
+              .featured-nav__arrow
+            
+            ul.featured-nav__list
+              li.featured-nav__item
+                a(href="#") Кухня
+              li.featured-nav__item
+                a(href="#") Зал
+              li.featured-nav__item
+                a(href="#") Лампочки
+              li.featured-nav__item
+                a(href="#") Камеры
+  
+        -var arrDevices = [['Xiaomi Yeelight LED Smart Bulb', 'Включено', 'icon_sun_2'], ['D-Link Omna 180 Cam', 'Включится в 17:00', 'icon_sun'], ['Elgato Eve Degree Connected', 'Выключено до 17:00', 'icon_temperature'], ['LIFX Mini Day & Dusk A60 E27', 'Выключено до 17:00', 'icon_sun'], ['Xiaomi Mi Air Purifier 2S', 'Включено', 'icon_sun_2'], ['Philips Zhirui', 'Выключено', 'icon_sun'], ['Xiaomi Mi Air Purifier 2S', 'Включено', 'icon_sun_2']]
+        .page__negative-margin
+          +featured-stuff(arrDevices, 'devices')
   
   script(src="js/script.js")
