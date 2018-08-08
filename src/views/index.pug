@@ -29,8 +29,8 @@ html(lang="ru")
   body.page
     .page__content
       header.header
-        a(href="#")
-          +picture('header__logo', 110, 38, 'yandex_home', 'Яндекс Дом')
+        a.header__logo(href="#")
+          //- +picture('', 110, 38, '', 'Яндекс Дом')
         .header__nav
           nav.main-nav
             ul.main-nav__list
@@ -47,7 +47,7 @@ html(lang="ru")
     
       .page__inner
         section.general.page__mb
-          h1(class="general__greeting")
+          h2(class="general__greeting")
             | Привет, Геннадий!
     
           p.general__condition Двери и окна закрыты, сигнализация включена.

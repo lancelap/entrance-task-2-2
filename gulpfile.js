@@ -129,7 +129,7 @@ gulp.task('build', function(done) {
   run(
     'clean',
     'copy',
-    'images',
+    // 'images',
     // 'symbols',
     'copy-js',
     'style',

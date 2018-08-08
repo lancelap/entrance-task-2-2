@@ -53,3 +53,10 @@
     }
   }
 }
+
+@media #{$desktop-width} {
+  .page__inner {
+    margin-right: 40px;
+    margin-left: 40px;
+  }
+}

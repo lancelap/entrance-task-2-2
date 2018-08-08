@@ -52,3 +52,37 @@
 .main-nav--opened .main-nav__list  {
   display: block;
 }
+
+
+@media #{$desktop-width} {
+  .main-nav {
+    position: static;
+  }
+
+  .main-nav__list {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .main-nav__list-item a  {
+    margin-right: 28px;
+    padding: 0;
+    padding-top: 11px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    line-height: 20px;
+    background-color: unset;
+    border: none;
+    opacity: 0.6;
+
+    &:hover,
+    &:active {
+      opacity: 1;
+    }
+  }
+  
+  .main-nav__toggle {
+    display: none;
+  }
+}
