@@ -25,11 +25,19 @@
 .element-list__scripts {
   min-height: 70px;
   margin-left: 15px;
+
+  &:first-child {
+    margin-left: 20px;
+  }
 }
 
 .element-list__devices {
   min-height: 90px;
   margin-left: 15px;
+
+  &:first-child {
+    margin-left: 20px;
+  }
 }
 
 .element-list__places-panel {
