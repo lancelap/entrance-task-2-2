@@ -2,6 +2,7 @@
  @include reset-list();
  display: flex;
  flex-flow: row nowrap;
+ min-height: 70px;
  overflow-x: auto;
  overflow-y: hidden;
 }
