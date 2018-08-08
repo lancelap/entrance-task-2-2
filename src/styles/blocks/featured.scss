@@ -13,6 +13,10 @@
   &--with-nav {
     margin-right: 70px;
   }
+
+  &--no-mobile {
+    display: none;
+  }
 }
 
 .featured__nav {
@@ -21,4 +25,12 @@
   top: -6px;
   right: 0;
   width: 70px;
+}
+
+@media #{$desktop-width} {
+  .featured__title {
+    &--no-mobile {
+      display: block;
+    }
+  }
 }

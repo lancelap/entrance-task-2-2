@@ -6,12 +6,11 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.page__inner {
+.page__general,
+.page__scripts,
+.page__devices {
   margin-right: 20px;
   margin-left: 20px;
-}
-
-.page__mb {
   margin-bottom: 30px;
 }
 
@@ -55,8 +54,28 @@
 }
 
 @media #{$desktop-width} {
+  .page__content {
+    display: flex;
+    flex-flow: column;
+  }
+
   .page__inner {
     margin-right: 40px;
+    margin-left: 40px;
+
+    &--1-2 {
+      flex-basis: 50%;
+      margin-left: 0;
+      margin-right: 26px;
+    }
+
+    &--2-2 {
+
+    }
+  }
+
+  .page__row {
+    display: flex;
     margin-left: 40px;
   }
 }

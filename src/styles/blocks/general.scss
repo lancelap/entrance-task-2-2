@@ -1,6 +1,6 @@
 .general {
-  padding: 20px;
   padding-top: 22px;
+  padding-bottom: 20px;
   color: #000000;
   background-image: url('../img/bg@1x.png');
   background-position: center center;
@@ -34,6 +34,11 @@
 
 .general__weather-item {
   margin-right: 20px;
+}
+
+.general__line {
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .general__next-scripts {

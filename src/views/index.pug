@@ -44,55 +44,56 @@ html(lang="ru")
             button.main-nav__toggle
               span.visuallyhidden Окрыть меню
               .main-nav__burger
+        
+      .page__row
+        section.featured.page__general
+          h1.featured__title.featured__title--no-mobile Главное
+          .general
+            h2.general__greeting.general__line
+              | Привет, Геннадий!
     
-      .page__inner
-        section.general.page__mb
-          h2(class="general__greeting")
-            | Привет, Геннадий!
+            p.general__condition.general__line Двери и окна закрыты, сигнализация включена.
     
-          p.general__condition Двери и окна закрыты, сигнализация включена.
+            .general__weather.general__line
+              .general__weather-item.weather
+                p.weather__place Дома
+                p.weather__info +23
     
-          .general__weather
-            .general__weather-item.weather
-              p.weather__place Дома
-              p.weather__info +23
-    
-            .general__weather-item.weather
-              p.weather__place За окном
-              p.weather__info.weather__info--with-icon +19
-                span.weather__icon-cloud-drizzle
+              .general__weather-item.weather
+                p.weather__place За окном
+                p.weather__info.weather__info--with-icon +19
+                  span.weather__icon-cloud-drizzle
       
-          .page__no-margin
             +featured-stuff(arrNextScripts, 'featured-scripts')
       
-        section.featured.page__mb
+        section.featured.page__scripts
           h2.featured__title Избранные сценарии
     
           .page__no-margin
             +featured-stuff(arrScripts, 'scripts')
-      
-        section.featured.page__mb
-          h2.featured__title.featured__title--with-nav Избранные устройства 
-          
-          .featured__nav
-            nav.featured-nav
-              button.featured-nav__toggle(href="#") Все
-                .featured-nav__arrow
-              
-              ul.featured-nav__list
-                li.featured-nav__item(data-filter-place="none")
-                  a(href="#") Все
-                li.featured-nav__item(data-filter-place=""+KITCHEN)
-                  a(href="#") Кухня
-                li.featured-nav__item(data-filter-place=""+HALL)
-                  a(href="#") Зал
-                li.featured-nav__item(data-filter-type=""+SUN)
-                  a(href="#") Лампочки
-                li.featured-nav__item(data-filter-type="cameras")
-                  a(href="#") Камеры
     
-          .page__no-margin
-            +featured-stuff(arrDevices, 'devices')
+      section.featured.page__devices
+        h2.featured__title.featured__title--with-nav Избранные устройства 
+        
+        .featured__nav
+          nav.featured-nav
+            button.featured-nav__toggle(href="#") Все
+              .featured-nav__arrow
+            
+            ul.featured-nav__list
+              li.featured-nav__item(data-filter-place="none")
+                a(href="#") Все
+              li.featured-nav__item(data-filter-place=""+KITCHEN)
+                a(href="#") Кухня
+              li.featured-nav__item(data-filter-place=""+HALL)
+                a(href="#") Зал
+              li.featured-nav__item(data-filter-type=""+SUN)
+                a(href="#") Лампочки
+              li.featured-nav__item(data-filter-type="cameras")
+                a(href="#") Камеры
+  
+        .page__no-margin
+          +featured-stuff(arrDevices, 'devices')
 
     //- section.modal
       //- +modal('Xiaomi Yeelight LED Smart Bulb', SUN, 'Включится в 17:00')
