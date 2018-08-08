@@ -29,8 +29,14 @@
       left: 12px;
       width: 36px;
       height: 36px;
-      background-image: url('/img/icon_sun_max.svg');
+      background-image: url('../img/icon_sun_max@1x.png');
+      background-image: url('../img/icon_sun_max.svg');
       background-repeat: no-repeat;
+
+      @media #{$retina} {
+        background-image: url('../img/icon_sun_max@2x.png');
+        background-image: url('../img/icon_sun_max.svg');
+      }
     }
 
     &::before {
@@ -38,8 +44,14 @@
       left: 12px;
       width: 36px;
       height: 36px;
-      background-image: url('/img/icon_sun_min.svg');
+      background-image: url('../img/icon_sun_min@1x.png');
+      background-image: url('../img/icon_sun_min.svg');
       background-repeat: no-repeat;
+
+      @media #{$retina} {
+        background-image: url('../img/icon_sun_min@2x.png');
+        background-image: url('../img/icon_sun_min.svg');
+      }
     }
   }
 
