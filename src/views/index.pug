@@ -1,8 +1,24 @@
 include mixins/picture
 include mixins/featured-stuff
+include mixins/modal
+
+-var SCRIPT = 'script'
+-var DEVICE = 'device'
+
+-var FLOOR = 'floor'
+-var SUN = 'sun'
+-var SCHEDULED = 'scheduled'
+-var TEMP = 'temperature'
+
+-var KITCHEN = 'kitchen'
+-var HALL = 'hall'
+
+-var arrNextScripts = [ { name: 'Philips Cooler', isActive: false, state: 'Начнет охлаждать в 16:30', typeIcon: TEMP, type: DEVICE }, { name: 'Xiaomi Yeelight LED Smart Bulb', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE } ]
+-var arrScripts = [ { name: 'Выключить весь свет в доме и во дворе', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Я ухожу', isActive: false, state: null, typeIcon: SCHEDULED, type: SCRIPT }, { name: 'Включить свет \u2028 в коридоре', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Набрать горячую ванну', isActive: true, state: 'Начнётся в 18:00', typeIcon: TEMP, type: SCRIPT }, { name: 'Сделать пол тёплым во всей квартире', isActive: true, state: null, typeIcon: TEMP, type: SCRIPT } ]
+-var arrDevices = [ { name: 'Xiaomi Yeelight LED Smart Bulb', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'D-Link Omna 180 Cam', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Elgato Eve Degree Connected', isActive: false, state: 'Выключено до 17:00', typeIcon: TEMP, type: DEVICE, place: KITCHEN }, { name: 'LIFX Mini Day & Dusk A60 E27', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'Philips Zhirui', isActive: false, state: 'Выключено', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'Xiaomi Warm Floor', isActive: false, state: 'Выключено', typeIcon: FLOOR, type: DEVICE, place: HALL } ]
 
 <!DOCTYPE html>
-html(lang="en")
+html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
@@ -11,72 +27,83 @@ html(lang="en")
     link(rel="stylesheet", href="css/style.min.css")
 
   body.page
-    header.header
-      a(href="#")
-        +picture('header__logo', 110, 38, 'yandex_home', 'Яндекс Дом')
-      .header__nav
-        nav.main-nav
-          ul.main-nav__list
-            li.main-nav__list-item
-              a(href="#") Сводка
-            li.main-nav__list-item
-              a(href="#") Устройства
-            li.main-nav__list-item
-              a(href="#") Сценарии
+    .page__content
+      header.header
+        a(href="#")
+          +picture('header__logo', 110, 38, 'yandex_home', 'Яндекс Дом')
+        .header__nav
+          nav.main-nav
+            ul.main-nav__list
+              li.main-nav__list-item
+                a(href="#") Сводка
+              li.main-nav__list-item
+                a(href="#") Устройства
+              li.main-nav__list-item
+                a(href="#") Сценарии
+  
+            button.main-nav__toggle
+              span.visuallyhidden Окрыть меню
+              .main-nav__burger
+    
+      .page__inner
+        section.general.page__mb
+          h1(class="general__greeting")
+            | Привет, Геннадий!
+    
+          p.general__condition Двери и окна закрыты, сигнализация включена.
+    
+          .general__weather
+            .general__weather-item.weather
+              p.weather__place Дома
+              p.weather__info +23
+    
+            .general__weather-item.weather
+              p.weather__place За окном
+              p.weather__info.weather__info--with-icon +19
+                span.weather__icon-cloud-drizzle
+      
+          .page__no-margin
+            +featured-stuff(arrNextScripts, 'featured-scripts')
+      
+        section.featured.page__mb
+          h2.featured__title Избранные сценарии
+    
+          .page__no-margin
+            +featured-stuff(arrScripts, 'scripts')
+      
+        section.featured.page__mb
+          h2.featured__title.featured__title--with-nav Избранные устройства 
+          
+          .featured__nav
+            nav.featured-nav
+              button.featured-nav__toggle(href="#") Все
+                .featured-nav__arrow
+              
+              ul.featured-nav__list
+                li.featured-nav__item(data-filter-place="none")
+                  a(href="#") Все
+                li.featured-nav__item(data-filter-place=""+KITCHEN)
+                  a(href="#") Кухня
+                li.featured-nav__item(data-filter-place=""+HALL)
+                  a(href="#") Зал
+                li.featured-nav__item(data-filter-type=""+SUN)
+                  a(href="#") Лампочки
+                li.featured-nav__item(data-filter-type="cameras")
+                  a(href="#") Камеры
+    
+          .page__no-margin
+            +featured-stuff(arrDevices, 'devices')
 
-          button.main-nav__toggle
-            .main-nav__burger
+    //- section.modal
+      //- +modal('Xiaomi Yeelight LED Smart Bulb', SUN, 'Включится в 17:00')
+      //- +modal('Xiaomi Yeelight LED Smart Bulb', TEMP, 'Включено')
+      //- +modal('Xiaomi Warm Floor', FLOOR, 'Включено')
 
-    .page__inner
-      section.general
-        h1(class="general__greeting")
-          | Привет, Геннадий!
-  
-        p.general__condition Двери и окна закрыты, сигнализация включена.
-  
-        .general__weather
-          .general__weather-item.weather
-            p.weather__place Дома
-            p.weather__info +23
-  
-          .general__weather-item.weather
-            p.weather__place За окном
-            p.weather__info.weather__info--with-icon +19
-              span.weather__icon-cloud-drizzle
-   
-        -var arrNextScripts = [['Philips Cooler', 'Начнет охлаждать в 16:30', 'icon_temperature'], ['Xiaomi Yeelight LED Smart Bulb', 'Включится в 17:00', 'icon_sun'], ['Philips Cooler', 'Начнет охлаждать в 16:30', 'icon_temperature'], ['Xiaomi Yeelight LED Smart Bulb', 'Включится в 17:00', 'icon_sun']]
-        .page__negative-margin
-          +featured-stuff(arrNextScripts)
+      .modal__block
+        button.button.button--active.modal__btn.modal__btn--active Применить
 
-    .page__inner
-      section.featured
-        h2.featured__title Избранные сценарии
+      .modal__block
+        button.button.modal__btn Закрыть
   
-        -var arrScripts = [['Выключить весь свет в доме и во дворе', '', 'icon_sun_2'], ['Я ухожу', '', 'icon_scheduled'], ['Включить свет \u2028в коридоре', '', 'icon_sun_2'], ['Набрать горячую ванну', 'Начнётся в 18:00', 'icon_temperature_2'], ['Сделать пол тёплым во всей квартире', '', 'icon_temperature_2']]
-        .page__negative-margin
-          +featured-stuff(arrScripts, 'scripts')
-
-    .page__inner
-      section.featured
-        h2.featured__title.featured__title--with-nav Избранные устройства 
-        
-        .featured__nav
-          nav.featured-nav
-            button.featured-nav__toggle(href="#") Все
-              .featured-nav__arrow
-            
-            ul.featured-nav__list
-              li.featured-nav__item
-                a(href="#") Кухня
-              li.featured-nav__item
-                a(href="#") Зал
-              li.featured-nav__item
-                a(href="#") Лампочки
-              li.featured-nav__item
-                a(href="#") Камеры
-  
-        -var arrDevices = [['Xiaomi Yeelight LED Smart Bulb', 'Включено', 'icon_sun_2'], ['D-Link Omna 180 Cam', 'Включится в 17:00', 'icon_sun'], ['Elgato Eve Degree Connected', 'Выключено до 17:00', 'icon_temperature'], ['LIFX Mini Day & Dusk A60 E27', 'Выключено до 17:00', 'icon_sun'], ['Xiaomi Mi Air Purifier 2S', 'Включено', 'icon_sun_2'], ['Philips Zhirui', 'Выключено', 'icon_sun'], ['Xiaomi Mi Air Purifier 2S', 'Включено', 'icon_sun_2']]
-        .page__negative-margin
-          +featured-stuff(arrDevices, 'devices')
-  
-  script(src="js/script.js")
+    section.modal
+    script(src="js/main.js")

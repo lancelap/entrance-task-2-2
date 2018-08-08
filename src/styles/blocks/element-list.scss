@@ -1,0 +1,42 @@
+.element-list {
+ @include reset-list();
+ display: flex;
+ flex-flow: row nowrap;
+ overflow-x: auto;
+ overflow-y: hidden;
+}
+
+.element-list__item {
+  flex-basis: 170px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.element-list::after {
+  content: "";
+  flex: 0 0 20px;
+}
+
+.element-list__featured-scripts {
+    min-height: 90px;
+    margin-left: 20px;
+}
+
+.element-list__scripts {
+  min-height: 70px;
+  margin-left: 15px;
+}
+
+.element-list__devices {
+  min-height: 90px;
+  margin-left: 15px;
+}
+
+.element-list__places-panel {
+  flex-basis: auto;
+  margin-left: 10px;
+
+  &:first-child {
+    margin-left: 20px;
+  }
+}

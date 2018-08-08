@@ -1,20 +1,49 @@
 .page {
-  margin: 0;
   background-color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
-  color: #333333;
+  color: #333333; 
+
+  // Для IOS
+  -webkit-overflow-scrolling: touch;
 }
 
 .page__inner {
-  margin-bottom: 30px;
-  padding-right: 20px;
-  padding-left: 20px;
-  
-  &--small-margin {
-    margin-bottom: 24px;
-  }
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
-.page__negative-margin {
+.page__mb {
+  margin-bottom: 30px;
+}
+
+.page__content {
+    // Исползовал fixed для победы над скроллом мобильных
+    // но из-за этого немного скачет при появлении модального окна
+    // фикс высота работает не ццвсегда
+    &--no-scroll {
+      position: fixed;
+      z-index: -1;
+      overflow: hidden;
+    }
+  
+    &--blured {
+      filter: blur(5px) saturate(2);
+      animation-name: page__blur;
+      animation-duration: 0.1s; 
+      animation-timing-function: linear; 
+    }
+}
+
+.page__no-margin {
   margin-right: -20px;
+  margin-left: -20px;
+}
+
+@keyframes page__blur { 
+  0% {
+    filter: blur(0) saturate(0);
+  } 
+  100% {
+    filter: blur(5px) saturate(2);
+  } 
 }

@@ -1,0 +1,59 @@
+.termometr{
+  position: relative;
+  width: 221px;
+  height: 221px;
+  color: #333333;
+  background-color: #ffffff;
+} 
+
+.termometr__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 221px;
+  height: 221px;
+  background-image: url('/img/background.svg');
+  background-color: transparent;
+  background-size: 186px;
+  background-position: left 18px top 20px;
+  background-repeat: no-repeat;
+}
+
+.termometr__arrow {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 12px;
+  height: 186px;
+  margin-left: -6px;
+  background-image: url('/img/icons/icon_arrow.svg');
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 12px 18px;
+  transform: rotate(-360deg)
+}
+
+.termometr__value {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  display: block;
+  box-sizing: border-box;
+  width: 178px;
+  height: 178px;
+  overflow: auto;
+  font-size: 66px;
+  font-weight: 700;
+  line-height: 178px;
+  text-align: center;
+}
+
+.termometr__scale {
+  // display: none;
+  background-image: url('/img/oval.svg'), url('/img/oval_copy.svg');
+  background-repeat: no-repeat;
+  background-position: 0 0, bottom 15px right 3px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}

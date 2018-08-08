@@ -32,10 +32,11 @@
 }
 
 .featured-nav__toggle {
-  display: inline-block;
-  width: 70px;
+  position: absolute;
+  top: 0;
+  right: 0;
   padding-top: 7px;
-  padding-right: 16px;
+  padding-right: 30px;
   padding-bottom: 8px;
   padding-left: 16px;
   font: 700 13px/15px Arial, Helvetica, sans-serif;
@@ -47,6 +48,7 @@
   background-color: #ffd93e;
   border-style: none;
   border-radius: 20px;
+  outline: none;
 }
 
 .featured-nav__arrow {

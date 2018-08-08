@@ -27,8 +27,7 @@ gulp.task('clean', () => {
 
 gulp.task("copy", () => {
   return gulp.src([
-      bases.src + "img/**",
-      bases.src + "js/**",
+      bases.src + "img/**"
     ], {
       base: bases.src
     })
@@ -37,11 +36,12 @@ gulp.task("copy", () => {
 
 gulp.task("copy-js", () => {
   return gulp.src([
-      bases.src + "js/**",
+      bases.src + "js/main.js",
     ], {
-      base: ""
+      base: bases.src
     })
-    .pipe(gulp.dest(bases.build + 'js/'));
+    .pipe(gulp.dest(bases.build))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task("views", function () {
@@ -131,6 +131,7 @@ gulp.task('build', function(done) {
     'copy',
     'images',
     // 'symbols',
+    'copy-js',
     'style',
     'views',
     done
@@ -146,6 +147,7 @@ gulp.task('serve', function() {
   });
   gulp.watch(bases.src + 'styles/**/*.scss', ['style']);
   gulp.watch(bases.src + 'views/**/*.pug', ['views']);
+  gulp.watch(bases.src + 'js/**/*.js', ['copy-js']);
 });
 
 gulp.task('default', ['build', 'serve']);

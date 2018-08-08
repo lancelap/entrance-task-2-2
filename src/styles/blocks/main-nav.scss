@@ -8,13 +8,11 @@
   left: 0;
   right: 0;
   display: none;
-  background: #ffffff;
-  color: #333333;
 }
 
 .main-nav__list-item a {
   display: block;
-  padding: 20px 21px 16px;
+  padding: 20px 21px 16px 21px;
   font-weight: 700;
   font-size: 18px;
   line-height: 18px;
@@ -26,11 +24,15 @@
 }
 
 .main-nav__toggle {
-  @include reset-button();
   position: absolute;
   top: 15px;
-  right: 10px;
-  padding: 10px 10px;
+  right: 9px;
+  display: block;
+  padding: 10px;  
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .main-nav__burger {

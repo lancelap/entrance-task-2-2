@@ -1,0 +1,75 @@
+.device-bar {
+  position: relative;
+  width: 60px;
+  height: 336px;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #ffffff;
+  background-color: #ffb100;
+  border-radius: 35px;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+  }
+
+  &::before {
+    content: ' ';
+    position: absolute;
+  }
+
+
+  &--light {
+    background: linear-gradient(to bottom, #ffb100, #ffe88c);
+
+    &::after {
+      top: 13px;
+      left: 12px;
+      width: 36px;
+      height: 36px;
+      background-image: url('/img/icon_sun_max.svg');
+      background-repeat: no-repeat;
+    }
+
+    &::before {
+      bottom: 13px;
+      left: 12px;
+      width: 36px;
+      height: 36px;
+      background-image: url('/img/icon_sun_min.svg');
+      background-repeat: no-repeat;
+    }
+  }
+
+  &--temp {
+    background: linear-gradient(#F76B1C 0%, #FFD800 50%, #068FFF 100%);
+
+    &::after {
+      content: '+30';
+      top: 17px;
+      left: 15px;
+    }
+
+    &::before {
+      content: '–10';
+      bottom: 13px;
+      left: 15px;
+    }
+  }
+}
+
+.device-bar__track {
+  position: relative;
+  top: 0;
+  left: 0!important;
+  z-index: 100;
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  
+  border: 3px solid rgba(51,51,51,0.10);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #ffffff,
+}

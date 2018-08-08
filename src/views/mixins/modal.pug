@@ -1,0 +1,37 @@
+-var FLOOR = 'floor'
+-var SUN = 'sun'
+-var TEMP = 'temperature'
+
+mixin modal(name, type, state)
+  .modal__block#modal-content
+    .controller
+      .controller__line
+        h1.controller__title #{name}
+      .controller__line
+        p.controller__state #{state}
+
+      if (type === TEMP)
+        ul.element-list.controller__places-list
+          li.button.button--active.element-list__item.element-list__places-panel
+            a(href="#") Вручную
+          li.button.element-list__item.element-list__places-panel
+            a(href="#") Холодно
+          li.button.element-list__item.element-list__places-panel
+            a(href="#") Тепло
+        .device-bar.device-bar--temp.controller__bar
+          .device-bar__track(style="top: 95px")
+      else if (type === SUN)
+        ul.element-list.controller__places-list
+          li.button.button--active.element-list__item.element-list__places-panel Вручную
+          li.button.element-list__item.element-list__places-panel
+            a(href="#") Дневной свет
+          li.button.element-list__item.element-list__places-panel
+            a(href="#") Вечерний свет
+        .device-bar.device-bar--light.controller__bar
+          .device-bar__track(style="top: 105px")
+      else
+        .termometr.controller__termometr
+          .termometr__scale
+          .termometr__bg
+          b.termometr__value +23
+          .termometr__arrow
