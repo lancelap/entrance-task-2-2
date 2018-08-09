@@ -1,11 +1,11 @@
 include picture
 
 mixin featured-stuff(items, blockType)
-  -var itemClass = `featured-item element-list__item element-list__${blockType}`
+  -var itemClass = `featured-item element-list__item element-list__${blockType}-item`
 
-  ul.element-list(id=''+blockType)
+  ul(class=`element-list element-list__${blockType}` id=''+blockType)
     each item in items
-      li(class=itemClass data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+      li(class=itemClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
         -var iconSrc = ''
           case item.typeIcon
             when SUN: -iconSrc = SUN
@@ -17,7 +17,7 @@ mixin featured-stuff(items, blockType)
         +picture('featured-item__icon', 22, 22, `icon_${iconSrc}`, '')
         
         .featured-item__info
-          p.featured-item__name #{item.name}
+          p.featured-item__name !{item.name}
 
           if (item.state !== null)
             p.featured-item__state #{item.state}

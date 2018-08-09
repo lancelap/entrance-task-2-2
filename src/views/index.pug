@@ -14,7 +14,7 @@ include mixins/modal
 -var HALL = 'hall'
 
 -var arrNextScripts = [ { name: 'Philips Cooler', isActive: false, state: 'Начнет охлаждать в 16:30', typeIcon: TEMP, type: DEVICE }, { name: 'Xiaomi Yeelight LED Smart Bulb', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE } ]
--var arrScripts = [ { name: 'Выключить весь свет в доме и во дворе', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Я ухожу', isActive: false, state: null, typeIcon: SCHEDULED, type: SCRIPT }, { name: 'Включить свет \u2028 в коридоре', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Набрать горячую ванну', isActive: true, state: 'Начнётся в 18:00', typeIcon: TEMP, type: SCRIPT }, { name: 'Сделать пол тёплым во всей квартире', isActive: true, state: null, typeIcon: TEMP, type: SCRIPT } ]
+-var arrScripts = [ { name: 'Выключить весь свет в доме и во дворе', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Я ухожу', isActive: false, state: null, typeIcon: SCHEDULED, type: SCRIPT }, { name: 'Включить свет <br> в коридоре', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Набрать горячую ванну', isActive: true, state: 'Начнётся в 18:00', typeIcon: TEMP, type: SCRIPT }, { name: 'Сделать пол тёплым во всей квартире', isActive: true, state: null, typeIcon: TEMP, type: SCRIPT } ]
 -var arrDevices = [ { name: 'Xiaomi Yeelight LED Smart Bulb', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'D-Link Omna 180 Cam', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Elgato Eve Degree Connected', isActive: false, state: 'Выключено до 17:00', typeIcon: TEMP, type: DEVICE, place: KITCHEN }, { name: 'LIFX Mini Day & Dusk A60 E27', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'Philips Zhirui', isActive: false, state: 'Выключено', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'Xiaomi Warm Floor', isActive: false, state: 'Выключено', typeIcon: FLOOR, type: DEVICE, place: HALL } ]
 
 <!DOCTYPE html>
@@ -30,11 +30,11 @@ html(lang="ru")
     .page__content
       header.header
         a.header__logo(href="#")
-          //- +picture('', 110, 38, '', 'Яндекс Дом')
+
         .header__nav
           nav.main-nav
             ul.main-nav__list
-              li.main-nav__list-item
+              li.main-nav__list-item.main-nav__list-item--active
                 a(href="#") Сводка
               li.main-nav__list-item
                 a(href="#") Устройства
@@ -43,45 +43,54 @@ html(lang="ru")
   
             button.main-nav__toggle
               span.visuallyhidden Окрыть меню
-              .main-nav__burger
+              span.main-nav__burger
         
       .page__row
-        section.featured.page__general
-          h1.featured__title.featured__title--no-mobile Главное
-          .general
-            h2.general__greeting.general__line
-              | Привет, Геннадий!
-    
-            p.general__condition.general__line Двери и окна закрыты, сигнализация включена.
-    
-            .general__weather.general__line
-              .general__weather-item.weather
-                p.weather__place Дома
-                p.weather__info +23
-    
-              .general__weather-item.weather
-                p.weather__place За окном
-                p.weather__info.weather__info--with-icon +19
-                  span.weather__icon-cloud-drizzle
+        .page__line
+          section.featured.page__general
+            h1.page__headline.page__headline-general Главное
+            .general
+              .general__info
+                h2.general__greeting.general__line
+                  | Привет, Геннадий!
       
-            +featured-stuff(arrNextScripts, 'featured-scripts')
+                p.general__condition.general__line Двери и окна закрыты, сигнализация включена.
       
-        section.featured.page__scripts
-          h2.featured__title Избранные сценарии
+                .general__weather.general__line
+                  .general__weather-item.weather
+                    p.weather__place Дома
+                    p.weather__info +23
+      
+                  .general__weather-item.weather
+                    p.weather__place За окном
+                    p.weather__info.weather__info--with-icon +19
+                      span.weather__icon-cloud-drizzle
+              .general__list
+                +featured-stuff(arrNextScripts, 'featured-scripts')
+      
+        section.page__scripts
+          .page__line.page__headline-nav.page__headline-scripts
+            h1.page__headline Избранные сценарии
+
+            nav.arrows-nav.page__arrows-nav#nav-featured-scripts
+              button.arrows-nav__arrow.arrows-nav__arrow--left(tabindex="-1" disabled="disabled")
+              button.arrows-nav__arrow.arrows-nav__arrow--right(tabindex="-1" disabled="disabled")
     
-          .page__no-margin
-            +featured-stuff(arrScripts, 'scripts')
+          +featured-stuff(arrScripts, 'scripts')
     
-      section.featured.page__devices
-        h2.featured__title.featured__title--with-nav Избранные устройства 
-        
-        .featured__nav
-          nav.featured-nav
-            button.featured-nav__toggle(href="#") Все
-              .featured-nav__arrow
-            
+      section.page__devices
+        .page__line.page__devices-line.page__headline-nav
+          
+          h1.page__headline.page__headline-devices Избранные устройства 
+
+          nav.arrows-nav.page__arrows-nav#nav-featured-devices
+            button.arrows-nav__arrow.arrows-nav__arrow--left(tabindex="-1" disabled="disabled")
+            button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active
+          
+          nav.featured-nav.page__device-nav
+            button.featured-nav__toggle Все
             ul.featured-nav__list
-              li.featured-nav__item(data-filter-place="none")
+              li.featured-nav__item.featured-nav__item--active(data-filter-place="none")
                 a(href="#") Все
               li.featured-nav__item(data-filter-place=""+KITCHEN)
                 a(href="#") Кухня
@@ -91,9 +100,21 @@ html(lang="ru")
                 a(href="#") Лампочки
               li.featured-nav__item(data-filter-type="cameras")
                 a(href="#") Камеры
-  
-        .page__no-margin
-          +featured-stuff(arrDevices, 'devices')
+
+        +featured-stuff(arrDevices, 'devices')
+
+      footer.footer
+        nav.footer__nav
+          ul.footer__menu-list
+            li.footer__menu-item
+              a(href="#") Помощь
+            li.footer__menu-item
+              a(href="#") Обратная связь
+            li.footer__menu-item
+              a(href="#") Разработчикам
+            li.footer__menu-item
+              a(href="#") Условия использования
+        p.footer__copyright © 2001–2017  ООО «Яндекс»
 
     //- section.modal
       //- +modal('Xiaomi Yeelight LED Smart Bulb', SUN, 'Включится в 17:00')

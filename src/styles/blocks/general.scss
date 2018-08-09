@@ -29,7 +29,6 @@
 
 .general__weather {
   display: flex;
-  margin-bottom: 20px;
 }
 
 .general__weather-item {
@@ -43,4 +42,41 @@
 
 .general__next-scripts {
   margin-right: -20px;
+}
+
+@media #{$desktop-width} {
+  .general {
+    display: flex;
+    padding: 0;
+  }
+
+  .general__greeting {
+    margin-top: 27px;
+    font-size: 27px;
+    line-height: 31px;
+  }
+
+  .general__line {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .general__condition {
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .general__list {
+    width: 240px;
+    // margin-right: 20px;
+  }
+
+  .general__info {
+    flex: 1 0 400px;
+  }
+
+  .general__weather-item {
+    margin-right: 20px;
+  }
 }

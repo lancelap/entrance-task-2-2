@@ -2,16 +2,50 @@
   background-color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   color: #333333; 
-
+  // min-height: 100vh;
   -webkit-overflow-scrolling: touch;
+}
+
+.page__headline-nav {
+  position: relative;
+}
+
+.page__device-nav {
+  position: absolute;
+  z-index: 100;
+  top: -6px;
+  right: 0;
+  width: 70px;
+}
+
+.page__headline {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #333333;
+}
+
+.page__headline-general {
+  display: none;
+}
+
+.page__headline-device {
+  margin-right: 70px;
 }
 
 .page__general,
 .page__scripts,
 .page__devices {
-  margin-right: 20px;
-  margin-left: 20px;
   margin-bottom: 30px;
+}
+
+.page__line {
+  margin: 0 20px;
+}
+
+.page__arrows-nav {
+  display: none;
 }
 
 .page__content {
@@ -26,11 +60,6 @@
       animation-duration: 0.1s; 
       animation-timing-function: linear; 
     }
-}
-
-.page__no-margin {
-  margin-right: -20px;
-  margin-left: -20px;
 }
 
 @keyframes page__blur { 
@@ -54,28 +83,66 @@
 }
 
 @media #{$desktop-width} {
-  .page__content {
-    display: flex;
-    flex-flow: column;
+  .page__line {
+    margin: 0;
   }
 
-  .page__inner {
-    margin-right: 40px;
-    margin-left: 40px;
+  .page__general,
+  .page__scripts,
+  .page__devices {
+    margin: 0;
+  }
 
-    &--1-2 {
-      flex-basis: 50%;
-      margin-left: 0;
-      margin-right: 26px;
-    }
-
-    &--2-2 {
-
-    }
+  .page__devices {
+    margin-bottom: 64px;
   }
 
   .page__row {
     display: flex;
+    flex-flow: row nowrap;
+    margin-right: 40px;
     margin-left: 40px;
+    margin-bottom: 30px;
+  }
+
+  .page__scripts,
+  .page__general {
+    width: 630px;
+    flex: 1 0 auto;
+    margin: 0;
+  }
+
+  .page__devices-line {
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    margin-right: 40px;
+    margin-left: 40px;
+  }
+
+  .page__headline-general {
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  .page__headline-scripts {
+    margin-left: 26px;
+  }
+
+  .page__headline-devices {
+    margin: 0;
+    margin-right: 13px;
+  }
+
+  .page__device-nav {
+    position: static;
+    width: auto;
+  }
+
+  .page__arrows-nav {
+    position: absolute;
+    display: block;
+    bottom: -5px;
+    right: -5px;
   }
 }

@@ -1,0 +1,43 @@
+.footer {
+  display: none;
+}
+
+@media #{$desktop-width} {
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-left: 34px;
+    padding: 10px 40px 10px 34px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #858585;
+    background-color: #ffffff;
+  }
+
+  .footer__menu-list {
+    @include reset-list();
+  }
+  
+  .footer__menu-item {
+    display: inline-block;
+  }
+
+  .footer__menu-item a {
+    display: block;
+    padding: 12px 6px 18px 6px;
+    font-weight: 500;
+    color: #858585;
+    text-decoration: none;
+  }
+
+  .footer__copyright {
+
+  }
+}

@@ -251,6 +251,16 @@ function addFilterListner(element, toggleButton) {
         const textButton = target.firstChild.firstChild.cloneNode(false);
         toggleButton.replaceChild(textButton, toggleButton.firstChild);
 
+        // захардкожены активные ссылки
+        const navList = document.querySelector('.featured-nav__list');console.log(navList)
+        for (let index = 0; index < navList.childNodes.length; index++) {
+          const element = navList.childNodes[index];
+          if (element.nodeType != 1) continue;
+          
+          element.classList.remove('featured-nav__item--active');
+        }
+        target.classList.add('featured-nav__item--active');
+
         // Закрывем меню
         featuredNav.classList.add("featured-nav--closed");
         featuredNav.classList.remove("featured-nav--opened");
