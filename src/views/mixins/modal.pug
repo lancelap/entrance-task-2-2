@@ -3,30 +3,48 @@
 -var TEMP = 'temperature'
 
 mixin modal(name, type, state)
-  .modal__block#modal-content
-    .controller
-      .controller__line
-        h1.controller__title #{name}
-      .controller__line
-        p.controller__state #{state}
-
+  .modal__content#modal-content
+    .controller.modal__line
       if (type === TEMP)
-        ul.element-list.controller__places-list
-          li.button.button--active.element-list__item.element-list__places-panel
-            a(href="#") Вручную
-          li.button.element-list__item.element-list__places-panel
-            a(href="#") Холодно
-          li.button.element-list__item.element-list__places-panel
-            a(href="#") Тепло
+        .controller__line.controller__temp-info
+          h1.controller__title #{name}
+            span.weather.controller__weather.controller__only-desktop
+              p.weather__info.weather__info--with-icon.controller__weather-info +23
+                span.weather__icon.weather__icon--temp.controller__weather-icon
+        
+          p.controller__state #{state}
+
+        ul.element-list.controller__places-list.element-list__places-panel
+          li.element-list__item.element-list__places-panel-item 
+            button.button.button--active Вручную
+          li.element-list__item.element-list__places-panel-item 
+            button.button Холодно
+          li.element-list__item.element-list__places-panel-item 
+            button.button Тепло
+          li.element-list__item.element-list__places-panel-item.controller__only-desktop
+            button.button Жарко
         .device-bar.device-bar--temp.controller__bar
           .device-bar__track(style="top: 95px")
       else if (type === SUN)
-        ul.element-list.controller__places-list
-          li.button.button--active.element-list__item.element-list__places-panel Вручную
-          li.button.element-list__item.element-list__places-panel
-            a(href="#") Дневной свет
-          li.button.element-list__item.element-list__places-panel
-            a(href="#") Вечерний свет
+        .controller__line.controller__temp-info
+          h1.controller__title #{name}
+
+          span.weather.controller__weather.controller__only-desktop
+            p.weather__info.weather__info--with-icon.controller__weather-info
+              span.weather__icon.weather__icon--sun.controller__weather-icon
+
+          p.controller__state #{state}
+
+        ul.element-list.controller__places-list.element-list__places-panel 
+          li.element-list__item.element-list__places-panel-item 
+            button.button.button--active Вручную
+          li.element-list__item.element-list__places-panel-item 
+            button.button Дневной свет
+          li.element-list__item.element-list__places-panel-item 
+            button.button Вечерний свет
+          li.element-list__item.element-list__places-panel-item.controller__only-desktop
+            button.button Рассвет
+            
         .device-bar.device-bar--light.controller__bar
           .device-bar__track(style="top: 105px")
       else
@@ -35,3 +53,7 @@ mixin modal(name, type, state)
           .termometr__bg
           b.termometr__value +23
           .termometr__arrow
+
+    .modal__block-btn
+      button.button.button--active.modal__btn.modal__btn--active Применить
+      button.button.modal__btn Закрыть

@@ -7,8 +7,8 @@
 }
 
 .controller__line {
-  padding-right: 20px;
-  padding-left: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .controller__title {
@@ -22,8 +22,8 @@
 
 .controller__state {
   margin: 0;
-  margin-bottom: 15px;
   font-size: 12px;
+  line-height: 14px;
   color: #333333;
 }
 
@@ -39,4 +39,55 @@
 
 .controller__places-list {
   margin-bottom: 25px;
+}
+
+.controller__only-desktop {
+  display: none;
+}
+
+@media #{$desktop-width} {
+  .controller {
+    padding-top: 26px;
+  }
+
+  .controller__only-desktop {
+    display: block;
+  }
+
+  .controller__title {
+    font-size: 27px;
+    line-height: 31px;
+  }
+
+  .controller__line {
+    margin-right: 25px;
+    margin-left: 25px;
+  }
+
+  .controller__temp-info {
+    position: relative;
+    padding-right: 90px;
+  }
+
+  .controller__weather {
+    position: absolute;
+    top: 0px;
+    right: 0;
+  }
+
+  .controller__weather-info {
+    padding-right: 42px;
+  }
+
+  .controller__weather-icon {
+    margin-top: -22px;
+    width: 42px;
+    height: 42px;
+    background-size: 42px 42px;
+  }
+
+  .controller__state {
+    font-size: 14px;
+    line-height: 16px;
+  }
 }

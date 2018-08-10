@@ -35,10 +35,14 @@
 }
 
 .element-list__places-panel {
+  padding-top: 15px;
+}
+
+.element-list__places-panel-item {
   flex-basis: auto;
   margin-left: 10px;
 
-  &:first-child {
+  &:first-of-type {
     margin-left: 20px;
   }
 }
@@ -104,5 +108,15 @@
       margin-left: 40px;
     }
   }
-  
+
+  .element-list__places-panel {
+    padding-top: 20px;
+  }
+
+  .element-list__places-panel-item {
+
+    &:first-of-type {
+      margin-left: 25px;
+    }
+  }
 }

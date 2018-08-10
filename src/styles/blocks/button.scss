@@ -15,7 +15,9 @@
   }
 }
 
-.button a {
-  color: #000000;
-  text-decoration: none;
+
+@media #{$desktop-width} {
+  .button {
+    font-weight: 700;
+  }
 }

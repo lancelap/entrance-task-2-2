@@ -1,34 +1,40 @@
 .arrows-nav {
-
+  display: none;
 }
 
-.arrows-nav__arrow {
-  width: 26px;
-  height: 25px;
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center center;
-  cursor: pointer;
-  border: none;
-  opacity: 0.3;
-
-  &--left {
-    background-image: url('../img/icons/arrow_right.svg');
-    transform: scale(-1, 1)
+@media #{$desktop-width} {
+  .arrows-nav {
+    display: block;
   }
 
-  &--right {
-    background-image: url('../img/icons/arrow_right.svg');
-  }
-
-  &--active {
-    opacity: 1;
-  }
-
-  &:disabled{
-    cursor: not-allowed;
+  .arrows-nav__arrow {
+    width: 26px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    border: none;
+    opacity: 0.3;
+  
+    &--left {
+      background-image: url('../img/icons/arrow_right.svg');
+      transform: scale(-1, 1)
+    }
+  
+    &--right {
+      background-image: url('../img/icons/arrow_right.svg');
+    }
+  
+    &--active {
+      opacity: 1;
+    }
+  
+    &:disabled{
+      cursor: not-allowed;
+    }
   }
 }

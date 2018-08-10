@@ -9,6 +9,7 @@
 .weather__info {
   position: relative;
   display: inline-block;
+  height: 28px;
   margin: 0;
   color: #333333;
   font-size: 24px;
@@ -20,7 +21,7 @@
   }
 }
 
-.weather__icon-cloud-drizzle {
+.weather__icon {
   position: absolute;
   top: 50%;
   right: 0;
@@ -28,13 +29,36 @@
   width: 20px;
   height: 20px;
   margin-top: -10px;
-  background-image: url('../img/cloud-drizzle@1x.png');
-  background-image: url('../img/cloud-drizzle.svg');
   background-size: 20px 20px;
 
-  @media #{$retina} {
-    background-image: url('../img/cloud-drizzle@2x.png');
+  &--cloud-drizzle {
+    background-image: url('../img/cloud-drizzle@1x.png');
     background-image: url('../img/cloud-drizzle.svg');
+  
+    @media #{$retina} {
+      background-image: url('../img/cloud-drizzle@2x.png');
+      background-image: url('../img/cloud-drizzle.svg');
+    }
+  }
+
+  &--temp {
+    background-image: url('../img/icon_temperature_2@1x.png');
+    background-image: url('../img/icon_temperature_2.svg');
+  
+    @media #{$retina} {
+      background-image: url('../img/icon_temperature_2@2x.png');
+      background-image: url('../img/icon_temperature_2.svg');
+    }
+  }
+
+  &--sun {
+    background-image: url('../img/icon_sun@1x.png');
+    background-image: url('../img/icon_sun.svg');
+  
+    @media #{$retina} {
+      background-image: url('../img/icon_sun@2x.png');
+      background-image: url('../img/icon_sun.svg');
+    }
   }
 }
 
@@ -46,6 +70,7 @@
   }
 
   .weather__info {
+    height: 42px;
     font-size: 36px;
     line-height: 42px;
 
@@ -54,10 +79,10 @@
     }
   }
   
-  .weather__icon-cloud-drizzle {
+  .weather__icon {
     width: 26px;
     height: 26px;
-    background-size: 26px 26px;
     margin-top: -14px;
+    background-size: 26px 26px;
   }
 }

@@ -64,7 +64,7 @@ html(lang="ru")
                   .general__weather-item.weather
                     p.weather__place За окном
                     p.weather__info.weather__info--with-icon +19
-                      span.weather__icon-cloud-drizzle
+                      span.weather__icon.weather__icon--cloud-drizzle
               .general__list
                 +featured-stuff(arrNextScripts, 'featured-scripts')
       
@@ -114,18 +114,12 @@ html(lang="ru")
               a(href="#") Разработчикам
             li.footer__menu-item
               a(href="#") Условия использования
-        p.footer__copyright © 2001–2017  ООО «Яндекс»
+        p © 2001–2017  ООО «Яндекс»
 
-    //- section.modal
+    //- section.modal.modal--opened
       //- +modal('Xiaomi Yeelight LED Smart Bulb', SUN, 'Включится в 17:00')
       //- +modal('Xiaomi Yeelight LED Smart Bulb', TEMP, 'Включено')
       //- +modal('Xiaomi Warm Floor', FLOOR, 'Включено')
 
-      .modal__block
-        button.button.button--active.modal__btn.modal__btn--active Применить
-
-      .modal__block
-        button.button.modal__btn Закрыть
-  
     section.modal
     script(src="js/main.js")

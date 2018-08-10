@@ -1,8 +1,9 @@
 .page {
+  height: 100vh;
   background-color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   color: #333333; 
-  // min-height: 100vh;
+  
   -webkit-overflow-scrolling: touch;
 }
 
@@ -49,7 +50,11 @@
 }
 
 .page__content {
+    // Исползовал fixed для победы над скроллом мобильных
+    // но из-за этого немного скачет при появлении модального окна
     &--no-scroll {
+      position: fixed;
+      height: 100vh;
       z-index: -1;
       overflow: hidden;
     }
@@ -57,30 +62,20 @@
     &--blured {
       filter: blur(5px) saturate(2);
       animation-name: page__blur;
-      animation-duration: 0.1s; 
+      animation-duration: 0.3s; 
       animation-timing-function: linear; 
     }
 }
 
 @keyframes page__blur { 
   0% {
-    filter: blur(0) saturate(0);
+    filter: blur(0) saturate(1);
   } 
   100% {
     filter: blur(5px) saturate(2);
   } 
 }
 
-@media #{$mobile-width-only} {
-  .page__content {
-    // Исползовал fixed для победы над скроллом мобильных
-    // но из-за этого немного скачет при появлении модального окна
-    // фикс высота работает не всегда
-    &--no-scroll {
-      position: fixed;
-    }
-  }
-}
 
 @media #{$desktop-width} {
   .page__line {
@@ -91,10 +86,6 @@
   .page__scripts,
   .page__devices {
     margin: 0;
-  }
-
-  .page__devices {
-    margin-bottom: 64px;
   }
 
   .page__row {

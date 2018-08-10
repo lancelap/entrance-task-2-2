@@ -16,7 +16,7 @@ mixin featured-stuff(items, blockType)
 
         +picture('featured-item__icon', 22, 22, `icon_${iconSrc}`, '')
         
-        .featured-item__info
+        div
           p.featured-item__name !{item.name}
 
           if (item.state !== null)

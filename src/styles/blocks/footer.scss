@@ -35,9 +35,10 @@
     font-weight: 500;
     color: #858585;
     text-decoration: none;
-  }
 
-  .footer__copyright {
-
+    &:hover,
+    &:active {
+      color: #333333;
+    }
   }
 }
