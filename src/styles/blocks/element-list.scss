@@ -1,122 +1,18 @@
 .element-list {
- @include reset-list();
- display: flex;
- flex-flow: row nowrap;
- padding-top: 20px;
- overflow-x: auto;
+  @include reset-list();
+  display: flex;
+  flex-flow: row nowrap;
+  padding-top: 20px;
+  overflow-x: auto;
+
+  &::after {
+    content: "";
+    flex: 0 0 20px;
+  }
 }
 
 .element-list__item {
   flex: 0 0 170px;
-}
-
-.element-list::after {
-  content: "";
-  flex: 0 0 20px;
-}
-
-.element-list__featured-scripts-item {
-    min-height: 90px;
-    margin-left: 20px;
-}
-
-.element-list__scripts-item,
-.element-list__devices-item {
   min-height: 70px;
   margin-left: 15px;
-
-  &:first-child {
-    margin-left: 20px;
-  }
-}
-
-.element-list__devices-item {
-  min-height: 90px;
-}
-
-.element-list__places-panel {
-  padding-top: 15px;
-}
-
-.element-list__places-panel-item {
-  flex-basis: auto;
-  margin-left: 10px;
-
-  &:first-of-type {
-    margin-left: 20px;
-  }
-}
-
-.element-list__devices {
-  min-height: 120px
-}
-
-@media #{$desktop-width} {
-  .element-list__featured-scripts {
-    flex-flow: column nowrap;
-    height: 310px;
-    overflow-y: auto;
-  }
-
-  .element-list__featured-scripts-item {
-    flex-basis: unset;
-    margin: 0;
-    margin-bottom: 15px;
-    margin-left: 10px;
-    width: 170px;
-
-    &:nth-child(3) {
-      position: relative;
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 100%;
-        height: 40px;
-        background-color: #f7f7f7;
-        background-image: url('../img/icons/arrow_double@1x.png');
-        background-image: url('../img/icons/arrow_double.svg');
-        background-repeat: no-repeat;
-        background-position: 90px 13px;
-        border-radius: 20px 20px 0 0;
-
-        @media #{$retina} {
-          background-image: url('../img/icons/arrow_double@2x.png');
-          background-image: url('../img/icons/arrow_double.svg');
-        }
-
-      }
-    }
-  }
-
-  .element-list__scripts-item {
-    padding-top: 15px;
-    margin-bottom: 15px;
-
-    &:first-child {
-      margin-left: 26px;
-    }
-  }
-
-  .element-list__devices-item {
-    padding-top: 15px;
-    margin-bottom: 6px;
-
-    &:first-child {
-      margin-left: 40px;
-    }
-  }
-
-  .element-list__places-panel {
-    padding-top: 20px;
-  }
-
-  .element-list__places-panel-item {
-
-    &:first-of-type {
-      margin-left: 25px;
-    }
-  }
 }

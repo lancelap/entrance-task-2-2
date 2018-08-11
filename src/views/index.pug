@@ -1,6 +1,7 @@
 include mixins/picture
 include mixins/featured-stuff
 include mixins/modal
+include mixins/item-list
 
 -var SCRIPT = 'script'
 -var DEVICE = 'device'
@@ -47,7 +48,7 @@ html(lang="ru")
         
       .page__row
         .page__line
-          section.featured.page__general
+          section.page__general
             h1.page__headline.page__headline-general Главное
             .general
               .general__info
@@ -65,43 +66,57 @@ html(lang="ru")
                     p.weather__place За окном
                     p.weather__info.weather__info--with-icon +19
                       span.weather__icon.weather__icon--cloud-drizzle
-              .general__list
-                +featured-stuff(arrNextScripts, 'featured-scripts')
+
+              ul.element-list.general__list#featured-scripts
+                each item in arrNextScripts
+                  li.featured-item.element-list__item.general__list-item(tabindex="0")
+                    +item-list(item)
       
-        section.page__scripts
-          .page__line.page__headline-nav.page__headline-scripts
+        section.scripts.page__scripts
+          .page__line.page__headline-nav.scripts__headline
             h1.page__headline Избранные сценарии
 
             nav.arrows-nav.page__arrows-nav#nav-featured-scripts
               button.arrows-nav__arrow.arrows-nav__arrow--left(tabindex="-1" disabled="disabled")
+                span.visuallyhidden Назад
               button.arrows-nav__arrow.arrows-nav__arrow--right(tabindex="-1" disabled="disabled")
+                span.visuallyhidden Вперед
+
+          ul.element-list.scripts__list#scripts
+            each item in arrScripts
+              li.featured-item.element-list__item.scripts__list-item(tabindex="0")
+                +item-list(item)
     
-          +featured-stuff(arrScripts, 'scripts')
-    
-      section.page__devices
-        .page__line.page__devices-line.page__headline-nav
+      section.devices.page__devices
+        .page__line.devices__line.devices__headline-nav
           
-          h1.page__headline.page__headline-devices Избранные устройства 
+          h1.page__headline.devices__headline Избранные устройства 
+          
+          nav.featured-nav.devices__nav
+            button.button.button--active.featured-nav__toggle Все
+              span.featured-nav__arrow
+            ul.featured-nav__list
+              li.featured-nav__item(data-filter-place="none")
+                button.button.button--active Все
+              li.featured-nav__item(data-filter-place=""+KITCHEN)
+                button.button Кухня
+              li.featured-nav__item(data-filter-place=""+HALL)
+                button.button Зал
+              li.featured-nav__item(data-filter-type=""+SUN)
+                button.button Лампочки
+              li.featured-nav__item(data-filter-type="cameras")
+                button.button Камеры
 
           nav.arrows-nav.page__arrows-nav#nav-featured-devices
             button.arrows-nav__arrow.arrows-nav__arrow--left(tabindex="-1" disabled="disabled")
+              span.visuallyhidden Назад
             button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active
-          
-          nav.featured-nav.page__device-nav
-            button.featured-nav__toggle Все
-            ul.featured-nav__list
-              li.featured-nav__item.featured-nav__item--active(data-filter-place="none")
-                a(href="#") Все
-              li.featured-nav__item(data-filter-place=""+KITCHEN)
-                a(href="#") Кухня
-              li.featured-nav__item(data-filter-place=""+HALL)
-                a(href="#") Зал
-              li.featured-nav__item(data-filter-type=""+SUN)
-                a(href="#") Лампочки
-              li.featured-nav__item(data-filter-type="cameras")
-                a(href="#") Камеры
+              span.visuallyhidden Вперед
 
-        +featured-stuff(arrDevices, 'devices')
+        ul.element-list.devices__list#devices
+          each item in arrDevices
+            li.featured-item.element-list__item.devices__item(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+              +item-list(item)
 
       footer.footer
         nav.footer__nav
@@ -116,10 +131,10 @@ html(lang="ru")
               a(href="#") Условия использования
         p © 2001–2017  ООО «Яндекс»
 
-    //- section.modal.modal--opened
+    //- .modal.modal--opened
       //- +modal('Xiaomi Yeelight LED Smart Bulb', SUN, 'Включится в 17:00')
-      //- +modal('Xiaomi Yeelight LED Smart Bulb', TEMP, 'Включено')
+      +modal('Xiaomi Yeelight LED Smart Bulb', TEMP, 'Включено')
       //- +modal('Xiaomi Warm Floor', FLOOR, 'Включено')
 
-    section.modal
+    .modal
     script(src="js/main.js")

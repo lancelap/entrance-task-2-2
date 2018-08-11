@@ -10,18 +10,18 @@ mixin modal(name, type, state)
           h1.controller__title #{name}
             span.weather.controller__weather.controller__only-desktop
               p.weather__info.weather__info--with-icon.controller__weather-info +23
-                span.weather__icon.weather__icon--temp.controller__weather-icon
+                span.weather__icon.weather__icon--temperature2.controller__weather-icon
         
           p.controller__state #{state}
 
         ul.element-list.controller__places-list.element-list__places-panel
-          li.element-list__item.element-list__places-panel-item 
+          li.element-list__item.controller__places-item 
             button.button.button--active Вручную
-          li.element-list__item.element-list__places-panel-item 
+          li.element-list__item.controller__places-item 
             button.button Холодно
-          li.element-list__item.element-list__places-panel-item 
+          li.element-list__item.controller__places-item 
             button.button Тепло
-          li.element-list__item.element-list__places-panel-item.controller__only-desktop
+          li.element-list__item.controller__places-item.controller__only-desktop
             button.button Жарко
         .device-bar.device-bar--temp.controller__bar
           .device-bar__track(style="top: 95px")
@@ -35,14 +35,14 @@ mixin modal(name, type, state)
 
           p.controller__state #{state}
 
-        ul.element-list.controller__places-list.element-list__places-panel 
-          li.element-list__item.element-list__places-panel-item 
+        ul.element-list.controller__places-list
+          li.element-list__item.controller__places-item 
             button.button.button--active Вручную
-          li.element-list__item.element-list__places-panel-item 
+          li.element-list__item.controller__places-item 
             button.button Дневной свет
-          li.element-list__item.element-list__places-panel-item 
+          li.element-list__item.controller__places-item 
             button.button Вечерний свет
-          li.element-list__item.element-list__places-panel-item.controller__only-desktop
+          li.element-list__item.controller__places-item.controller__only-desktop
             button.button Рассвет
             
         .device-bar.device-bar--light.controller__bar

@@ -11,14 +11,6 @@
   position: relative;
 }
 
-.page__device-nav {
-  position: absolute;
-  z-index: 100;
-  top: -6px;
-  right: 0;
-  width: 70px;
-}
-
 .page__headline {
   margin: 0;
   font-size: 18px;
@@ -29,10 +21,6 @@
 
 .page__headline-general {
   display: none;
-}
-
-.page__headline-device {
-  margin-right: 70px;
 }
 
 .page__general,
@@ -67,16 +55,6 @@
     }
 }
 
-@keyframes page__blur { 
-  0% {
-    filter: blur(0) saturate(1);
-  } 
-  100% {
-    filter: blur(5px) saturate(2);
-  } 
-}
-
-
 @media #{$desktop-width} {
   .page__line {
     margin: 0;
@@ -103,31 +81,9 @@
     margin: 0;
   }
 
-  .page__devices-line {
-    display: flex;
-    align-items: center;
-    min-height: 30px;
-    margin-right: 40px;
-    margin-left: 40px;
-  }
-
   .page__headline-general {
     margin-bottom: 18px;
     display: block;
-  }
-
-  .page__headline-scripts {
-    margin-left: 26px;
-  }
-
-  .page__headline-devices {
-    margin: 0;
-    margin-right: 13px;
-  }
-
-  .page__device-nav {
-    position: static;
-    width: auto;
   }
 
   .page__arrows-nav {
@@ -136,4 +92,13 @@
     bottom: -5px;
     right: -5px;
   }
+}
+
+@keyframes page__blur { 
+  0% {
+    filter: blur(0) saturate(1);
+  } 
+  100% {
+    filter: blur(5px) saturate(2);
+  } 
 }

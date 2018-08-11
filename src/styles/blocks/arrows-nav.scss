@@ -21,12 +21,12 @@
     opacity: 0.3;
   
     &--left {
-      background-image: url('../img/icons/arrow_right.svg');
+      @include bg('icons/arrow_right');
       transform: scale(-1, 1)
     }
   
     &--right {
-      background-image: url('../img/icons/arrow_right.svg');
+      @include bg('icons/arrow_right');
     }
   
     &--active {

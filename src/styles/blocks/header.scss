@@ -11,14 +11,8 @@
   width: 109px;
   height: 37px;
   outline: none;
-  background-image: url('../img/yandex_home@1x.png');
-  background-image: url('../img/yandex_home.svg');
+  @include bg('yandex_home');
   background-size: 109px 37px;
-
-  @media #{$retina} {
-    background-image: url('../img/yandex_home@2x.png');
-    background-image: url('../img/yandex_home.svg');
-  }
 }
 
 .header__nav {

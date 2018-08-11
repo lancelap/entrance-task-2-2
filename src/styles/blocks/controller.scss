@@ -39,6 +39,17 @@
 
 .controller__places-list {
   margin-bottom: 25px;
+  padding-top: 15px;
+}
+
+.controller__places-item {
+  flex-basis: auto;
+  min-height: unset;
+  margin-left: 10px;
+
+  &:first-of-type {
+    margin-left: 20px;
+  }
 }
 
 .controller__only-desktop {
@@ -89,5 +100,15 @@
   .controller__state {
     font-size: 14px;
     line-height: 16px;
+  }
+
+  .controller__places-list {
+    padding-top: 20px;
+  }
+  
+  .controller__places-item {
+    &:first-of-type {
+      margin-left: 25px;
+    }
   }
 }

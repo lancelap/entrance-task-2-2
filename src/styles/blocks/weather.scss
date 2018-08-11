@@ -19,6 +19,12 @@
   &--with-icon {
     padding-right: 25px;
   }
+
+  &--only-icon {
+    height: 22px;
+    padding-right: 22px;
+    line-height: 0;
+  }
 }
 
 .weather__icon {
@@ -32,33 +38,34 @@
   background-size: 20px 20px;
 
   &--cloud-drizzle {
-    background-image: url('../img/cloud-drizzle@1x.png');
-    background-image: url('../img/cloud-drizzle.svg');
-  
-    @media #{$retina} {
-      background-image: url('../img/cloud-drizzle@2x.png');
-      background-image: url('../img/cloud-drizzle.svg');
-    }
+    @include bg('cloud-drizzle');
   }
 
-  &--temp {
-    background-image: url('../img/icon_temperature_2@1x.png');
-    background-image: url('../img/icon_temperature_2.svg');
-  
-    @media #{$retina} {
-      background-image: url('../img/icon_temperature_2@2x.png');
-      background-image: url('../img/icon_temperature_2.svg');
-    }
+  &--temperature {
+    @include bg('icon_temperature');
+  }
+
+  &--temperature2 {
+    @include bg('icon_temperature_2');
   }
 
   &--sun {
-    background-image: url('../img/icon_sun@1x.png');
-    background-image: url('../img/icon_sun.svg');
-  
-    @media #{$retina} {
-      background-image: url('../img/icon_sun@2x.png');
-      background-image: url('../img/icon_sun.svg');
-    }
+    @include bg('icon_sun');
+  }
+
+  &--sun2 {
+    @include bg('icon_sun_2');
+  }
+
+  &--scheduled {
+    @include bg('icon_scheduled');
+  }
+
+  &--only-icon {
+    width: 22px;
+    height: 22px;
+    margin-top: -11px;
+    background-size: 22px 22px;
   }
 }
 
@@ -77,6 +84,12 @@
     &--with-icon {
       padding-right: 30px;
     }
+
+    &--only-icon {
+      height: 22px;
+      padding-right: 22px;
+      line-height: 0;
+    }
   }
   
   .weather__icon {
@@ -84,5 +97,12 @@
     height: 26px;
     margin-top: -14px;
     background-size: 26px 26px;
+    
+    &--only-icon {
+      width: 22px;
+      height: 22px;
+      margin-top: -11px;
+      background-size: 22px 22px;
+    }
   }
 }

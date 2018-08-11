@@ -1,32 +1,19 @@
-.featured-nav {
-}
-
 .featured-nav__list {
   @include reset-list();
   position: absolute;
   top: 32px;
   right: 0;
   display: none;
-  background-color: #ffffff;
-  border: solid 1px #ffd93e;
+  background-color: #f2f1f0;
   border-radius: 20px;
   color: #333333;
 }
 
-.featured-nav__item a {
-  display: block;
-  padding-top: 7px;
-  padding-right: 15px;
-  padding-bottom: 8px;
-  padding-left: 15px;
-  font: 700 13px/15px Arial, Helvetica, sans-serif;
-  text-align: center;
-  color: #000000;
-  text-decoration: none;
-  border-bottom: 1px solid #ffd93e;
+.featured-nav__item .button {
+  width: 100%;
 }
 
-.featured-nav__item:last-of-type a {
+.featured-nav__item:last-of-type {
   border-bottom: none;
 }
 
@@ -34,20 +21,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  padding-top: 7px;
+  font-weight: 700;
   padding-right: 30px;
-  padding-bottom: 8px;
-  padding-left: 16px;
-  font: 700 13px/15px Arial, Helvetica, sans-serif;
-  text-decoration: none;
-  vertical-align: top;
-  text-align: left;
-  text-decoration: none;
-  color: #000000;
-  background-color: #ffd93e;
-  border-style: none;
-  border-radius: 20px;
-  outline: none;
 }
 
 .featured-nav__arrow {
@@ -56,15 +31,9 @@
   right: 16px;
   width: 7px;
   height: 11px;
-  background-image: url('../img/icons/arrow_right@1x.png');
-  background-image: url('../img/icons/arrow_right.svg');
+  @include bg('icons/arrow_right');
   background-size: 100% 100%;
   transform: rotate(90deg);
-
-  @media #{$retina} {
-    background-image: url('../img/icons/arrow_right@2x.png');
-    background-image: url('../img/icons/arrow_right.svg');
-  }
 }
 
 .featured-nav--opened .featured-nav__list  {
@@ -111,16 +80,14 @@
 
   .featured-nav__item {
     margin-right: 8px;
-    border-radius: 20px;
-    background-color: #f7f7ff;
-
-    &--active {
-      border-radius: 20px;
-      background-color: #ffd93e;
-    }
   }
 
-  .featured-nav__item a {
+  .featured-nav__item--active .button{
+    border-radius: 20px;
+    background-color: #ffd93e;
+  }
+
+  .featured-nav__item {
     border: none;
   }
 }

@@ -74,12 +74,10 @@
 @media #{$desktop-width} {
   .modal__content {
     top: 50%;
-    top: 189px;
     width: 630px;
-    left: 367px;
-    margin: 0;
-    // margin-top: -159px;
-    // margin-left: -315px;
+    left: 50%;
+    margin-top: -159px;
+    margin-left: -315px;
   }
 
   .modal__block-btn {

@@ -43,14 +43,8 @@
   display: block;
   width: 16px;
   height: 14px;
-  background-image: url('../img/icon_list_me@1x.png');
-  background-image: url('../img/icon_list_m.svg');
+  @include bg('icon_list_m');
   background-size: 100% 100%;
-
-  @media #{$retina} {
-    background-image: url('../img/icon_list_m@2x.png');
-    background-image: url('../img/icon_list_m.svg');
-  }
 }
 
 .main-nav--opened .main-nav__list  {

@@ -1,0 +1,13 @@
+mixin item-list(item)
+  -var icon = item.typeIcon
+    if (icon === FLOOR)
+      -icon = SUN
+    if (item.isActive)
+      -icon = icon + '2'
+    .weather
+      p.weather__info.weather__info--only-icon.featured-item__weather
+        span(class='weather__icon weather__icon--only-icon weather__icon--' + icon)
+    div
+      p.featured-item__name !{item.name}
+      if (item.state !== null)
+        p.featured-item__state #{item.state}

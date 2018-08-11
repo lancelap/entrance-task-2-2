@@ -38,3 +38,13 @@
     padding: 0;
   }
 }
+
+@mixin bg($url) {
+  background-image: url('../img/'+ $url +'@1x.png');
+  background-image: url('../img/'+ $url +'.svg');
+
+  @media #{$retina} {
+    background-image: url('../img/'+ $url +'@2x.png');
+    background-image: url('../img/'+ $url +'.svg');
+  }
+}
