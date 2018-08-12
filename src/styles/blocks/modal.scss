@@ -74,10 +74,18 @@
 @media #{$desktop-width} {
   .modal__content {
     top: 50%;
-    width: 630px;
     left: 50%;
-    margin-top: -159px;
+    width: 630px;
+    margin: 0;
     margin-left: -315px;
+
+    &--bar {
+      margin-top: -159px;
+    }
+
+    &--termometr {
+      top: 100px;
+    }
   }
 
   .modal__block-btn {

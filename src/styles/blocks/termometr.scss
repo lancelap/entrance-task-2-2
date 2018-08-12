@@ -4,7 +4,27 @@
   height: 221px;
   color: #333333;
   background-color: #ffffff;
+  background-image:  url('../img/oval@1x.png');
+  background-image: url('../img/oval.svg');
+  background-repeat: no-repeat;
 } 
+
+.termometr__svg {
+  // position: absolute;
+
+  width: 221px; height: 221px;
+  transform: rotate(-90deg);
+  background: transparent;
+  border-radius: 50%;
+  transform: rotate(60deg);
+}
+
+.termometr__circle {
+  fill: none;
+  stroke: white;
+  stroke-width: 32;
+  stroke-dasharray: 16.5 100;
+}
 
 .termometr__bg {
   position: absolute;
@@ -49,16 +69,17 @@
 }
 
 .termometr__scale {
-  background-image:  url('../img/oval@1x.png'), url('../img/oval_copy@1x.png');
-  background-image: url('../img/oval.svg'), url('../img/oval_copy.svg');
+  width: 221px;
+  height: 221px;
+  background-image: url('../img/oval_copy@1x.png');
+  background-image: url('../img/oval_copy.svg');
   background-repeat: no-repeat;
-  background-position: 0 0, bottom 15px right 3px;
+  background-position: bottom 15px right 3px;
   z-index: -1;
-  width: 100%;
-  height: 100%;
+  border-radius: 50%;
   
   @media #{$retina} {
-    background-image:  url('../img/oval@2x.png'), url('../img/oval_copy@2x.png');
-    background-image:  url('../img/oval.svg'), url('../img/oval_copy.svg');
+    background-image: url('../img/oval_copy@2x.png');
+    background-image: url('../img/oval_copy.svg');
   }
 }

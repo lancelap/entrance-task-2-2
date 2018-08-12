@@ -3,7 +3,13 @@
 -var TEMP = 'temperature'
 
 mixin modal(name, type, state)
-  .modal__content#modal-content
+  -var modalClass = ''
+  if (type === TEMP || type === SUN)
+     -modalClass = 'modal__content modal__content--bar'
+  else 
+    -modalClass = 'modal__content modal__content--termometr'
+
+  div(class=''+modalClass)#modal-content
     .controller.modal__line
       if (type === TEMP)
         .controller__line.controller__temp-info
@@ -48,8 +54,19 @@ mixin modal(name, type, state)
         .device-bar.device-bar--light.controller__bar
           .device-bar__track(style="top: 105px")
       else
+        .controller__line.controller__temp-info
+          h1.controller__title #{name}
+
+          span.weather.controller__weather.controller__only-desktop
+            p.weather__info.weather__info--with-icon.controller__weather-info +23
+              span.weather__icon.weather__icon--temperature2.controller__weather-icon
+
+          p.controller__state #{state}
+
         .termometr.controller__termometr
           .termometr__scale
+            svg(xmlns="http://www.w3.org/2000/svg" class="termometr__svg" viewBox="0 0 32 32")
+              circle.termometr__circle(r="16" cx="16" cy="16")
           .termometr__bg
           b.termometr__value +23
           .termometr__arrow

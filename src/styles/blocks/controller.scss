@@ -77,7 +77,7 @@
 
   .controller__temp-info {
     position: relative;
-    padding-right: 90px;
+    padding-right: 110px;
   }
 
   .controller__weather {
@@ -111,4 +111,10 @@
       margin-left: 25px;
     }
   }
+
+  .controller__termometr {
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
 }
