@@ -68,8 +68,9 @@ html(lang="ru")
                       span.weather__icon.weather__icon--cloud-drizzle
 
               ul.element-list.general__list#featured-scripts
-                each item in arrNextScripts
-                  li.featured-item.element-list__item.general__list-item(tabindex="0")
+                each item, index in arrNextScripts
+                  -var itemModClass = index === 2 ? ' general__list-item--with-arrow' : '';
+                  li(class='featured-item element-list__item general__list-item' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
                     +item-list(item)
       
         section.scripts.page__scripts
@@ -131,10 +132,10 @@ html(lang="ru")
               a(href="#") Условия использования
         p © 2001–2017  ООО «Яндекс»
 
-    .modal.modal--opened
+    //- .modal.modal--opened
       //- +modal('Xiaomi Yeelight LED Smart Bulb', SUN, 'Включится в 17:00')
       //- +modal('Xiaomi Yeelight LED Smart Bulb', TEMP, 'Включено')
       +modal('Xiaomi Warm Floor', FLOOR, 'Включено')
 
-    .modal
+    .modal#modal
     script(src="js/main.js")

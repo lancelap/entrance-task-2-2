@@ -21,6 +21,7 @@ const deviceTrack = document.querySelector(".device-bar__track");
 const termometr = document.querySelector(".controller__termometr");
 const termometrArrow = document.querySelector(".termometr__arrow");
 
+const featuredScripts = document.getElementById('featured-scripts');
 
 // MENU 
 toggle(mainNav, navToggle, "main-nav");
@@ -44,51 +45,30 @@ function toggle(nav, toggle, classNameNav) {
 addListListner(lists);
 
 function toggleModal(name, state, typeDevice) {
-  if (rootModal.hasChildNodes()) {
-    rootModal.innerHTML = '';
+  if (rootModal.classList.contains('modal--opened')) {
     pageContent.classList.remove('page__content--blured', 'page__content--no-scroll');
     rootModal.classList.add('modal--closed');
     rootModal.classList.remove('modal--opened');
   } else {
+    rootModal.innerHTML = '';
     const modal = renderModal(name, state, typeDevice);
     pageContent.classList.add('page__content--blured', 'page__content--no-scroll');
     rootModal.classList.add('modal--opened');
     rootModal.classList.remove('modal--closed');
     
     rootModal.appendChild(modal);
-
-    const deviceBar = document.querySelector(".device-bar");
-    const deviceTrack = document.querySelector(".device-bar__track");
-    
-    const termometr = document.querySelector(".controller__termometr");
-    const termometrArrow = document.querySelector(".termometr__arrow");
-
-    if (deviceBar) { addControllerListner(deviceBar, deviceTrack) };
-    if (termometr) { addTermometrListner(termometr, termometrArrow) };
   }
 }
 
 function renderContent(name, state, typeDevice) {
   const block = document.createElement('div');
-  block.classList.add('modal__block');
+  block.classList.add('controller', 'modal__line');
 
-  const controllerBlock = document.createElement('div');
-  controllerBlock.classList.add('controller');
-
-  const head = renderHead(name, state);
-  let menu = null;
+  const head = renderHead(name, state, typeDevice);
   const controller = renderController(typeDevice);
-  if (typeDevice === SUN) {
-    menu = renderMenu(['Вручную', 'Дневной свет', 'Вечерний свет']);
-  } else if (typeDevice === TEMP) {
-    menu = renderMenu(['Вручную', 'Холодно', 'Тепло']);
-  }
 
-  controllerBlock.appendChild(head);
-  menu !== null ? controllerBlock.appendChild(menu) : null;
-  controllerBlock.appendChild(controller);
-
-  block.appendChild(controllerBlock);
+  block.appendChild(head);
+  block.appendChild(controller);
 
   return block
 }
@@ -105,15 +85,36 @@ function renderController(typeDevice) {
     track.classList.add('device-bar__track');
     track.setAttribute('style', 'top: 105px');
     root.appendChild(track);
+
+    addControllerListner(root, track)
   } else {
     root.classList.add('termometr', 'controller__termometr');
     const scale = document.createElement('div');
     scale.classList.add('termometr__scale');
+    scale.classList.add('termometr__scale');
+
+    const NS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(NS, "svg");
+    const circle = document.createElementNS(NS, "circle");
+    const title = document.createElementNS(NS, "title");
+    circle.setAttribute("r", 16);
+    circle.setAttribute("cx", 16);
+    circle.setAttribute("cy", 16);
+    circle.classList.add('termometr__circle');
+    svg.setAttribute("viewBox", "0 0 32 32");
+    svg.classList.add('termometr__svg');
+    title.textContent = 'circle';
+    svg.appendChild(title);
+    svg.appendChild(circle);
+    scale.appendChild(svg);
+
     const bg = document.createElement('div');
     bg.classList.add('termometr__bg');
+
     const value = document.createElement('b');
     value.classList.add('termometr__value');
     value.textContent = '+23';
+
     const arrow = document.createElement('div');
     arrow.classList.add('termometr__arrow');
     arrow.setAttribute('style', 'transform: rotate(104deg)');
@@ -122,44 +123,75 @@ function renderController(typeDevice) {
     root.appendChild(bg);
     root.appendChild(value);
     root.appendChild(arrow);
+
+    addTermometrListner(root, arrow)
   }
 
   return root
 }
 
-function renderHead(name, state) {
+function renderHead(name, state, typeDevice) {
   const root = document.createElement('div');
 
   const controllerLine = document.createElement('div');
-  controllerLine.classList.add('controller__line');
+  controllerLine.classList.add('controller__line', 'controller__temp-info');
 
   const controllerTitle = document.createElement('h1');
   controllerTitle.classList.add('controller__title');
   controllerTitle.textContent = name;
   controllerLine.appendChild(controllerTitle);
-  root.appendChild(controllerLine);
 
-  const controllerLine2 = document.createElement('div');
-  controllerLine2.classList.add('controller__line');
+  const weather = document.createElement('div');
+  weather.classList.add('weather', 'controller__weather', 'controller__only-desktop');
+
+  const weatherInfo = document.createElement('p');
+  weatherInfo.classList.add('weather__info', 'weather__info--with-icon', 'controller__weather-info');
+  weather.appendChild(weatherInfo);
+
+  const weatherIcon = document.createElement('span');
+  weatherIcon.classList.add('weather__icon', 'controller__weather-icon');
+  weather.appendChild(weatherIcon);
+
+  if (typeDevice === SUN) {
+    weatherIcon.classList.add('weather__icon--sun');
+  } else {
+    const content = document.createTextNode("+23");
+    weatherInfo.appendChild(content);
+    weatherIcon.classList.add('weather__icon--temperature2');
+  }
+  controllerLine.appendChild(weather);
 
   const controllerState = document.createElement('p');
   controllerState.classList.add('controller__state');
   controllerState.textContent = state;
-  controllerLine2.appendChild(controllerState);
-  root.appendChild(controllerLine2);
+  controllerLine.appendChild(controllerState);
+
+  root.appendChild(controllerLine);
+
+  if (typeDevice === SUN) {
+    root.appendChild(renderMenu(['Вручную', 'Дневной свет', 'Вечерний свет', 'Рассвет']));
+  } else if (typeDevice === TEMP) {
+    root.appendChild(renderMenu(['Вручную', 'Холодно', 'Тепло', 'Жарко']));
+  }
 
   return root
 }
 
 function renderMenu(items) {
   const list = document.createElement('ul');
-  list.classList.add('element-list', 'controller__places-list');
+  list.classList.add('element-list', 'controller__places-list', 'element-list__places-panel');
 
   items.forEach((item, index) => {
     const li = document.createElement('li');
-    li.classList.add('button', 'element-list__item', 'element-list__places-panel');
-    index === 0 ?  li.classList.add('button--active') : null;
-    li.textContent = item;
+    li.classList.add('element-list__item', 'controller__places-item');
+    const button = document.createElement('button');
+    button.classList.add('button');
+
+    index === 0 ?  button.classList.add('button--active') : null;
+    index === items.length - 1 ?  button.classList.add('controller__only-desktop') : null;
+    button.textContent = item;
+
+    li.appendChild(button);
     list.appendChild(li);
   })
 
@@ -168,43 +200,37 @@ function renderMenu(items) {
 
 function renderModal(name, state, typeDevice) {
   const modal = document.createElement('div');
+  modal.classList.add('modal__content');
+  if (typeDevice === SUN || typeDevice === TEMP) {
+    modal.classList.add('modal__content--bar');
+  } else {
+    modal.classList.add('modal__content--termometr');
+  }
 
-  const blockApplyBtn = document.createElement('div');
-  blockApplyBtn.classList.add('modal__block');
-  const blockCloseBtn = document.createElement('div');
-  blockCloseBtn.classList.add('modal__block');
+  const blockBtn = document.createElement('div');
+  blockBtn.classList.add('modal__block-btn');
 
   const applyBtn = document.createElement('button');
   applyBtn.classList.add('button', 'button--active', 'modal__btn', 'modal__btn--active');
   applyBtn.textContent = 'Применить';
   applyBtn.setAttribute('id', 'applyBtn');
-  blockApplyBtn.appendChild(applyBtn);
+  blockBtn.appendChild(applyBtn);
 
   const closeBtn = document.createElement('button');
   closeBtn.classList.add('button', 'modal__btn');
   closeBtn.textContent = 'Закрыть';
   closeBtn.setAttribute('id', 'closeBtn');
-  blockCloseBtn.appendChild(closeBtn);
+  blockBtn.appendChild(closeBtn);
   
   const content = renderContent(name, state, typeDevice);
 
   modal.appendChild(content);
-  modal.appendChild(blockApplyBtn);
-  modal.appendChild(blockCloseBtn);
+  modal.appendChild(blockBtn);
 
-  addButtonsListner(applyBtn, closeBtn);
+  addButtonListner(applyBtn, toggleModal);
+  addButtonListner(closeBtn, toggleModal);
 
   return modal;
-}
-
-function addButtonsListner(applyBtn, closeBtn) {
-  applyBtn.addEventListener("click", () => {
-    toggleModal();
-  })
-
-  closeBtn.addEventListener("click", () => {
-    toggleModal();
-  })
 }
 
 function addListListner (lists) {
@@ -231,6 +257,8 @@ function delegateClicks(element) {
       target = target.parentNode;
     }
   })
+
+  console.log(element)
 }
 
 // FILTER
@@ -248,23 +276,20 @@ function addFilterListner(element, toggleButton) {
       const filter = filterPlace !== null ? filterPlace : filterType;
 
       if (filter) {
-        const textButton = target.firstChild.firstChild.cloneNode(false);
-        toggleButton.replaceChild(textButton, toggleButton.firstChild);
+        // Заменем текст кнопки переключателя
+        const targetButton = target.querySelector('button');
+        toggleButton.firstChild.textContent = targetButton.textContent;
 
-        // захардкожены активные ссылки
-        const navList = document.querySelector('.featured-nav__list');console.log(navList)
-        for (let index = 0; index < navList.childNodes.length; index++) {
-          const element = navList.childNodes[index];
-          if (element.nodeType != 1) continue;
-          
-          element.classList.remove('featured-nav__item--active');
-        }
-        target.classList.add('featured-nav__item--active');
+        // переключаем состояние кнопок
+        const buttonActive = document.querySelector('.featured-nav__list .button--active');
+        buttonActive.classList.remove('button--active');
+        targetButton.classList.add('button--active');
 
         // Закрывем меню
         featuredNav.classList.add("featured-nav--closed");
         featuredNav.classList.remove("featured-nav--opened");
 
+        // Скрываем элементы списка
         for (let index = 0; index < devicesList.childNodes.length; index++) {
           const element = devicesList.childNodes[index];
           if (element.nodeType != 1) continue;
@@ -277,7 +302,6 @@ function addFilterListner(element, toggleButton) {
             element.classList.remove('visuallyhidden');
           }
         }
-        
         return;
       }
       target = target.parentNode;
@@ -286,9 +310,7 @@ function addFilterListner(element, toggleButton) {
 }
 
 // CONTROLLER
-
-// addControllerListner();
-
+ 
 if (deviceBar) { addControllerListner(deviceBar, deviceTrack) };
 function addControllerListner(deviceBar, deviceTrack) {
 
@@ -333,5 +355,27 @@ function addTermometrListner(termometr, termometrArrow) {
     angle <= 0 ? angle += 360 : angle = angle;
 
     termometrArrow.setAttribute('style', `transform: rotate(${-(angle - 90)}deg)`);
+  })
+}
+
+// featuredScripts
+featuredScripts.addEventListener('scroll', () => {
+  const items = featuredScripts.querySelectorAll('.general__list-item');
+  console.log(featuredScripts.scrollTop);
+  const scrollTop = featuredScripts.scrollTop;
+  if (items[2] !== null) {
+    if (scrollTop > 0) {
+      items[2].classList.remove('general__list-item--with-arrow');
+    } else if (scrollTop === 0) {
+      items[2].classList.add('general__list-item--with-arrow');
+    }
+    
+  }
+})
+
+// 
+function addButtonListner(element, func) {
+  element.addEventListener('click', () => {
+    func();
   })
 }

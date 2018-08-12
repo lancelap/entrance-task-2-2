@@ -6,12 +6,7 @@
   background-color: #f7f7f7;
   color: #333333;
   border-radius: 20px;
-
-  &:hover,
-  &:active {
-    background: #FFFFFF;
-    box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50);
-  }
+  outline: none;
 }
 
 .featured-item__icon {
@@ -44,7 +39,7 @@
 @media #{$desktop-width} {
   .featured-item {
     &:hover,
-    &:active {
+    &:focus {
       background: #FFFFFF;
       box-shadow: 0 2px 6px 0 rgba(197,186,186,0.50);
     }

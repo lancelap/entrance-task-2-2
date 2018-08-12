@@ -9,13 +9,15 @@
   border-radius: 20px;
   cursor: pointer;
   border: none;
-  outline: none;
 
   &--active {
     background-color: #ffd93e;
   }
 }
 
+@media #{$mobile-width-only} {
+  .button { outline: none; }
+}
 
 @media #{$desktop-width} {
   .button {

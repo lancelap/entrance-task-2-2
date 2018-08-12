@@ -5,14 +5,15 @@
   bottom: 0;
   left: 0;
   display: none;
+  justify-content: center;
   z-index: 9000;
-  overflow-y: auto;
+  overflow-y: scroll;
   background-color: #333333;
   background-color: rgba(51, 51, 51, 0.50);
 
 
   &--closed {
-    display: block;
+    display: flex;
     animation-name: modal-content-fade-out;
     animation-duration: .3s; 
     animation-fill-mode: forwards;
@@ -20,8 +21,7 @@
   }
 
   &--opened {
-    display: block;
-
+    display: flex;
     animation-name: modal-content-fade-in;
     animation-duration: .3s; 
     animation-fill-mode: forwards;
@@ -30,25 +30,8 @@
 }
 
 .modal__content {
-  position: fixed;
-  top: 21px;
-  left: 50%;
-  display: block;
-  z-index: 100;
   width: 334px;
-  margin-left: -167px;
-
-  animation-name: modal-content-fade-in;
-  animation-duration: .3s; 
-  animation-fill-mode: forwards;
-  animation-timing-function: linear; 
-
-  &--deleted {
-    animation-name: modal-content-fade-out;
-    animation-duration: .3s; 
-    animation-fill-mode: forwards;
-    animation-timing-function: linear; 
-  }
+  margin-top: 21px;
 }
 
 .modal__line {
@@ -72,20 +55,13 @@
 }
 
 @media #{$desktop-width} {
+  .modal {
+    align-items: center;
+  }
+
   .modal__content {
-    top: 50%;
-    left: 50%;
     width: 630px;
     margin: 0;
-    margin-left: -315px;
-
-    &--bar {
-      margin-top: -159px;
-    }
-
-    &--termometr {
-      top: 100px;
-    }
   }
 
   .modal__block-btn {

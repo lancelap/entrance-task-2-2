@@ -14,9 +14,10 @@ mixin modal(name, type, state)
       if (type === TEMP)
         .controller__line.controller__temp-info
           h1.controller__title #{name}
-            span.weather.controller__weather.controller__only-desktop
-              p.weather__info.weather__info--with-icon.controller__weather-info +23
-                span.weather__icon.weather__icon--temperature2.controller__weather-icon
+          
+          .weather.controller__weather.controller__only-desktop
+            p.weather__info.weather__info--with-icon.controller__weather-info +23
+              span.weather__icon.weather__icon--temperature2.controller__weather-icon
         
           p.controller__state #{state}
 
@@ -57,7 +58,7 @@ mixin modal(name, type, state)
         .controller__line.controller__temp-info
           h1.controller__title #{name}
 
-          span.weather.controller__weather.controller__only-desktop
+          .weather.controller__weather.controller__only-desktop
             p.weather__info.weather__info--with-icon.controller__weather-info +23
               span.weather__icon.weather__icon--temperature2.controller__weather-icon
 

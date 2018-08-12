@@ -29,7 +29,7 @@
       left: 12px;
       width: 36px;
       height: 36px;
-      @include bg('icons/icon_sun_max');
+      @include bg('icon_sun_max');
       background-repeat: no-repeat;
     }
 
@@ -84,12 +84,12 @@
 
       &::after {
         right: 20px;
-        left: unset;
+        left: auto;
       }
   
       &::before {
         top: 12px;
-        bottom: unset;
+        bottom: auto;
       }
     }
 
@@ -100,13 +100,13 @@
         content: '+30';
         top: 21px;
         right: 20px;
-        left: unset;
+        left: auto;
       }
   
       &::before {
         content: '–10';
         top: 21px;
-        bottom: unset;
+        bottom: auto;
         left: 20px;
       }
     }

@@ -92,13 +92,13 @@
   }
 
   .general__list-item {
-    flex-basis: unset;
+    flex-basis: auto;
     margin: 0;
     margin-bottom: 15px;
     margin-left: 10px;
     width: 170px;
 
-    &:nth-child(3) {
+    &--with-arrow {
       position: relative;
       &::before {
         content: '';
