@@ -28,6 +28,11 @@
   margin-bottom: 30px;
 }
 
+.page__general {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
 .page__line {
   margin: 0 20px;
 }
@@ -60,7 +65,7 @@
   .page {
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .page__content {
     height: auto;
   }
@@ -84,17 +89,24 @@
   .page__row {
     display: flex;
     flex-flow: row nowrap;
-    margin-right: auto;
-    margin-left: 40px;
-    max-width: 1288px;
-    margin-bottom: 30px;
+    // margin-right: 40px;
+    // margin-left: 40px;
+    min-width: 1288px;
+    // margin-bottom: 30px;
   }
 
-  .page__scripts,
   .page__general {
-    width: 630px;
-    flex: 1 0 auto;
+    flex: 0 0 630px;
+    flex-grow: 1;
     margin: 0;
+    margin-left: 40px;
+  }
+
+  .page__scripts {
+    flex: 0 0 696px;
+    margin: 0;
+    // padding-left: 11px;
+    padding-bottom: 18px;
   }
 
   .page__headline-general {

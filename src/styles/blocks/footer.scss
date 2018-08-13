@@ -33,7 +33,7 @@
 
   .footer__menu-item a {
     display: block;
-    padding: 12px 6px 14px 6px;
+    padding: 6px 6px 20px 6px;
     font-weight: 500;
     color: #858585;
     text-decoration: none;
@@ -45,6 +45,8 @@
   }
 
   .footer__copyright {
+    margin: 0;
     margin-right: 40px;
+    padding-top: 6px;
   }
 }

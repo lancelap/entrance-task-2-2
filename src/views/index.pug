@@ -16,6 +16,7 @@ include mixins/item-list
 
 -var arrNextScripts = [ { name: 'Philips Cooler', isActive: false, state: 'Начнет охлаждать в 16:30', typeIcon: TEMP, type: DEVICE }, { name: 'Xiaomi Yeelight LED Smart Bulb', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE } ]
 -var arrScripts = [ { name: 'Выключить весь свет в доме и во дворе', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Я ухожу', isActive: false, state: null, typeIcon: SCHEDULED, type: SCRIPT }, { name: 'Включить свет <br> в коридоре', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Набрать горячую ванну', isActive: true, state: 'Начнётся в 18:00', typeIcon: TEMP, type: SCRIPT }, { name: 'Сделать пол тёплым во всей квартире', isActive: true, state: null, typeIcon: TEMP, type: SCRIPT } ]
+-var bigArrScripts = [ { name: 'Выключить весь свет в доме и во дворе', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Я ухожу', isActive: false, state: null, typeIcon: SCHEDULED, type: SCRIPT }, { name: 'Включить свет <br> в коридоре', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Набрать горячую ванну', isActive: true, state: 'Начнётся в 18:00', typeIcon: TEMP, type: SCRIPT }, { name: 'Сделать пол тёплым во всей квартире', isActive: true, state: null, typeIcon: TEMP, type: SCRIPT }, { name: 'Выключить весь свет в доме и во дворе', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Я ухожу', isActive: false, state: null, typeIcon: SCHEDULED, type: SCRIPT }, { name: 'Включить свет <br> в коридоре', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Набрать горячую ванну', isActive: true, state: 'Начнётся в 18:00', typeIcon: TEMP, type: SCRIPT }, { name: 'Сделать пол тёплым во всей квартире', isActive: true, state: null, typeIcon: TEMP, type: SCRIPT } ]
 -var arrDevices = [ { name: 'Xiaomi Yeelight LED Smart Bulb', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'D-Link Omna 180 Cam', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Elgato Eve Degree Connected', isActive: false, state: 'Выключено до 17:00', typeIcon: TEMP, type: DEVICE, place: KITCHEN }, { name: 'LIFX Mini Day & Dusk A60 E27', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'Philips Zhirui', isActive: false, state: 'Выключено', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'Xiaomi Warm Floor', isActive: false, state: 'Выключено', typeIcon: FLOOR, type: DEVICE, place: HALL } ]
 
 <!DOCTYPE html>
@@ -47,31 +48,29 @@ html(lang="ru")
               span.main-nav__burger
         
       .page__row
-        .page__line
-          section.page__general
-            h1.page__headline.page__headline-general Главное
-            .general
-              .general__info
-                h2.general__greeting.general__line
-                  | Привет, Геннадий!
-      
-                p.general__condition.general__line Двери и окна закрыты, сигнализация включена.
-      
-                .general__weather.general__line
-                  .general__weather-item.weather
-                    p.weather__place Дома
-                    p.weather__info +23
-      
-                  .general__weather-item.weather
-                    p.weather__place За окном
-                    p.weather__info.weather__info--with-icon +19
-                      span.weather__icon.weather__icon--cloud-drizzle
-
-              ul.element-list.general__list.page__overflow-container#featured-scripts
-                each item, index in arrNextScripts
-                  -var itemModClass = index === 2 ? ' general__list-item--with-arrow' : '';
-                  li(class='featured-item element-list__item general__list-item' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
-                    +item-list(item)
+        section.page__general
+          h1.page__headline.page__headline-general Главное
+          .general
+            .general__info
+              h2.general__greeting.general__line
+                | Привет, Геннадий!
+    
+              p.general__condition.general__line Двери и окна закрыты, сигнализация включена.
+    
+              .general__weather.general__line
+                .general__weather-item.weather
+                  p.weather__place Дома
+                  p.weather__info +23
+    
+                .general__weather-item.weather
+                  p.weather__place За окном
+                  p.weather__info.weather__info--with-icon +19
+                    span.weather__icon.weather__icon--cloud-drizzle
+            ul.element-list.general__list.page__overflow-container#featured-scripts
+              each item, index in arrNextScripts
+                -var itemModClass = index === 2 ? ' general__list-item--with-arrow' : '';
+                li(class='featured-item element-list__item general__list-item' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+                  +item-list(item)
       
         section.scripts.page__scripts
           .page__line.page__headline-nav.scripts__headline
@@ -89,15 +88,26 @@ html(lang="ru")
                 +item-list(item)
 
           .scripts__slider
-            ul.element-list.scripts__list
-              each item, index in arrScripts
-                li.featured-item.scripts__list-item
-                  +item-list(item)
+            -var listCount = 0
+            -listCount = Math.ceil(bigArrScripts.length / 9)
+            -var indexList = 0
+
+            while listCount !== 0
+              -listCount-- 
+              -indexList += 9
+              -index = indexList-9
+
+              ul.element-list.scripts__list
+                while index < indexList
+                  if (bigArrScripts[index])
+                    li.featured-item.scripts__list-item
+                      +item-list(bigArrScripts[index])
+                  -index++
+
             //- ul.element-list.scripts__list
                 each item, index in arrScripts
                   li.featured-item.scripts__list-item
                     +item-list(item)
-          
     
       section.devices.page__devices
         .page__line.devices__line.devices__headline-nav
