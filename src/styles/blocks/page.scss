@@ -57,9 +57,12 @@
 }
 
 @supports (-webkit-overflow-scrolling: touch) {
+  .page {
+    -webkit-overflow-scrolling: touch;
+  }
+  
   .page__content {
     height: auto;
-    -webkit-overflow-scrolling: touch;
   }
 }
 
