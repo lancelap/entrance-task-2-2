@@ -82,9 +82,8 @@
 
   .general__list {
     flex-flow: column nowrap;
-    width: 240px;
+    padding-right: 30px;;
     height: 310px;
-    overflow-y: auto;
 
     &::after {
       display: none;

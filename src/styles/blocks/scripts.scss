@@ -5,10 +5,29 @@
 
 .scripts__list {
   padding-left: 5px;
+
+  &::after {
+    display: none;
+  }
 }
 
+.scripts__slider {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow: auto;
+
+  &::after {
+    content: "";
+    flex: 0 0 20px;
+  }
+}
 
 @media #{$desktop-width} {
+  .scripts__slider {
+    // overflow: scroll;
+    flex-wrap: wrap;
+  }
+
   .scripts__list {
     overflow: hidden;
     flex-flow: row wrap;

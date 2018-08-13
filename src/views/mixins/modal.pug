@@ -3,13 +3,7 @@
 -var TEMP = 'temperature'
 
 mixin modal(name, type, state)
-  -var modalClass = ''
-  if (type === TEMP || type === SUN)
-     -modalClass = 'modal__content modal__content--bar'
-  else 
-    -modalClass = 'modal__content modal__content--termometr'
-
-  div(class=''+modalClass)#modal-content
+  section.modal__content#modal-content
     .controller.modal__line
       if (type === TEMP)
         .controller__line.controller__temp-info
@@ -21,7 +15,7 @@ mixin modal(name, type, state)
         
           p.controller__state #{state}
 
-        ul.element-list.controller__places-list.element-list__places-panel
+        ul.element-list.controller__places-list.element-list__places-panel.page__overflow-container
           li.element-list__item.controller__places-item 
             button.button.button--active Вручную
           li.element-list__item.controller__places-item 
@@ -36,13 +30,13 @@ mixin modal(name, type, state)
         .controller__line.controller__temp-info
           h1.controller__title #{name}
 
-          span.weather.controller__weather.controller__only-desktop
+          .weather.controller__weather.controller__only-desktop
             p.weather__info.weather__info--with-icon.controller__weather-info
               span.weather__icon.weather__icon--sun.controller__weather-icon
 
           p.controller__state #{state}
 
-        ul.element-list.controller__places-list
+        ul.element-list.controller__places-list.page__overflow-container
           li.element-list__item.controller__places-item 
             button.button.button--active Вручную
           li.element-list__item.controller__places-item 

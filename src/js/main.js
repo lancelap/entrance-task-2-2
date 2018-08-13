@@ -179,7 +179,7 @@ function renderHead(name, state, typeDevice) {
 
 function renderMenu(items) {
   const list = document.createElement('ul');
-  list.classList.add('element-list', 'controller__places-list', 'element-list__places-panel');
+  list.classList.add('element-list', 'controller__places-list', 'element-list__places-panel' , 'page__overflow-container');
 
   items.forEach((item, index) => {
     const li = document.createElement('li');
@@ -199,13 +199,8 @@ function renderMenu(items) {
 }
 
 function renderModal(name, state, typeDevice) {
-  const modal = document.createElement('div');
+  const modal = document.createElement('section');
   modal.classList.add('modal__content');
-  if (typeDevice === SUN || typeDevice === TEMP) {
-    modal.classList.add('modal__content--bar');
-  } else {
-    modal.classList.add('modal__content--termometr');
-  }
 
   const blockBtn = document.createElement('div');
   blockBtn.classList.add('modal__block-btn');

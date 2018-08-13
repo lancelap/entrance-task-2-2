@@ -3,7 +3,6 @@
   display: flex;
   flex-flow: row nowrap;
   padding-top: 20px;
-  overflow-x: auto;
 
   &::after {
     content: "";
@@ -12,7 +11,5 @@
 }
 
 .element-list__item {
-  flex: 0 0 170px;
-  min-height: 70px;
-  margin-left: 15px;
+  flex: 0 0 auto;
 }

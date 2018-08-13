@@ -1,9 +1,8 @@
 .page {
-  height: 100vh;
   background-color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   color: #333333; 
-  
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -38,12 +37,9 @@
 }
 
 .page__content {
-    // Исползовал fixed для победы над скроллом мобильных
-    // но из-за этого немного скачет при появлении модального окна
+  overflow-y: auto;
+  
     &--no-scroll {
-      position: fixed;
-      height: 100vh;
-      z-index: -1;
       overflow: hidden;
     }
   
@@ -53,6 +49,10 @@
       animation-duration: 0.3s; 
       animation-timing-function: linear; 
     }
+}
+
+.page__overflow-container {
+  overflow-x: auto;
 }
 
 @media #{$desktop-width} {
@@ -66,11 +66,16 @@
     margin: 0;
   }
 
+  .page__devices {
+    padding-bottom: 60px;
+  }
+
   .page__row {
     display: flex;
     flex-flow: row nowrap;
-    margin-right: 40px;
+    margin-right: auto;
     margin-left: 40px;
+    max-width: 1288px;
     margin-bottom: 30px;
   }
 

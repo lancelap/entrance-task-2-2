@@ -67,7 +67,7 @@ html(lang="ru")
                     p.weather__info.weather__info--with-icon +19
                       span.weather__icon.weather__icon--cloud-drizzle
 
-              ul.element-list.general__list#featured-scripts
+              ul.element-list.general__list.page__overflow-container#featured-scripts
                 each item, index in arrNextScripts
                   -var itemModClass = index === 2 ? ' general__list-item--with-arrow' : '';
                   li(class='featured-item element-list__item general__list-item' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
@@ -83,10 +83,21 @@ html(lang="ru")
               button.arrows-nav__arrow.arrows-nav__arrow--right(tabindex="-1" disabled="disabled")
                 span.visuallyhidden Вперед
 
-          ul.element-list.scripts__list#scripts
+          //- ul.element-list.scripts__list#scripts
             each item in arrScripts
               li.featured-item.element-list__item.scripts__list-item(tabindex="0")
                 +item-list(item)
+
+          .scripts__slider
+            ul.element-list.scripts__list
+              each item, index in arrScripts
+                li.featured-item.scripts__list-item
+                  +item-list(item)
+            //- ul.element-list.scripts__list
+                each item, index in arrScripts
+                  li.featured-item.scripts__list-item
+                    +item-list(item)
+          
     
       section.devices.page__devices
         .page__line.devices__line.devices__headline-nav
@@ -114,7 +125,7 @@ html(lang="ru")
             button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active
               span.visuallyhidden Вперед
 
-        ul.element-list.devices__list#devices
+        ul.element-list.devices__list#devices.page__overflow-container
           each item in arrDevices
             li.featured-item.element-list__item.devices__item(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
               +item-list(item)
@@ -130,12 +141,12 @@ html(lang="ru")
               a(href="#") Разработчикам
             li.footer__menu-item
               a(href="#") Условия использования
-        p © 2001–2017  ООО «Яндекс»
+        p.footer__copyright © 2001–2017  ООО «Яндекс»
 
     //- .modal.modal--opened
       //- +modal('Xiaomi Yeelight LED Smart Bulb', SUN, 'Включится в 17:00')
-      //- +modal('Xiaomi Yeelight LED Smart Bulb', TEMP, 'Включено')
-      +modal('Xiaomi Warm Floor', FLOOR, 'Включено')
+      +modal('Xiaomi Yeelight LED Smart Bulb', TEMP, 'Включено')
+      //- +modal('Xiaomi Warm Floor', FLOOR, 'Включено')
 
     .modal#modal
     script(src="js/main.js")
