@@ -77,17 +77,13 @@ html(lang="ru")
             h1.page__headline Избранные сценарии
 
             nav.arrows-nav.page__arrows-nav#nav-featured-scripts
-              button.arrows-nav__arrow.arrows-nav__arrow--left(tabindex="-1" disabled="disabled")
+              button.arrows-nav__arrow.arrows-nav__arrow--left
                 span.visuallyhidden Назад
-              button.arrows-nav__arrow.arrows-nav__arrow--right(tabindex="-1" disabled="disabled")
+              button.arrows-nav__arrow.arrows-nav__arrow--right
                 span.visuallyhidden Вперед
 
-          //- ul.element-list.scripts__list#scripts
-            each item in arrScripts
-              li.featured-item.element-list__item.scripts__list-item(tabindex="0")
-                +item-list(item)
-
-          .scripts__slider
+          
+          .scripts__slider.page__overflow-container
             -var listCount = 0
             -listCount = Math.ceil(bigArrScripts.length / 9)
             -var indexList = 0
@@ -130,7 +126,7 @@ html(lang="ru")
                 button.button Камеры
 
           nav.arrows-nav.page__arrows-nav#nav-featured-devices
-            button.arrows-nav__arrow.arrows-nav__arrow--left(tabindex="-1" disabled="disabled")
+            button.arrows-nav__arrow.arrows-nav__arrow--left
               span.visuallyhidden Назад
             button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active
               span.visuallyhidden Вперед

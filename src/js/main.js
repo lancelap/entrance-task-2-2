@@ -23,6 +23,11 @@ const termometrArrow = document.querySelector(".termometr__arrow");
 
 const featuredScripts = document.getElementById('featured-scripts');
 
+const scriptsSlider = document.querySelector('.scripts__slider');
+
+const navScripts = document.getElementById('nav-featured-scripts');
+const navDevicesScripts = document.getElementById('nav-featured-devices');
+
 // MENU 
 toggle(mainNav, navToggle, "main-nav");
 toggle(featuredNav, featuredNavToggle, "featured-nav");
@@ -252,8 +257,6 @@ function delegateClicks(element) {
       target = target.parentNode;
     }
   })
-
-  console.log(element)
 }
 
 // FILTER
@@ -368,9 +371,86 @@ featuredScripts.addEventListener('scroll', () => {
   }
 })
 
+// SLIDER
+
+function addNavArrowListner (nav, list, scrollLeft) {
+  const leftArrow = nav.querySelector('.arrows-nav__arrow--left');
+  const rightArrow = nav.querySelector('.arrows-nav__arrow--right');
+  console.log(leftArrow, rightArrow);
+
+  leftArrow.addEventListener('click', () => {
+    list.scrollLeft -= scrollLeft;
+  })
+
+  rightArrow.addEventListener('click', () => {
+    list.scrollLeft += scrollLeft;
+  })
+
+
+  list.addEventListener('scroll', throttle(() => {
+      if (list.scrollLeft === 0) { 
+        toggleArrow(leftArrow, true);
+      } else {
+        toggleArrow(leftArrow, false);
+      }
+      
+      if (list.scrollLeft + list.clientWidth >= list.scrollWidth) { 
+        toggleArrow(rightArrow, true);
+      } else {
+        toggleArrow(rightArrow, false);
+      }
+    }, 300)
+  )
+
+  function toggleArrow(arrow, disabled) {
+    if (disabled) {
+      arrow.setAttribute('disabled', 'disabled');
+      arrow.setAttribute('tabindex', '-1');
+      arrow.classList.remove('arrows-nav__arrow--active');
+    } else {
+      arrow.removeAttribute('disabled');
+      arrow.setAttribute('tabindex', '0');
+      arrow.classList.add('arrows-nav__arrow--active');
+    }
+  }
+}
+
+addNavArrowListner(navScripts, scriptsSlider, 706);
+
+addNavArrowListner(navDevicesScripts, devicesList, 215);
+
+
 // 
 function addButtonListner(element, func) {
   element.addEventListener('click', () => {
     func();
   })
+}
+
+function throttle(func, ms) {
+
+  let isThrottled = false, savedArgs, savedThis;
+
+  function wrapper() {
+
+    if (isThrottled) { 
+      savedArgs = arguments;
+      savedThis = this;
+      return;
+    }
+
+    func.apply(this, arguments); 
+
+    isThrottled = true;
+
+    setTimeout(function() {
+      isThrottled = false; 
+      if (savedArgs) {
+        wrapper.apply(savedThis, savedArgs);
+        savedArgs = savedThis = null;
+      }
+    }, ms);
+  }
+
+  return wrapper;
 }

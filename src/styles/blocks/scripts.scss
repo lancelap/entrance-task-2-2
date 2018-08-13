@@ -3,13 +3,6 @@
   line-height: 0;
 }
 
-.scripts__list {
-  margin-left: 11px;
-  &::after {
-    display: none;
-  }
-}
-
 .scripts__slider {
   display: flex;
   flex-flow: row nowrap;
@@ -33,11 +26,11 @@
     overflow: hidden;
   }
 
-  // .scripts__list {
-  //   &::after {
-  //     display: none;
-  //   }
-  // }
+  .scripts__slider {
+    &::after {
+      display: none;
+    }
+  }
 
   .scripts__list-item {
     margin-bottom: 15px;
@@ -46,6 +39,6 @@
 
   .scripts__headline {
     margin-left: 15px;
-    margin-right: 40px;
+    margin-right: 50px;
   }
 }

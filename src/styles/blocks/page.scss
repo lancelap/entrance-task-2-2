@@ -59,6 +59,7 @@
 
 .page__overflow-container {
   overflow-x: auto;
+  scroll-behavior: smooth;
 }
 
 @supports (-webkit-overflow-scrolling: touch) {
@@ -105,7 +106,7 @@
   .page__scripts {
     flex: 0 0 696px;
     margin: 0;
-    // padding-left: 11px;
+    padding-left: 11px;
     padding-bottom: 18px;
   }
 

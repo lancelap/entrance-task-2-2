@@ -3,7 +3,7 @@
   display: flex;
   flex-flow: row nowrap;
   padding-top: 20px;
-
+  
   &::after {
     content: "";
     flex: 0 0 20px;
