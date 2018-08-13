@@ -378,6 +378,8 @@ function addNavArrowListner (nav, list, scrollLeft) {
   const rightArrow = nav.querySelector('.arrows-nav__arrow--right');
   console.log(leftArrow, rightArrow);
 
+  check();
+
   leftArrow.addEventListener('click', () => {
     list.scrollLeft -= scrollLeft;
   })
@@ -387,20 +389,21 @@ function addNavArrowListner (nav, list, scrollLeft) {
   })
 
 
-  list.addEventListener('scroll', throttle(() => {
-      if (list.scrollLeft === 0) { 
-        toggleArrow(leftArrow, true);
-      } else {
-        toggleArrow(leftArrow, false);
-      }
-      
-      if (list.scrollLeft + list.clientWidth >= list.scrollWidth) { 
-        toggleArrow(rightArrow, true);
-      } else {
-        toggleArrow(rightArrow, false);
-      }
-    }, 300)
-  )
+  list.addEventListener('scroll', throttle(check, 300))
+
+  function check() {
+    if (list.scrollLeft === 0) { 
+      toggleArrow(leftArrow, true);
+    } else {
+      toggleArrow(leftArrow, false);
+    }
+
+    if (list.scrollLeft + list.clientWidth >= list.scrollWidth) { 
+      toggleArrow(rightArrow, true);
+    } else {
+      toggleArrow(rightArrow, false);
+    }
+  }
 
   function toggleArrow(arrow, disabled) {
     if (disabled) {
