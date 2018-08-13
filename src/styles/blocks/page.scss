@@ -1,9 +1,9 @@
 .page {
+  height: 100vh;
   background-color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   color: #333333; 
   overflow: hidden;
-  -webkit-overflow-scrolling: touch;
 }
 
 .page__headline-nav {
@@ -37,8 +37,9 @@
 }
 
 .page__content {
+  height: 100vh;
   overflow-y: auto;
-  
+
     &--no-scroll {
       overflow: hidden;
     }
@@ -53,6 +54,13 @@
 
 .page__overflow-container {
   overflow-x: auto;
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+  .page__content {
+    height: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @media #{$desktop-width} {
