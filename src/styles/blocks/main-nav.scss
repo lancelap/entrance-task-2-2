@@ -37,6 +37,7 @@
   cursor: pointer;
   border: none;
   outline: none;
+  z-index: 1000;
 }
 
 .main-nav__burger {
@@ -49,6 +50,7 @@
 
 .main-nav--opened .main-nav__list  {
   display: block;
+  z-index: 1000;
 }
 
 
