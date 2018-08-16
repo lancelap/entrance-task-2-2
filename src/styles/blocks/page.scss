@@ -44,6 +44,9 @@
 .page__content {
   height: 100vh;
   overflow-y: auto;
+  display: flex;
+  flex-flow: column;
+
 
     &--no-scroll {
       overflow: hidden;
@@ -77,6 +80,10 @@
     margin: 0;
   }
 
+  .page__content {
+    min-height: 755px;
+  }
+
   .page__general,
   .page__scripts,
   .page__devices {
@@ -84,6 +91,8 @@
   }
 
   .page__devices {
+    margin-top: auto;
+    margin-bottom: auto;
     padding-bottom: 60px;
   }
 
