@@ -1,0 +1,150 @@
+include ../mixins/picture
+include ../mixins/featured-stuff
+include ../mixins/modal
+include ../mixins/item-list
+
+-var SCRIPT = 'script'
+-var DEVICE = 'device'
+
+-var FLOOR = 'floor'
+-var SUN = 'sun'
+-var SCHEDULED = 'scheduled'
+-var TEMP = 'temperature'
+
+-var KITCHEN = 'kitchen'
+-var HALL = 'hall'
+
+-var arrNextScripts = [ { name: 'Philips Cooler', isActive: false, state: 'Начнет охлаждать в 16:30', typeIcon: TEMP, type: DEVICE }, { name: 'Xiaomi Yeelight LED Smart Bulb', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE } ]
+-var arrScripts = [ { name: 'Выключить весь свет в доме и во дворе', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Я ухожу', isActive: false, state: null, typeIcon: SCHEDULED, type: SCRIPT }, { name: 'Включить свет <br> в коридоре', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Набрать горячую ванну', isActive: true, state: 'Начнётся в 18:00', typeIcon: TEMP, type: SCRIPT }, { name: 'Сделать пол тёплым во всей квартире', isActive: true, state: null, typeIcon: TEMP, type: SCRIPT } ]
+-var bigArrScripts = [ { name: 'Выключить весь свет в доме и во дворе', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Я ухожу', isActive: false, state: null, typeIcon: SCHEDULED, type: SCRIPT }, { name: 'Включить свет <br> в коридоре', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Набрать горячую ванну', isActive: true, state: 'Начнётся в 18:00', typeIcon: TEMP, type: SCRIPT }, { name: 'Сделать пол тёплым во всей квартире', isActive: true, state: null, typeIcon: TEMP, type: SCRIPT }, { name: 'Выключить весь свет в доме и во дворе', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Я ухожу', isActive: false, state: null, typeIcon: SCHEDULED, type: SCRIPT }, { name: 'Включить свет <br> в коридоре', isActive: true, state: null, typeIcon: SUN, type: SCRIPT }, { name: 'Набрать горячую ванну', isActive: true, state: 'Начнётся в 18:00', typeIcon: TEMP, type: SCRIPT }, { name: 'Сделать пол тёплым во всей квартире', isActive: true, state: null, typeIcon: TEMP, type: SCRIPT } ]
+-var arrDevices = [ { name: 'Xiaomi Yeelight LED Smart Bulb', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'D-Link Omna 180 Cam', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Elgato Eve Degree Connected', isActive: false, state: 'Выключено до 17:00', typeIcon: TEMP, type: DEVICE, place: KITCHEN }, { name: 'LIFX Mini Day & Dusk A60 E27', isActive: false, state: 'Включится в 17:00', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'Philips Zhirui', isActive: false, state: 'Выключено', typeIcon: SUN, type: DEVICE, place: HALL }, { name: 'Xiaomi Mi Air Purifier 2S', isActive: true, state: 'Включено', typeIcon: SUN, type: DEVICE, place: KITCHEN }, { name: 'Xiaomi Warm Floor', isActive: false, state: 'Выключено', typeIcon: FLOOR, type: DEVICE, place: HALL } ]
+
+<!DOCTYPE html>
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Яндекс Дом
+    link(rel="stylesheet", href="css/style.min.css")
+
+  body.page
+    .page__content
+      header.header
+        a.header__logo(href="#")
+
+        .header__nav
+          nav.main-nav
+            ul.main-nav__list
+              li.main-nav__list-item.main-nav__list-item--active
+                a(href="#") Сводка
+              li.main-nav__list-item
+                a(href="#") Устройства
+              li.main-nav__list-item
+                a(href="#") Сценарии
+  
+            button.main-nav__toggle
+              span.visuallyhidden Окрыть меню
+              span.main-nav__burger
+        
+      .page__row
+        section.page__general
+          h1.page__headline.page__headline--general Главное
+          .general
+            .general__info
+              h2.general__greeting.general__line
+                | Привет, Геннадий!
+    
+              p.general__condition.general__line 
+                | Двери и окна закрыты, сигнализация включена.
+    
+              .general__weather.general__line
+                .general__weather-item.weather
+                  p.weather__place Дома
+                  p.weather__info +23
+    
+                .general__weather-item.weather
+                  p.weather__place За окном
+                  p.weather__info.weather__info--with-icon +19
+                    span.weather__icon.weather__icon--cloud-drizzle
+            .page__overflow-container#featured-scripts        
+              ul.element-list.element-list--general
+                each item, index in arrNextScripts
+                  -var itemModClass = index === 2 ? ' element-list__item--with-arrow' : '';
+                  li(class='featured-item element-list__item element-list__item--general' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+                    +item-list(item)
+      
+        section.scripts.page__scripts
+          .page__line.page__headline-nav.scripts__headline
+            h1.page__headline Избранные сценарии
+
+            nav.arrows-nav.page__arrows-nav#nav-featured-scripts
+              button.arrows-nav__arrow.arrows-nav__arrow--left
+                span.visuallyhidden Назад
+              button.arrows-nav__arrow.arrows-nav__arrow--right
+                span.visuallyhidden Вперед
+
+          
+          .scripts__slider.page__overflow-container
+            -var listCount = 0
+            -listCount = Math.ceil(bigArrScripts.length / 9)
+            -var indexList = 0
+
+            while listCount !== 0
+              -listCount-- 
+              -indexList += 9
+              -index = indexList-9
+
+              ul.element-list.element-list--scripts
+                while index < indexList
+                  if (bigArrScripts[index])
+                    li.featured-item.element-list__item--scripts(tabindex="0")
+                      +item-list(bigArrScripts[index])
+                  -index++
+    
+      section.devices.page__devices
+        .page__line.devices__line.devices__headline-nav
+          
+          h1.page__headline.page__headline--devices Избранные устройства 
+          
+          nav.featured-nav.devices__nav
+            button.button.button--active.featured-nav__toggle Все
+              span.featured-nav__arrow
+            ul.featured-nav__list
+              li.featured-nav__item(data-filter-place="none")
+                button.button.button--active Все
+              li.featured-nav__item(data-filter-place=""+KITCHEN)
+                button.button Кухня
+              li.featured-nav__item(data-filter-place=""+HALL)
+                button.button Зал
+              li.featured-nav__item(data-filter-type=""+SUN)
+                button.button Лампочки
+              li.featured-nav__item(data-filter-type="cameras")
+                button.button Камеры
+
+          nav.arrows-nav.page__arrows-nav#nav-featured-devices
+            button.arrows-nav__arrow.arrows-nav__arrow--left
+              span.visuallyhidden Назад
+            button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active
+              span.visuallyhidden Вперед
+
+        ul.element-list.element-list--devices#devices.page__overflow-container
+          each item in arrDevices
+            li.featured-item.element-list__item.element-list__item--devices(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+              +item-list(item)
+
+      footer.footer
+        nav.footer__nav
+          ul.footer__menu-list
+            li.footer__menu-item
+              a(href="#") Помощь
+            li.footer__menu-item
+              a(href="#") Обратная связь
+            li.footer__menu-item
+              a(href="#") Разработчикам
+            li.footer__menu-item
+              a(href="#") Условия использования
+        p.footer__copyright © 2001–2017  ООО «Яндекс»
+
+    block modal
+    script(src="js/main.js")
