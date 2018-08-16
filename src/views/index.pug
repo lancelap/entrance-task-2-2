@@ -49,7 +49,7 @@ html(lang="ru")
         
       .page__row
         section.page__general
-          h1.page__headline.page__headline-general Главное
+          h1.page__headline.page__headline--general Главное
           .general
             .general__info
               h2.general__greeting.general__line
@@ -67,11 +67,12 @@ html(lang="ru")
                   p.weather__place За окном
                   p.weather__info.weather__info--with-icon +19
                     span.weather__icon.weather__icon--cloud-drizzle
-            ul.element-list.general__list.page__overflow-container#featured-scripts
-              each item, index in arrNextScripts
-                -var itemModClass = index === 2 ? ' general__list-item--with-arrow' : '';
-                li(class='featured-item element-list__item general__list-item' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
-                  +item-list(item)
+            .page__overflow-container#featured-scripts        
+              ul.element-list.element-list--general
+                each item, index in arrNextScripts
+                  -var itemModClass = index === 2 ? ' element-list__item--with-arrow' : '';
+                  li(class='featured-item element-list__item element-list__item--general' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+                    +item-list(item)
       
         section.scripts.page__scripts
           .page__line.page__headline-nav.scripts__headline
@@ -94,17 +95,17 @@ html(lang="ru")
               -indexList += 9
               -index = indexList-9
 
-              ul.element-list.scripts__list
+              ul.element-list.element-list--scripts
                 while index < indexList
                   if (bigArrScripts[index])
-                    li.featured-item.scripts__list-item
+                    li.featured-item.element-list__item--scripts(tabindex="0")
                       +item-list(bigArrScripts[index])
                   -index++
     
       section.devices.page__devices
         .page__line.devices__line.devices__headline-nav
           
-          h1.page__headline.devices__headline Избранные устройства 
+          h1.page__headline.page__headline--devices Избранные устройства 
           
           nav.featured-nav.devices__nav
             button.button.button--active.featured-nav__toggle Все
@@ -127,9 +128,9 @@ html(lang="ru")
             button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active
               span.visuallyhidden Вперед
 
-        ul.element-list.devices__list#devices.page__overflow-container
+        ul.element-list.element-list--devices#devices.page__overflow-container
           each item in arrDevices
-            li.featured-item.element-list__item.devices__item(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+            li.featured-item.element-list__item.element-list__item--devices(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
               +item-list(item)
 
       footer.footer

@@ -19,12 +19,7 @@
   .scripts__slider {
     overflow: hidden;
     height: 360px;
-  }
-
-  .scripts__list {
-    flex-flow: row wrap;
-    flex: 0 0 100%;
-    overflow: hidden;
+    padding-left: 11px;
   }
 
   .scripts__slider {
@@ -33,13 +28,8 @@
     }
   }
 
-  .scripts__list-item {
-    margin-bottom: 15px;
-    height: 70px;
-  }
-
   .scripts__headline {
-    margin-left: 15px;
+    margin-left: 26px;
     margin-right: 40px;
   }
 }

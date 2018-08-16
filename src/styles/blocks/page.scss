@@ -16,10 +16,14 @@
   font-weight: 700;
   line-height: 21px;
   color: #333333;
-}
 
-.page__headline-general {
-  display: none;
+  &--devices {
+    margin-right: 70px;
+  }
+
+  &--general {
+    display: none;
+  }
 }
 
 .page__general,
@@ -76,7 +80,7 @@
   .page__line {
     margin: 0;
   }
-  
+
   .page__general,
   .page__scripts,
   .page__devices {
@@ -105,13 +109,8 @@
 
   .page__scripts {
     flex: 0 0 696px;
-    padding-left: 11px;
+    // padding-left: 11px;
     margin: 0;
-  }
-
-  .page__headline-general {
-    margin-bottom: 18px;
-    display: block;
   }
 
   .page__arrows-nav {
@@ -119,6 +118,18 @@
     display: block;
     bottom: -5px;
     right: -5px;
+  }
+
+  .page__headline {
+    &--devices {
+      margin: 0;
+      margin-right: 13px;
+    }
+
+    &--general {
+      margin-bottom: 18px;
+      display: block;
+    }
   }
 }
 

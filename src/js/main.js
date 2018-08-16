@@ -358,14 +358,14 @@ function addTermometrListner(termometr, termometrArrow) {
 
 // featuredScripts
 featuredScripts.addEventListener('scroll', () => {
-  const items = featuredScripts.querySelectorAll('.general__list-item');
+  const items = featuredScripts.querySelectorAll('.element-list__item--general');
 
   const scrollTop = featuredScripts.scrollTop;
   if (items[2] !== null) {
     if (scrollTop > 0) {
-      items[2].classList.remove('general__list-item--with-arrow');
+      items[2].classList.remove('element-list__item--with-arrow');
     } else if (scrollTop === 0) {
-      items[2].classList.add('general__list-item--with-arrow');
+      items[2].classList.add('element-list__item--with-arrow');
     }
     
   }
