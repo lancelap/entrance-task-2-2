@@ -359,7 +359,7 @@ function addTermometrListner(termometr, termometrArrow) {
 // featuredScripts
 featuredScripts.addEventListener('scroll', () => {
   const items = featuredScripts.querySelectorAll('.general__list-item');
-  console.log(featuredScripts.scrollTop);
+
   const scrollTop = featuredScripts.scrollTop;
   if (items[2] !== null) {
     if (scrollTop > 0) {
@@ -376,7 +376,6 @@ featuredScripts.addEventListener('scroll', () => {
 function addNavArrowListner (nav, list, scrollLeft) {
   const leftArrow = nav.querySelector('.arrows-nav__arrow--left');
   const rightArrow = nav.querySelector('.arrows-nav__arrow--right');
-  console.log(leftArrow, rightArrow);
 
   check();
 
