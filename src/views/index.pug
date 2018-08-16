@@ -55,7 +55,8 @@ html(lang="ru")
               h2.general__greeting.general__line
                 | Привет, Геннадий!
     
-              p.general__condition.general__line Двери и окна закрыты, сигнализация включена.
+              p.general__condition.general__line 
+                | Двери и окна закрыты, сигнализация включена.
     
               .general__weather.general__line
                 .general__weather-item.weather
@@ -99,11 +100,6 @@ html(lang="ru")
                     li.featured-item.scripts__list-item
                       +item-list(bigArrScripts[index])
                   -index++
-
-            //- ul.element-list.scripts__list
-                each item, index in arrScripts
-                  li.featured-item.scripts__list-item
-                    +item-list(item)
     
       section.devices.page__devices
         .page__line.devices__line.devices__headline-nav
