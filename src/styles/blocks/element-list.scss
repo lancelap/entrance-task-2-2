@@ -3,6 +3,7 @@
   display: flex;
   flex-flow: row nowrap;
   padding-top: 20px;
+  align-content: flex-start;
 
   &--general {
     min-height: 90px;

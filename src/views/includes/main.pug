@@ -85,21 +85,22 @@ html(lang="ru")
 
           
           .scripts__slider.page__overflow-container
-            -var listCount = 0
-            -listCount = Math.ceil(bigArrScripts.length / 9)
-            -var indexList = 0
-
-            while listCount !== 0
-              -listCount-- 
-              -indexList += 9
-              -index = indexList-9
-
-              ul.element-list.element-list--scripts
-                while index < indexList
-                  if (bigArrScripts[index])
-                    li(class="featured-item element-list__item element-list__item--scripts" tabindex="0")
-                      +item-list(bigArrScripts[index])
-                  -index++
+            block scripts
+              -var listCount = 0
+              -listCount = Math.ceil(arrScripts.length / 9)
+              -var indexList = 0
+  
+              while listCount !== 0
+                -listCount-- 
+                -indexList += 9
+                -index = indexList-9
+  
+                ul.element-list.element-list--scripts
+                  while index < indexList
+                    if (arrScripts[index])
+                      li(class="featured-item element-list__item element-list__item--scripts" tabindex="0")
+                        +item-list(arrScripts[index])
+                    -index++
     
       section.devices.page__devices
         .page__line.devices__line.devices__headline-nav
@@ -146,4 +147,5 @@ html(lang="ru")
         p.footer__copyright © 2001–2017  ООО «Яндекс»
 
     block modal
+      .modal#modal
     script(src="js/main.js")
