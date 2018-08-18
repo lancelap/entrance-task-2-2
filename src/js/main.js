@@ -3,10 +3,10 @@ const SUN = 'sun';
 const TEMP = 'temperature';
 
 const mainNav = document.querySelector(".main-nav");
-const navToggle = document.querySelector(".main-nav__toggle");
+const navToggle = document.querySelector(".header__nav-toggle");
 
 const featuredNav = document.querySelector(".featured-nav");
-const featuredNavToggle = document.querySelector(".featured-nav__toggle");
+const featuredNavToggle = document.querySelector(".devices__toggle");
 
 const rootModal = document.querySelector('.modal');
 const lists = document.querySelectorAll(".element-list");
@@ -29,8 +29,9 @@ const navScripts = document.getElementById('nav-featured-scripts');
 const navDevicesScripts = document.getElementById('nav-featured-devices');
 
 // MENU 
-toggle(mainNav, navToggle, "main-nav");
+toggle(mainNav, navToggle, "nav");
 toggle(featuredNav, featuredNavToggle, "featured-nav");
+toggle(featuredNav, featuredNavToggle, "nav");
 
 function toggle(nav, toggle, classNameNav) {
   toggle.addEventListener("click", function(event) {

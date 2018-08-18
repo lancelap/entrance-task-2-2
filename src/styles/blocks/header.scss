@@ -20,6 +20,13 @@
   top: 0;
   right: 0;
   left: 0;
+  z-index: 1000;
+}
+
+.header__nav-toggle {
+  position: absolute;
+  top: 20px;
+  right: 15px;
 }
 
 @media #{$desktop-width} {
@@ -43,12 +50,15 @@
     &:focus {
       outline: #ffd93e dotted 1px;
     }
-    
   }
 
   .header__nav {
     position: static;
     display: block;
     margin-left: 50px;
+  }
+
+  .header__nav-toggle {
+    display: none;
   }
 }

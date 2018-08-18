@@ -1,13 +1,13 @@
+.devices {
+  position: relative;
+}
+
 .devices__nav {
   position: absolute;
   z-index: 100;
   top: -6px;
-  right: 0;
+  right: 20px;
   width: 70px;
-}
-
-.devices__headline-nav{
-  position: relative;
 }
 
 @media #{$desktop-width} {
@@ -19,8 +19,19 @@
     margin-left: 40px;
   }
 
+  .devices__toggle {
+    display: none;
+  }
+
   .devices__nav {
     position: static;
     width: auto;
+  }
+
+  .device__arrows {
+    position: relative;
+    top: 5px;
+    left: 5px;
+    margin-left: auto;
   }
 }
