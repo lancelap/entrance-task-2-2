@@ -1,4 +1,0 @@
-mixin picture(className, width, height, imgSrc, alt)
-  picture(style="line-height: 0;" )
-    source(type="image/svg+xml", srcset=`../img/${imgSrc}.svg`)
-    img(class=''+className width=''+width height=''+height src=`../img/${imgSrc}@1x.png`, alt=''+alt, srcset=`../img/${imgSrc}@2x.png 2x`)
