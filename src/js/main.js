@@ -2,33 +2,13 @@ const FLOOR = 'floor';
 const SUN = 'sun';
 const TEMP = 'temperature';
 
+// MENU 
 const mainNav = document.querySelector(".main-nav");
 const navToggle = document.querySelector(".header__nav-toggle");
 
 const featuredNav = document.querySelector(".featured-nav");
 const featuredNavToggle = document.querySelector(".devices__toggle");
 
-const rootModal = document.querySelector('.modal');
-const lists = document.querySelectorAll(".element-list");
-const pageContent = document.querySelector(".page__content");
-
-const filterNav = document.querySelector(".featured-nav__list");
-const devicesList = document.getElementById('devices');
-
-const deviceBar = document.querySelector(".device-bar");
-const deviceTrack = document.querySelector(".device-bar__track");
-
-const termometr = document.querySelector(".controller__termometr");
-const termometrArrow = document.querySelector(".termometr__arrow");
-
-const featuredScripts = document.getElementById('featured-scripts');
-
-const scriptsSlider = document.querySelector('.scripts__slider');
-
-const navScripts = document.getElementById('nav-featured-scripts');
-const navDevicesScripts = document.getElementById('nav-featured-devices');
-
-// MENU 
 toggle(mainNav, navToggle, "nav");
 toggle(featuredNav, featuredNavToggle, "featured-nav");
 toggle(featuredNav, featuredNavToggle, "nav");
@@ -48,6 +28,10 @@ function toggle(nav, toggle, classNameNav) {
 }
 
 // MODAL 
+const rootModal = document.querySelector('.modal');
+const lists = document.querySelectorAll(".element-list");
+const pageContent = document.querySelector(".page__content");
+
 addListListner(lists);
 
 function toggleModal(name, state, typeDevice) {
@@ -261,6 +245,8 @@ function delegateClicks(element) {
 }
 
 // FILTER
+const filterNav = document.querySelector(".featured-nav__list");
+const devicesList = document.getElementById('devices');
 
 addFilterListner(filterNav, featuredNavToggle);
 
@@ -309,6 +295,11 @@ function addFilterListner(element, toggleButton) {
 }
 
 // CONTROLLER
+const deviceBar = document.querySelector(".device-bar");
+const deviceTrack = document.querySelector(".device-bar__track");
+
+const termometr = document.querySelector(".controller__termometr");
+const termometrArrow = document.querySelector(".termometr__arrow");
  
 if (deviceBar) { addControllerListner(deviceBar, deviceTrack) };
 function addControllerListner(deviceBar, deviceTrack) {
@@ -358,6 +349,8 @@ function addTermometrListner(termometr, termometrArrow) {
 }
 
 // featuredScripts
+const featuredScripts = document.getElementById('featured-scripts');
+
 featuredScripts.addEventListener('scroll', () => {
   const items = featuredScripts.querySelectorAll('.element-list__item--general');
 
@@ -373,6 +366,9 @@ featuredScripts.addEventListener('scroll', () => {
 })
 
 // SLIDER
+const scriptsSlider = document.querySelector('.scripts__slider');
+const navScripts = document.getElementById('nav-featured-scripts');
+const navDevicesScripts = document.getElementById('nav-featured-devices');
 
 function addNavArrowListner (nav, list, scrollLeft) {
   const leftArrow = nav.querySelector('.arrows-nav__arrow--left');
