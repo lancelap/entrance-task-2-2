@@ -98,7 +98,7 @@ html(lang="ru")
               ul.element-list.element-list--scripts
                 while index < indexList
                   if (bigArrScripts[index])
-                    li.featured-item.element-list__item--scripts(tabindex="0")
+                    li(class="featured-item element-list__item element-list__item--scripts" tabindex="0")
                       +item-list(bigArrScripts[index])
                   -index++
     
