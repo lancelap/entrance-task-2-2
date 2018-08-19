@@ -47,12 +47,14 @@ html(lang="ru")
                 span.visuallyhidden Окрыть меню
         
       .page__row
-        section.page__general.general
+        
+        section.content.general.page__general
           h1.page__headline.general__headline Главное
           .general__content
             .general__info
-              h2.page__headline.general__greeting.general__line
-                | Привет, Геннадий!
+              .general__line
+                h2.content__headline.general__greeting
+                  | Привет, Геннадий!
     
               p.general__condition.general__line 
                 | Двери и окна закрыты, сигнализация включена.
@@ -73,16 +75,17 @@ html(lang="ru")
                   li(class='featured-item element-list__item element-list__item--general' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
                     +item-list(item)
       
-        section.scripts.page__scripts
-          .page__line.page__headline-nav
-            h1.page__headline.scripts__headline Избранные сценарии
+        
+        section.content.scripts.page__scripts
+          .content__head 
+            .content__line.scripts__line
+                h1.content__headline Избранные сценарии
 
-            nav.arrows-nav.page__arrows-nav#nav-featured-scripts
+            nav.arrows-nav.content__arrows-nav#nav-featured-scripts
               button.arrows-nav__arrow.arrows-nav__arrow--left
                 span.visuallyhidden Назад
               button.arrows-nav__arrow.arrows-nav__arrow--right
                 span.visuallyhidden Вперед
-
           
           .scripts__slider.page__overflow-container
             block scripts
@@ -102,31 +105,34 @@ html(lang="ru")
                         +item-list(arrScripts[index])
                     -index++
     
-      section.devices.page__devices
-        .page__line.devices__line
-          
-          h1.page__headline.devices__headline Избранные устройства 
-          
-          .devices__nav
-            nav.featured-nav.nav
-              .nav__toggle.devices__toggle
-                button.button.button--active.featured-nav__button Все
-                  span.featured-nav__arrow
-  
-              ul.nav__list.featured-nav__list
-                li.featured-nav__item(data-filter-place="none")
-                  button.button.button--active Все
-                li.featured-nav__item(data-filter-place=""+KITCHEN)
-                  button.button Кухня
-                li.featured-nav__item(data-filter-place=""+HALL)
-                  button.button Зал
-                li.featured-nav__item(data-filter-type=""+SUN)
-                  button.button Лампочки
-                li.featured-nav__item(data-filter-type="cameras")
-                  button.button Камеры
+      
+      section.content.devices.page__devices
+        .content__head 
+          .content__line.devices__line
+            
+            .devices__headline
+              h1.content__headline Избранные устройства 
+            
+            .devices__nav
+              nav.featured-nav.nav
+                .nav__toggle.devices__toggle
+                  button.button.button--active.featured-nav__button Все
+                    span.featured-nav__arrow
+    
+                ul.nav__list.featured-nav__list
+                  li.featured-nav__item(data-filter-place="none")
+                    button.button.button--active Все
+                  li.featured-nav__item(data-filter-place=""+KITCHEN)
+                    button.button Кухня
+                  li.featured-nav__item(data-filter-place=""+HALL)
+                    button.button Зал
+                  li.featured-nav__item(data-filter-type=""+SUN)
+                    button.button Лампочки
+                  li.featured-nav__item(data-filter-type="cameras")
+                    button.button Камеры
 
                 
-          nav.arrows-nav.device__arrows#nav-featured-devices
+          nav.arrows-nav.content__arrows-nav#nav-featured-devices
             button.arrows-nav__arrow.arrows-nav__arrow--left
               span.visuallyhidden Назад
             button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active
