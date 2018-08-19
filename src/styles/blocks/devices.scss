@@ -10,6 +10,10 @@
   width: 70px;
 }
 
+.devices__headline {
+  margin-right: 70px;
+}
+
 @media #{$desktop-width} {
   .devices__line {
     display: flex;
@@ -34,4 +38,9 @@
     left: 5px;
     margin-left: auto;
   }
+
+  .devices__headline {
+    margin: 0;
+    margin-right: 13px;
+  }  
 }

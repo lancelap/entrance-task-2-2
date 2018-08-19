@@ -16,10 +16,6 @@
   font-weight: 700;
   line-height: 21px;
   color: #333333;
-
-  &--devices {
-    margin-right: 70px;
-  }
 }
 
 .page__general,
@@ -114,13 +110,6 @@
     display: block;
     bottom: -5px;
     right: -5px;
-  }
-
-  .page__headline {
-    &--devices {
-      margin: 0;
-      margin-right: 13px;
-    }
   }
 }
 
