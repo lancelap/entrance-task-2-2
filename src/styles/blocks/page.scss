@@ -6,18 +6,6 @@
   overflow: hidden;
 }
 
-.page__headline-nav {
-  position: relative;
-}
-
-.page__headline {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 21px;
-  color: #333333;
-}
-
 .page__general,
 .page__scripts,
 .page__devices {
@@ -27,14 +15,6 @@
 .page__general {
   margin-right: 20px;
   margin-left: 20px;
-}
-
-.page__line {
-  margin: 0 20px;
-}
-
-.page__arrows-nav {
-  display: none;
 }
 
 .page__content {
@@ -69,10 +49,6 @@
 }
 
 @media #{$desktop-width} {
-  .page__line {
-    margin: 0;
-  }
-
   .page__general,
   .page__scripts,
   .page__devices {
@@ -103,13 +79,6 @@
     flex: 0 0 696px;
     // padding-left: 11px;
     margin: 0;
-  }
-
-  .page__arrows-nav {
-    position: absolute;
-    display: block;
-    bottom: -5px;
-    right: -5px;
   }
 }
 
