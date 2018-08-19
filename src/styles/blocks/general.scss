@@ -1,4 +1,4 @@
-.general {
+.general__content {
   padding-top: 22px;
   padding-bottom: 20px;
   color: #000000;
@@ -13,11 +13,13 @@
   }
 }
 
+.general__headline {
+  display: none;
+}
+
 .general__greeting {
   margin: 0;
   margin-bottom: 5px;
-  font-size: 18px;
-  line-height: 21px
 }
 
 .general__condition {
@@ -41,7 +43,7 @@
 }
 
 @media #{$desktop-width} {
-  .general {
+  .general__content {
     display: flex;
     padding: 0;
   }
@@ -69,5 +71,10 @@
 
   .general__weather-item {
     margin-right: 20px;
+  }
+
+  .general__headline {
+    margin-bottom: 18px;
+    display: block;
   }
 }

@@ -20,10 +20,6 @@
   &--devices {
     margin-right: 70px;
   }
-
-  &--general {
-    display: none;
-  }
 }
 
 .page__general,
@@ -124,11 +120,6 @@
     &--devices {
       margin: 0;
       margin-right: 13px;
-    }
-
-    &--general {
-      margin-bottom: 18px;
-      display: block;
     }
   }
 }
