@@ -76,8 +76,7 @@
   }
 
   .page__scripts {
-    flex: 0 0 696px;
-    // padding-left: 11px;
+    max-width: 696px;
     margin: 0;
   }
 }
