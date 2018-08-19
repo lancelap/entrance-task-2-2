@@ -170,7 +170,7 @@ function renderHead(name, state, typeDevice) {
 
 function renderMenu(items) {
   const list = document.createElement('ul');
-  list.classList.add('element-list', 'controller__places-list', 'element-list__places-panel' , 'page__overflow-container');
+  list.classList.add('element-list', 'controller__places-list');
 
   items.forEach((item, index) => {
     const li = document.createElement('li');

@@ -142,4 +142,6 @@ html(lang="ru")
           each item in arrDevices
             li.featured-item.element-list__item.devices__item(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
               +item-list(item)
+
+    .modal#modal
   script(src="../js/main.js")
