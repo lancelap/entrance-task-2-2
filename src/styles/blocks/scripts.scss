@@ -20,11 +20,14 @@
   margin-right: 20px;
 }
 
+.scripts__list {
+  overflow-x: visible;
+}
+
 @media #{$desktop-width} {
   .scripts__slider {
     overflow: hidden;
     height: 360px;
-    padding-left: 11px;
   }
 
   .scripts__slider {
@@ -36,5 +39,20 @@
   .scripts__line {
     margin-left: 26px;
     margin-right: 40px;
+  }
+
+  .scripts__list {
+    flex-flow: row wrap;
+    flex: 0 0 100%;
+    overflow: hidden;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .scripts__item {
+    margin-bottom: 15px;
+    height: 70px;
   }
 }

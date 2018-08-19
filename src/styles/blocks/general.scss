@@ -42,10 +42,37 @@
   padding-left: 20px;
 }
 
+.general__list {
+  min-height: 90px;
+}
+
+.general__item {
+  min-height: 90px;
+  margin-left: 20px;
+}
+
 @media #{$desktop-width} {
   .general__content {
     display: flex;
     padding: 0;
+  }
+
+  .general__list {
+    flex-flow: column nowrap;
+    padding-right: 30px;;
+    height: 310px;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .general__item {
+    flex-basis: auto;
+    margin: 0;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    width: 170px;
   }
 
   .general__greeting {

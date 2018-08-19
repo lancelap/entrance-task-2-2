@@ -33,10 +33,10 @@
     }
 }
 
-.page__overflow-container {
-  overflow-x: auto;
-  scroll-behavior: smooth;
-}
+// .page__overflow-container {
+//   overflow-x: auto;
+//   scroll-behavior: smooth;
+// }
 
 @supports (-webkit-overflow-scrolling: touch) {
   .page {

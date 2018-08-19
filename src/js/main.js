@@ -355,8 +355,8 @@ function addTermometrListner(termometr, termometrArrow) {
 // featuredScripts
 const featuredScripts = document.getElementById('featured-scripts');
 
-featuredScripts.addEventListener('scroll', () => {
-  const items = featuredScripts.querySelectorAll('.element-list__item--general');
+featuredScripts.addEventListener('scroll', throttle(() => {
+  const items = featuredScripts.querySelectorAll('.general__item');
 
   const scrollTop = featuredScripts.scrollTop;
   if (items[2] !== null) {
@@ -367,7 +367,7 @@ featuredScripts.addEventListener('scroll', () => {
     }
     
   }
-})
+}, 300))
 
 // SLIDER
 const scriptsSlider = document.querySelector('.scripts__slider');
