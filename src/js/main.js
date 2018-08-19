@@ -8,6 +8,7 @@ const navToggle = document.querySelector(".header__nav-toggle");
 
 const featuredNav = document.querySelector(".featured-nav");
 const featuredNavToggle = document.querySelector(".devices__toggle");
+const featuredButton = document.querySelector(".featured-nav__button");
 
 toggle(mainNav, navToggle, "nav");
 toggle(featuredNav, featuredNavToggle, "featured-nav");
@@ -248,7 +249,7 @@ function delegateClicks(element) {
 const filterNav = document.querySelector(".featured-nav__list");
 const devicesList = document.getElementById('devices');
 
-addFilterListner(filterNav, featuredNavToggle);
+addFilterListner(filterNav, featuredButton);
 
 function addFilterListner(element, toggleButton) {
   element.addEventListener("click", event => {
@@ -273,6 +274,9 @@ function addFilterListner(element, toggleButton) {
         // Закрывем меню
         featuredNav.classList.add("featured-nav--closed");
         featuredNav.classList.remove("featured-nav--opened");
+        featuredNav.classList.add("nav--closed");
+        featuredNav.classList.remove("nav--opened");
+        
 
         // Скрываем элементы списка
         for (let index = 0; index < devicesList.childNodes.length; index++) {
