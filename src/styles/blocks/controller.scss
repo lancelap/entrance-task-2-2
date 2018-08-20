@@ -37,18 +37,19 @@
   margin-bottom: 83px;
 }
 
-.controller__places-list {
-  margin-bottom: 25px;
+.controller__elementnav {
+  height: 30px;
   padding-top: 15px;
+  margin-bottom: 25px;
+}
+
+.controller__places-list {
+  padding-left: 10px;
 }
 
 .controller__places-item {
-  flex-basis: auto;
+  height: 30px;
   margin-left: 10px;
-
-  &:first-of-type {
-    margin-left: 20px;
-  }
 }
 
 .controller__only-desktop {

@@ -1,13 +1,14 @@
 .scripts__list-slider {
   @include reset-list();
-  line-height: 0;
+  line-height: 0
 }
 
 .scripts__slider {
-  display: flex;
-  flex-flow: row nowrap;
   overflow: auto;
+  display:flex;
+  flex-flow: row nowrap;
   padding-left: 5px;
+  padding-bottom: 50px;
 
   &::after {
     content: "";
@@ -21,7 +22,15 @@
 }
 
 .scripts__list {
-  overflow-x: visible;
+  overflow: visible;
+}
+
+.scripts__elementnav {
+  height: 100px;
+}
+
+.scripts__item {
+  height: 70px;
 }
 
 @media #{$desktop-width} {

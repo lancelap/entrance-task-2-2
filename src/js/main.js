@@ -30,7 +30,7 @@ function toggle(nav, toggle, classNameNav) {
 
 // MODAL 
 const rootModal = document.querySelector('.modal');
-const lists = document.querySelectorAll(".element-list");
+const lists = document.querySelectorAll(".elementnav__list");
 const pageContent = document.querySelector(".page__content");
 
 addListListner(lists);
@@ -170,11 +170,11 @@ function renderHead(name, state, typeDevice) {
 
 function renderMenu(items) {
   const list = document.createElement('ul');
-  list.classList.add('element-list', 'controller__places-list');
+  list.classList.add('elementnav__list', 'controller__places-list');
 
   items.forEach((item, index) => {
     const li = document.createElement('li');
-    li.classList.add('element-list__item', 'controller__places-item');
+    li.classList.add('elementnav__item', 'controller__places-item');
     const button = document.createElement('button');
     button.classList.add('button');
 
@@ -186,7 +186,15 @@ function renderMenu(items) {
     list.appendChild(li);
   })
 
-  return list
+  const elementnav = document.createElement('div');
+  elementnav.classList.add('elementnav', 'controller__elementnav');
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('elementnav__wrapper');
+
+  wrapper.appendChild(list);
+  elementnav.appendChild(wrapper);
+
+  return elementnav
 }
 
 function renderModal(name, state, typeDevice) {
