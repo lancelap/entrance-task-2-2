@@ -49,6 +49,23 @@
 }
 
 @media #{$desktop-width} {
+  .page__header {
+    flex-shrink: 0;
+  }
+
+  .page__footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
+    flex-shrink: 0;
+  }
+
+  .page__content {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    //  justify-content: space-between;
+  }
   .page__general,
   .page__scripts,
   .page__devices {
@@ -56,9 +73,8 @@
   }
 
   .page__devices {
-    margin-top: auto;
+    flex-shrink: 0;
     margin-bottom: auto;
-    padding-bottom: 60px;
   }
 
   .page__row {
@@ -66,6 +82,7 @@
     flex-flow: row nowrap;
     min-width: 1288px;
     margin-bottom: 18px;
+    flex-shrink: 0;
   }
 
   .page__general {

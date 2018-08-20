@@ -4,14 +4,8 @@
 
 @media #{$desktop-width} {
   .footer {
-    position: fixed;
-    bottom: 0;
-    z-index: 1000;
     display: flex;
-    width: 100%;
     justify-content: space-between;
-    padding: 10px 40px 10px 34px;
-
     padding: 10px 0;
     font-size: 12px;
     line-height: 14px;

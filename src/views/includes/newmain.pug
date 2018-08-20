@@ -29,7 +29,7 @@ html(lang="ru")
   //- TODO переделать page, и маргины у elemnt listov что-то с ними сделать
   body.page
     .page__content
-      header.header
+      header.header.page__header
         a.header__logo(href="#")
 
         .header__nav
@@ -147,6 +147,18 @@ html(lang="ru")
               each item in arrDevices
                 li.featured-item.elementnav__item.devices__item(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
                   +item-list(item)
-                  
+
+      footer.footer.page__footer
+        nav.footer__nav
+          ul.footer__menu-list
+            li.footer__menu-item
+              a(href="#") Помощь
+            li.footer__menu-item
+              a(href="#") Обратная связь
+            li.footer__menu-item
+              a(href="#") Разработчикам
+            li.footer__menu-item
+              a(href="#") Условия использования
+        p.footer__copyright © 2001–2017  ООО «Яндекс»            
     .modal#modal
   script(src="../js/main.js")
