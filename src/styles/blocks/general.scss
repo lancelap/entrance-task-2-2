@@ -56,11 +56,24 @@
     padding: 0;
   }
 
+  .general__elementnav {
+    width: 200px;
+    height: 310px;
+    padding-top: 0;
+    padding-right: 30px;
+    padding-bottom: 20px;
+  }
+
   .general__list {
     flex-flow: column nowrap;
-    padding-right: 30px;;
-    height: 310px;
-
+    width: 200px;
+    height: 100%;
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-left: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
     &::after {
       display: none;
     }
@@ -70,7 +83,7 @@
     flex-basis: auto;
     margin: 0;
     margin-bottom: 15px;
-    margin-left: 10px;
+    margin-left: 0;
     width: 170px;
   }
 

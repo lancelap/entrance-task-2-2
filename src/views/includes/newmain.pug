@@ -69,7 +69,7 @@ html(lang="ru")
                   p.weather__info.weather__info--with-icon +19
                     span.weather__icon.weather__icon--cloud-drizzle
             
-            .elementnav
+            .elementnav.general__elementnav
               .elementnav__wrapper
                 ul.elementnav__list.general__list#featured-scripts  
                   each item, index in arrNextScripts
@@ -141,12 +141,12 @@ html(lang="ru")
             button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active
               span.visuallyhidden Вперед
 
-        .elementnav
+        .elementnav.devices__elementnav
           .elementnav__wrapper
             ul.elementnav__list.devices__list#devices
               each item in arrDevices
                 li.featured-item.elementnav__item.devices__item(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
                   +item-list(item)
-
+                  
     .modal#modal
   script(src="../js/main.js")

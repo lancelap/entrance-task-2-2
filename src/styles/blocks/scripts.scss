@@ -36,7 +36,6 @@
 @media #{$desktop-width} {
   .scripts__slider {
     overflow: hidden;
-    height: 360px;
     padding-left: 11px;
   }
 
@@ -51,10 +50,15 @@
     margin-right: 40px;
   }
 
+  .scripts__elementnav {
+    height: 341px;
+  }
+
   .scripts__list {
     flex-flow: row wrap;
     flex: 0 0 100%;
     overflow: hidden;
+    padding-bottom: 0;    
 
     &::after {
       display: none;
