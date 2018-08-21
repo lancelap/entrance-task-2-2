@@ -369,9 +369,9 @@ featuredScripts.addEventListener('scroll', throttle(() => {
   const scrollTop = featuredScripts.scrollTop;
   if (items[2] !== null) {
     if (scrollTop > 0) {
-      items[2].classList.remove('element-list__item--with-arrow');
+      items[2].classList.remove('elementnav__item--with-arrow');
     } else if (scrollTop === 0) {
-      items[2].classList.add('element-list__item--with-arrow');
+      items[2].classList.add('elementnav__item--with-arrow');
     }
     
   }
