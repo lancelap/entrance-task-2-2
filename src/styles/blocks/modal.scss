@@ -55,13 +55,17 @@
 }
 
 @media #{$desktop-width} {
-  .modal {
-    align-items: center;
-  }
-
   .modal__content {
     width: 630px;
     margin: 0;
+  }
+
+  .modal__bar {
+    margin-top: 189px;
+  }
+  
+  .modal__termometr {
+    margin-top: 100px;
   }
 
   .modal__block-btn {

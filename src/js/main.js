@@ -201,6 +201,13 @@ function renderModal(name, state, typeDevice) {
   const modal = document.createElement('section');
   modal.classList.add('modal__content');
 
+  if (typeDevice === TEMP || typeDevice === SUN) {
+    modal.classList.add('modal__bar');
+  } else {
+    modal.classList.add('modal__termometr');
+  }
+  
+
   const blockBtn = document.createElement('div');
   blockBtn.classList.add('modal__block-btn');
 

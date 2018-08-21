@@ -3,7 +3,12 @@
 -var TEMP = 'temperature'
 
 mixin modal(name, type, state)
-  section.modal__content#modal-content
+  -var modalClass = 'modal__content'
+  if (type === TEMP || type === SUN)
+    -modalClass += ' modal__bar'
+  else 
+    -modalClass += ' modal__termometr'
+  section(class='' + modalClass)#modal-content
     .controller.modal__line
       if (type === TEMP)
         .controller__line.controller__temp-info
