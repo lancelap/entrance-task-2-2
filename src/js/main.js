@@ -375,12 +375,15 @@ featuredScripts.addEventListener('scroll', throttle(() => {
     }
     
   }
-}, 300))
+}, 400))
 
 // SLIDER
 const scriptsSlider = document.querySelector('.scripts__slider');
 const navScripts = document.getElementById('nav-featured-scripts');
 const navDevicesScripts = document.getElementById('nav-featured-devices');
+
+addNavArrowListner(navScripts, scriptsSlider, 685);
+addNavArrowListner(navDevicesScripts, devicesList, 215);
 
 function addNavArrowListner (nav, list, scrollLeft) {
   const leftArrow = nav.querySelector('.arrows-nav__arrow--left');
@@ -388,16 +391,41 @@ function addNavArrowListner (nav, list, scrollLeft) {
 
   check();
 
+  const quadEaseOut = makeEaseOut(quad);
+  
   leftArrow.addEventListener('click', () => {
-    list.scrollLeft -= scrollLeft;
+    const start = list.scrollLeft;
+    animate({
+      duration: 300,
+      timing: quadEaseOut,
+      draw: function(progress) {
+        list.scrollLeft = start - (progress * scrollLeft);
+      }
+    })
   })
 
   rightArrow.addEventListener('click', () => {
-    list.scrollLeft += scrollLeft;
+    const start = list.scrollLeft;
+    animate({
+      duration: 300,
+      timing: quadEaseOut,
+      draw: function(progress) {
+        list.scrollLeft = start + (progress * scrollLeft);
+      }
+    })
   })
 
-
   list.addEventListener('scroll', throttle(check, 300))
+
+  function quad(timeFraction) {
+    return Math.pow(timeFraction, 2)
+  }
+  
+  function makeEaseOut(timing) {
+    return function(timeFraction) {
+      return 1 - timing(1 - timeFraction);
+    }
+  }
 
   function check() {
     if (list.scrollLeft === 0) { 
@@ -426,11 +454,26 @@ function addNavArrowListner (nav, list, scrollLeft) {
   }
 }
 
-addNavArrowListner(navScripts, scriptsSlider, 706);
+function animate(options) {
 
-addNavArrowListner(navDevicesScripts, devicesList, 215);
+  const start = performance.now();
 
+  requestAnimationFrame(function animate(time) {
+    // timeFraction от 0 до 1
+    let timeFraction = (time - start) / options.duration;
+    if (timeFraction > 1) timeFraction = 1;
 
+    // текущее состояние анимации
+    const progress = options.timing(timeFraction)
+
+    options.draw(progress);
+
+    if (timeFraction < 1) {
+      requestAnimationFrame(animate);
+    }
+
+  });
+}
 // 
 function addButtonListner(element, func) {
   element.addEventListener('click', () => {
