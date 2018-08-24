@@ -370,18 +370,30 @@ function addTermometrListner(termometr, termometrArrow) {
 // featuredScripts
 const featuredScripts = document.getElementById('featured-scripts');
 
-featuredScripts.addEventListener('scroll', throttle(() => {
+addfeaturedScriptsListener();
+
+function addfeaturedScriptsListener() {
   const items = featuredScripts.querySelectorAll('.general__item');
 
   const scrollTop = featuredScripts.scrollTop;
   if (items[2] !== null) {
     if (scrollTop > 0) {
+      items[2].removeEventListener('click', arrowFunc);
       items[2].classList.remove('elementnav__item--with-arrow');
     } else if (scrollTop === 0) {
       items[2].classList.add('elementnav__item--with-arrow');
+      items[2].addEventListener('click', arrowFunc);
     }
-    
   }
+}
+
+function arrowFunc(e) {
+  featuredScripts.scrollTop += 120; 
+  e.stopPropagation();
+}
+
+featuredScripts.addEventListener('scroll', throttle(() => {
+  addfeaturedScriptsListener();
 }, 400))
 
 // SLIDER
