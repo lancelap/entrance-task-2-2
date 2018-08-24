@@ -375,6 +375,10 @@ addfeaturedScriptsListener();
 function addfeaturedScriptsListener() {
   const items = featuredScripts.querySelectorAll('.general__item');
 
+  if (window.innerWidth < 1364) {
+    return
+  }
+  
   const scrollTop = featuredScripts.scrollTop;
   if (items[2] !== null) {
     if (scrollTop > 0) {
