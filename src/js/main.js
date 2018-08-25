@@ -50,6 +50,7 @@ function toggleModal(name, state, typeDevice) {
     rootModal.classList.remove('modal--closed');
     
     rootModal.appendChild(modal);
+    rootModal.focus();
   }
 }
 
