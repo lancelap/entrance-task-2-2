@@ -35,7 +35,7 @@ const pageContent = document.querySelector(".page__content");
 
 addListListner(lists);
 
-function toggleModal(name, state, typeDevice) {
+function toggleModal(name, state, typeDevice, event) {
   if (rootModal.classList.contains('modal--opened')) {
     document.body.classList.remove('page--no-scroll');
     pageContent.classList.remove('page__content--blured');
@@ -43,13 +43,36 @@ function toggleModal(name, state, typeDevice) {
     rootModal.classList.remove('modal--opened');
   } else {
     rootModal.innerHTML = '';
+
+    
     const modal = renderModal(name, state, typeDevice);
     document.body.classList.add('page--no-scroll');
     pageContent.classList.add('page__content--blured');
     rootModal.classList.add('modal--opened');
     rootModal.classList.remove('modal--closed');
     
+
+    
+
     rootModal.appendChild(modal);
+
+    const x = event.clientX - (rootModal.clientWidth / 2);
+    const y = event.clientY - (rootModal.clientHeight / 2);
+    rootModal.style.transform = `translate(${x}px, ${y}px)`;
+
+
+    
+    animate({
+      duration: 1240,
+      timing: function(timeFraction) {
+        return timeFraction;
+      },
+      draw: function(progress) {
+        const scale = 
+        console.log(progress);
+        rootModal.style.transform = `scale(${progress}) translate(${x / progress - x}px, ${y / progress - y}px)`;
+      }
+    });
   }
 }
 
@@ -253,7 +276,7 @@ function delegateClicks(element) {
         const name = target.getAttribute('data-name');
         const state = target.getAttribute('data-state');
         const typeDevice = target.getAttribute('data-type-device');
-        toggleModal(name, state, typeDevice);
+        toggleModal(name, state, typeDevice, event);
         return;
       }
 
