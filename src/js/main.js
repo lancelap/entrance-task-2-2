@@ -41,36 +41,39 @@ function toggleModal(name, state, typeDevice, event) {
     pageContent.classList.remove('page__content--blured');
     rootModal.classList.add('modal--closed');
     rootModal.classList.remove('modal--opened');
+    rootModal.style = '';
   } else {
     rootModal.innerHTML = '';
 
     
-    const modal = renderModal(name, state, typeDevice);
+    const modal = renderModal(name, state, typeDevice, event);
     document.body.classList.add('page--no-scroll');
     pageContent.classList.add('page__content--blured');
     rootModal.classList.add('modal--opened');
     rootModal.classList.remove('modal--closed');
-    
-
-    
-
+  
     rootModal.appendChild(modal);
 
-    const x = event.clientX - (rootModal.clientWidth / 2);
-    const y = event.clientY - (rootModal.clientHeight / 2);
-    rootModal.style.transform = `translate(${x}px, ${y}px)`;
+    const rect = rootModal.querySelector('.modal__content').getBoundingClientRect();
+    const x = event.clientX - (rootModal.querySelector('.modal__content').clientWidth / 2);
+    const y = event.clientY - (rootModal.querySelector('.modal__content').clientHeight / 2);
+    rootModal.querySelector('.modal__content').style.transform = `scale(${0.3}) translate(${(x - rect.x) / 0.3}px, ${(y - rect.y) / 0.3}px)`;
+    let start = true;
 
-
-    
     animate({
-      duration: 1240,
+      duration: 1,
       timing: function(timeFraction) {
         return timeFraction;
       },
       draw: function(progress) {
-        const scale = 
-        console.log(progress);
-        rootModal.style.transform = `scale(${progress}) translate(${x / progress - x}px, ${y / progress - y}px)`;
+        if (start) {
+          start = false;
+          rootModal.querySelector('.modal__content').style.transform = `scale(${1}) translate(${0}px, ${0}px)`;
+          rootModal.querySelector('.modal__content').style.transitionProperty = 'transform, scale';
+          rootModal.querySelector('.modal__content').style.transitionDuration = `300ms`;
+          return
+        }
+
       }
     });
   }
