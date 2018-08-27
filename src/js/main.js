@@ -214,9 +214,6 @@ function renderMenu(items, controller) {
         track.style.top = newTop  + 'px';
         track.style.left = newLeft + 'px';
 
-        console.log(newTop, newLeft)
-
-
         const buttonActive = document.querySelector('.controller__places-item > .button--active');
         
         buttonActive.classList.remove('button--active');
