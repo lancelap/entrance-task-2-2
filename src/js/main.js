@@ -60,10 +60,8 @@ function renderContent(name, state, typeDevice) {
   block.classList.add('controller', 'modal__line');
 
   const head = renderHead(name, state, typeDevice);
-  const controller = renderController(typeDevice);
 
   block.appendChild(head);
-  block.appendChild(controller);
 
   return block
 }
@@ -163,16 +161,20 @@ function renderHead(name, state, typeDevice) {
 
   root.appendChild(controllerLine);
 
+  const controller = renderController(typeDevice);
+
   if (typeDevice === SUN) {
-    root.appendChild(renderMenu(['Вручную', 'Дневной свет', 'Вечерний свет', 'Рассвет']));
+    root.appendChild(renderMenu([['Вручную', null], ['Дневной свет', 0], ['Вечерний свет', 1], ['Рассвет', 0.5]], controller));
   } else if (typeDevice === TEMP) {
-    root.appendChild(renderMenu(['Вручную', 'Холодно', 'Тепло', 'Жарко']));
+    root.appendChild(renderMenu([['Вручную', null], ['Холодно', 0], ['Тепло', 0.5], ['Жарко', 1]], controller));
   }
+
+  root.appendChild(controller);
 
   return root
 }
 
-function renderMenu(items) {
+function renderMenu(items, controller) {
   const list = document.createElement('ul');
   list.classList.add('elementnav__list', 'controller__places-list');
 
@@ -184,10 +186,45 @@ function renderMenu(items) {
 
     index === 0 ?  button.classList.add('button--active') : null;
     index === items.length - 1 ?  button.classList.add('controller__only-desktop') : null;
-    button.textContent = item;
+    button.textContent = item[0];
+    button.setAttribute('data-value', item[1]);
 
     li.appendChild(button);
     list.appendChild(li);
+  })
+
+  list.addEventListener('click', (e) => {
+    let target = e.target;
+
+    while (target !== this ) {
+      if (target.tagName === 'BUTTON') {
+        
+        const track = controller.querySelector('.device-bar__track');
+
+        let newTop = controller.clientHeight - (controller.clientHeight * +target.dataset.value) - (track.offsetHeight / 2);
+        let newLeft = (controller.clientWidth * +target.dataset.value) - (track.offsetWidth / 2);
+        if (newTop < 0) { newTop = 0 }
+        if (newLeft < 0) { newLeft = 0 }
+        
+        let bottomEdge = controller.offsetHeight - track.offsetHeight;
+        let rightEdge = controller.offsetWidth - track.offsetWidth;
+
+        if (newTop > bottomEdge) { newTop = bottomEdge }
+        if (newLeft > rightEdge) { newLeft = rightEdge }
+        track.style.top = newTop  + 'px';
+        track.style.left = newLeft + 'px';
+
+        console.log(newTop, newLeft)
+
+
+        const buttonActive = document.querySelector('.controller__places-item > .button--active');
+        
+        buttonActive.classList.remove('button--active');
+        target.classList.add('button--active');
+        return; 
+      }
+      target = target.parentNode;
+    }
   })
 
   const elementnav = document.createElement('div');
@@ -325,8 +362,8 @@ const termometr = document.querySelector(".controller__termometr");
 const termometrArrow = document.querySelector(".termometr__arrow");
  
 if (deviceBar) { addControllerListner(deviceBar, deviceTrack) };
-function addControllerListner(deviceBar, deviceTrack) {
 
+function addControllerListner(deviceBar, deviceTrack) {
   deviceBar.addEventListener('mousedown', e => {
     var barCoords = getCoords(deviceBar);
  
@@ -357,6 +394,7 @@ function getCoords(elem) {
 // CONTROLLER MENU
 
 if (termometr) { addTermometrListner(termometr, termometrArrow) };
+
 function addTermometrListner(termometr, termometrArrow) {
   termometr.addEventListener('click', e => {
     let target = e.target;
