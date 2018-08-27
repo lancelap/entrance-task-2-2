@@ -38,6 +38,7 @@ addListListner(lists);
 function toggleModal(name, state, typeDevice) {
   if (rootModal.classList.contains('modal--opened')) {
     document.body.classList.remove('page--no-scroll');
+    pageContent.classList.add('page__content--blured-out');
     pageContent.classList.remove('page__content--blured');
     rootModal.classList.add('modal--closed');
     rootModal.classList.remove('modal--opened');
@@ -45,6 +46,7 @@ function toggleModal(name, state, typeDevice) {
     rootModal.innerHTML = '';
     const modal = renderModal(name, state, typeDevice);
     document.body.classList.add('page--no-scroll');
+    pageContent.classList.remove('page__content--blured-out');
     pageContent.classList.add('page__content--blured');
     rootModal.classList.add('modal--opened');
     rootModal.classList.remove('modal--closed');

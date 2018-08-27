@@ -8,24 +8,31 @@
 
   &--closed {
     display: flex;
-    animation-name: modal-content-fade-out;
-    animation-duration: .3s; 
+    animation-name: modal-fade-out;
+    animation-duration: .23s; 
     animation-fill-mode: forwards;
-    animation-timing-function: linear;
+    animation-timing-function: linear; 
   }
 
   &--opened {
     display: flex;
-    animation-name: modal-content-fade-in;
-    animation-duration: .3s; 
-    animation-fill-mode: forwards;
-    animation-timing-function: linear; 
   }
 }
 
 .modal__content {
   width: 334px;
   margin-top: 21px;
+  animation-duration: .23s; 
+  animation-fill-mode: forwards;
+  animation-timing-function: linear; 
+}
+
+.modal--opened  .modal__content {
+  animation-name: modal-content-fade-in;
+}
+
+.modal--closed .modal__content {
+  animation-name: modal-content-fade-out;
 }
 
 .modal__line {
@@ -79,23 +86,28 @@
 
 @keyframes modal-content-fade-in { 
   0% {
-    opacity: 0.1;
-    transform: scale(.3);
+    transform: scale(.23);
   } 
   100% {
-    opacity: 1;
     transform: scale(1);
   } 
 }
 
 @keyframes modal-content-fade-out { 
   0% {
-    opacity: 1;
     transform: scale(1);
   } 
   100% {
+    transform: scale(.23);
+  } 
+}
+
+@keyframes modal-fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
     opacity: 0;
     z-index: -1;
-    transform: scale(.3);
-  } 
+  }
 }
