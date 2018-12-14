@@ -1,9 +1,0 @@
-include item-list
-
-mixin featured-stuff(items, blockType)
-  -var itemClass = `featured-item element-list__item element-list__${blockType}-item`
-
-
-  ul(class=`element-list element-list__${blockType}` id=''+blockType)
-    each item, index in items
-      +item-list(item, itemClass)

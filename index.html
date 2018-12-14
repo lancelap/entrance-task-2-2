@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Яндекс Дом</title>
+    <link rel="stylesheet" href="css/style.min.css"/>
+  </head>
+  <body class="page">
+    <div class="page__content">
+      <header class="header page__header"><a class="header__logo" href="#"></a>
+        <div class="header__nav">
+          <nav class="main-nav nav">
+            <ul class="nav__list">
+              <li class="main-nav__item main-nav__item--active"><a href="#">Сводка</a></li>
+              <li class="main-nav__item"><a href="#">Устройства</a></li>
+              <li class="main-nav__item"><a href="#">Сценарии</a></li>
+            </ul>
+            <div class="header__nav-toggle">
+              <button class="main-nav__burger nav__toggle"><span class="visuallyhidden">Окрыть меню</span></button>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <div class="page__row">
+        <section class="content general page__general">
+          <h1 class="content__headline general__headline">Главное</h1>
+          <div class="general__content">
+            <div class="general__info">
+              <div class="general__line">
+                <h2 class="content__headline general__greeting">Привет, Геннадий!</h2>
+              </div>
+              <p class="general__condition general__line">
+                 Двери и окна закрыты, сигнализация включена.</p>
+              <div class="general__weather general__line">
+                <div class="general__weather-item weather">
+                  <p class="weather__place">Дома</p>
+                  <p class="weather__info">+23</p>
+                </div>
+                <div class="general__weather-item weather">
+                  <p class="weather__place">За окном</p>
+                  <p class="weather__info weather__info--with-icon">+19<span class="weather__icon weather__icon--cloud-drizzle"></span></p>
+                </div>
+              </div>
+            </div>
+            <div class="elementnav general__elementnav">
+              <div class="elementnav__wrapper">
+                <ul class="elementnav__list general__list" id="featured-scripts"> 
+                  <li class="featured-item elementnav__item general__item" tabindex="0" data-name="Philips Cooler" data-type="device" data-state="Начнет охлаждать в 16:30" data-type-device="temperature" data-place="undefined">
+                    <div class="weather">
+                      <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--temperature"></span></p>
+                    </div>
+                    <div>
+                      <p class="featured-item__name">Philips Cooler</p>
+                      <p class="featured-item__state">Начнет охлаждать в 16:30</p>
+                    </div>
+                  </li>
+                  <li class="featured-item elementnav__item general__item" tabindex="0" data-name="Xiaomi Yeelight LED Smart Bulb" data-type="device" data-state="Включится в 17:00" data-type-device="sun" data-place="undefined">
+                    <div class="weather">
+                      <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun"></span></p>
+                    </div>
+                    <div>
+                      <p class="featured-item__name">Xiaomi Yeelight LED Smart Bulb</p>
+                      <p class="featured-item__state">Включится в 17:00</p>
+                    </div>
+                  </li>
+                  <li class="featured-item elementnav__item general__item elementnav__item--with-arrow" tabindex="0" data-name="Xiaomi Mi Air Purifier 2S" data-type="device" data-state="Включено" data-type-device="sun" data-place="undefined">
+                    <div class="weather">
+                      <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun2"></span></p>
+                    </div>
+                    <div>
+                      <p class="featured-item__name">Xiaomi Mi Air Purifier 2S</p>
+                      <p class="featured-item__state">Включено</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="content scripts page__scripts">
+          <div class="content__head"> 
+            <div class="content__line scripts__line">
+              <h1 class="content__headline">Избранные сценарии</h1>
+            </div>
+            <nav class="arrows-nav content__arrows-nav" id="nav-featured-scripts">
+              <button class="arrows-nav__arrow arrows-nav__arrow--left"><span class="visuallyhidden">Назад</span></button>
+              <button class="arrows-nav__arrow arrows-nav__arrow--right"><span class="visuallyhidden">Вперед</span></button>
+            </nav>
+          </div>
+          <div class="elementnav scripts__elementnav">
+            <div class="elementnav__wrapper scripts__slider">
+              <ul class="elementnav__list scripts__list"> 
+                <li class="featured-item elementnav__item scripts__item" tabindex="0">
+                  <div class="weather">
+                    <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun2"></span></p>
+                  </div>
+                  <div>
+                    <p class="featured-item__name">Выключить весь свет в доме и во дворе</p>
+                  </div>
+                </li>
+                <li class="featured-item elementnav__item scripts__item" tabindex="0">
+                  <div class="weather">
+                    <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--scheduled"></span></p>
+                  </div>
+                  <div>
+                    <p class="featured-item__name">Я ухожу</p>
+                  </div>
+                </li>
+                <li class="featured-item elementnav__item scripts__item" tabindex="0">
+                  <div class="weather">
+                    <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun2"></span></p>
+                  </div>
+                  <div>
+                    <p class="featured-item__name">Включить свет <br> в коридоре</p>
+                  </div>
+                </li>
+                <li class="featured-item elementnav__item scripts__item" tabindex="0">
+                  <div class="weather">
+                    <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--temperature2"></span></p>
+                  </div>
+                  <div>
+                    <p class="featured-item__name">Набрать горячую ванну</p>
+                    <p class="featured-item__state">Начнётся в 18:00</p>
+                  </div>
+                </li>
+                <li class="featured-item elementnav__item scripts__item" tabindex="0">
+                  <div class="weather">
+                    <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--temperature2"></span></p>
+                  </div>
+                  <div>
+                    <p class="featured-item__name">Сделать пол тёплым во всей квартире</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+      <section class="content devices page__devices">
+        <div class="content__head"> 
+          <div class="content__line devices__line">
+            <div class="devices__headline">
+              <h1 class="content__headline">Избранные устройства </h1>
+            </div>
+            <div class="devices__nav">
+              <nav class="featured-nav nav">
+                <div class="nav__toggle devices__toggle">
+                  <button class="button button--active featured-nav__button">Все<span class="featured-nav__arrow"></span></button>
+                </div>
+                <ul class="nav__list featured-nav__list">
+                  <li class="featured-nav__item" data-filter-place="none">
+                    <button class="button button--active">Все</button>
+                  </li>
+                  <li class="featured-nav__item" data-filter-place="kitchen">
+                    <button class="button">Кухня</button>
+                  </li>
+                  <li class="featured-nav__item" data-filter-place="hall">
+                    <button class="button">Зал</button>
+                  </li>
+                  <li class="featured-nav__item" data-filter-type="sun">
+                    <button class="button">Лампочки</button>
+                  </li>
+                  <li class="featured-nav__item" data-filter-type="cameras">
+                    <button class="button">Камеры</button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <nav class="arrows-nav content__arrows-nav" id="nav-featured-devices">
+            <button class="arrows-nav__arrow arrows-nav__arrow--left"><span class="visuallyhidden">Назад</span></button>
+            <button class="arrows-nav__arrow arrows-nav__arrow--right arrows-nav__arrow--active"><span class="visuallyhidden">Вперед</span></button>
+          </nav>
+        </div>
+        <div class="elementnav devices__elementnav">
+          <div class="elementnav__wrapper">
+            <ul class="elementnav__list devices__list" id="devices">
+              <li class="featured-item elementnav__item devices__item" tabindex="0" data-name="Xiaomi Yeelight LED Smart Bulb" data-type="device" data-state="Включено" data-type-device="sun" data-place="kitchen">
+                <div class="weather">
+                  <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun2"></span></p>
+                </div>
+                <div>
+                  <p class="featured-item__name">Xiaomi Yeelight LED Smart Bulb</p>
+                  <p class="featured-item__state">Включено</p>
+                </div>
+              </li>
+              <li class="featured-item elementnav__item devices__item" tabindex="0" data-name="D-Link Omna 180 Cam" data-type="device" data-state="Включится в 17:00" data-type-device="sun" data-place="hall">
+                <div class="weather">
+                  <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun"></span></p>
+                </div>
+                <div>
+                  <p class="featured-item__name">D-Link Omna 180 Cam</p>
+                  <p class="featured-item__state">Включится в 17:00</p>
+                </div>
+              </li>
+              <li class="featured-item elementnav__item devices__item" tabindex="0" data-name="Elgato Eve Degree Connected" data-type="device" data-state="Выключено до 17:00" data-type-device="temperature" data-place="kitchen">
+                <div class="weather">
+                  <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--temperature"></span></p>
+                </div>
+                <div>
+                  <p class="featured-item__name">Elgato Eve Degree Connected</p>
+                  <p class="featured-item__state">Выключено до 17:00</p>
+                </div>
+              </li>
+              <li class="featured-item elementnav__item devices__item" tabindex="0" data-name="LIFX Mini Day &amp; Dusk A60 E27" data-type="device" data-state="Включится в 17:00" data-type-device="sun" data-place="hall">
+                <div class="weather">
+                  <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun"></span></p>
+                </div>
+                <div>
+                  <p class="featured-item__name">LIFX Mini Day & Dusk A60 E27</p>
+                  <p class="featured-item__state">Включится в 17:00</p>
+                </div>
+              </li>
+              <li class="featured-item elementnav__item devices__item" tabindex="0" data-name="Xiaomi Mi Air Purifier 2S" data-type="device" data-state="Включено" data-type-device="sun" data-place="kitchen">
+                <div class="weather">
+                  <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun2"></span></p>
+                </div>
+                <div>
+                  <p class="featured-item__name">Xiaomi Mi Air Purifier 2S</p>
+                  <p class="featured-item__state">Включено</p>
+                </div>
+              </li>
+              <li class="featured-item elementnav__item devices__item" tabindex="0" data-name="Philips Zhirui" data-type="device" data-state="Выключено" data-type-device="sun" data-place="hall">
+                <div class="weather">
+                  <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun"></span></p>
+                </div>
+                <div>
+                  <p class="featured-item__name">Philips Zhirui</p>
+                  <p class="featured-item__state">Выключено</p>
+                </div>
+              </li>
+              <li class="featured-item elementnav__item devices__item" tabindex="0" data-name="Xiaomi Mi Air Purifier 2S" data-type="device" data-state="Включено" data-type-device="sun" data-place="kitchen">
+                <div class="weather">
+                  <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun2"></span></p>
+                </div>
+                <div>
+                  <p class="featured-item__name">Xiaomi Mi Air Purifier 2S</p>
+                  <p class="featured-item__state">Включено</p>
+                </div>
+              </li>
+              <li class="featured-item elementnav__item devices__item" tabindex="0" data-name="Xiaomi Warm Floor" data-type="device" data-state="Выключено" data-type-device="floor" data-place="hall">
+                <div class="weather">
+                  <p class="weather__info weather__info--only-icon featured-item__weather"><span class="weather__icon weather__icon--only-icon weather__icon--sun"></span></p>
+                </div>
+                <div>
+                  <p class="featured-item__name">Xiaomi Warm Floor</p>
+                  <p class="featured-item__state">Выключено</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <footer class="footer page__footer">
+        <nav class="footer__nav">
+          <ul class="footer__menu-list">
+            <li class="footer__menu-item"><a href="#">Помощь</a></li>
+            <li class="footer__menu-item"><a href="#">Обратная связь</a></li>
+            <li class="footer__menu-item"><a href="#">Разработчикам</a></li>
+            <li class="footer__menu-item"><a href="#">Условия использования</a></li>
+          </ul>
+        </nav>
+        <p class="footer__copyright">© 2001–2017  ООО «Яндекс»            </p>
+      </footer>
+    </div>
+    <div class="modal page__modal" id="modal"></div>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
