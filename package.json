@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/lancelap/entrance-task-2-2/issues"
   },
-  "homepage": "https://github.com/lancelap/entrance-task-2-2#readme",
+  "homepage": "https://github.com/lancelap/entrance-task-2-2",
   "devDependencies": {
     "autoprefixer": "^9.3.1",
     "browser-sync": "^2.26.3",
