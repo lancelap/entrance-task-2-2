@@ -5,19 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
-    "start": "gulp default",
-    "deploy": "gulp deploy"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lancelap/entrance-task-2-2.git"
-  },
-  "author": "Daniil Potapov",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lancelap/entrance-task-2-2/issues"
+    "start": "gulp default"
   },
   "homepage": "https://github.com/lancelap/entrance-task-2-2",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.3.1",
     "browser-sync": "^2.26.3",
