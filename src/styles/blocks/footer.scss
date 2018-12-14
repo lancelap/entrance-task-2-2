@@ -6,15 +6,15 @@
   .footer {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
+    padding-top: 10px;
+    padding-right: 40px;
+    padding-bottom: 24px;
+    padding-left: 34px;
+    box-sizing: border-box;
     font-size: 12px;
     line-height: 14px;
     color: #858585;
     background-color: #ffffff;
-  }
-
-  .footer__nav {
-    margin-left: 34px;
   }
 
   .footer__menu-list {
@@ -27,7 +27,7 @@
 
   .footer__menu-item a {
     display: block;
-    padding: 6px 6px 20px 6px;
+    padding: 6px 6px 6px 6px;
     font-weight: 500;
     color: #858585;
     text-decoration: none;
@@ -40,7 +40,6 @@
 
   .footer__copyright {
     margin: 0;
-    margin-right: 40px;
     padding-top: 6px;
   }
 }

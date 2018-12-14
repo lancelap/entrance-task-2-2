@@ -29,127 +29,128 @@ html(lang="ru")
 
   body.page
     .page__content
-      header.header.page__header
-        a.header__logo(href="#")
+      .page__main
+        header.header.page__header
+          a.header__logo(href="#")
 
-        .header__nav
-          nav.main-nav.nav
-            ul.nav__list
-              li.main-nav__item.main-nav__item--active
-                a(href="#") Сводка
-              li.main-nav__item
-                a(href="#") Устройства
-              li.main-nav__item
-                a(href="#") Сценарии
-                
-            .header__nav-toggle
-              button.main-nav__burger.nav__toggle
-                span.visuallyhidden Окрыть меню
+          .header__nav
+            nav.main-nav.nav
+              ul.nav__list
+                li.main-nav__item.main-nav__item--active
+                  a(href="#") Сводка
+                li.main-nav__item
+                  a(href="#") Устройства
+                li.main-nav__item
+                  a(href="#") Сценарии
+                  
+              .header__nav-toggle
+                button.main-nav__burger.nav__toggle
+                  span.visuallyhidden Окрыть меню
+          
+        .page__row
+          
+          section.content.general.page__general
+            h1.content__headline.general__headline Главное
+            .general__content
+              .general__info
+                .general__line
+                  h2.content__headline.general__greeting
+                    | Привет, Геннадий!
+      
+                p.general__condition.general__line 
+                  | Двери и окна закрыты, сигнализация включена.
+      
+                .general__weather.general__line
+                  .general__weather-item.weather
+                    p.weather__place Дома
+                    p.weather__info +23
+      
+                  .general__weather-item.weather
+                    p.weather__place За окном
+                    p.weather__info.weather__info--with-icon +19
+                      span.weather__icon.weather__icon--cloud-drizzle
+              
+              .elementnav.general__elementnav
+                .elementnav__wrapper
+                  ul.elementnav__list.general__list#featured-scripts  
+                    each item, index in arrNextScripts
+                      -var itemModClass = index === 2 ? ' elementnav__item--with-arrow' : '';
+                      li(class='featured-item elementnav__item general__item' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+                        +item-list(item)
         
-      .page__row
-        
-        section.content.general.page__general
-          h1.content__headline.general__headline Главное
-          .general__content
-            .general__info
-              .general__line
-                h2.content__headline.general__greeting
-                  | Привет, Геннадий!
-    
-              p.general__condition.general__line 
-                | Двери и окна закрыты, сигнализация включена.
-    
-              .general__weather.general__line
-                .general__weather-item.weather
-                  p.weather__place Дома
-                  p.weather__info +23
-    
-                .general__weather-item.weather
-                  p.weather__place За окном
-                  p.weather__info.weather__info--with-icon +19
-                    span.weather__icon.weather__icon--cloud-drizzle
+          
+          section.content.scripts.page__scripts
+            .content__head 
+              .content__line.scripts__line
+                  h1.content__headline Избранные сценарии
+
+              nav.arrows-nav.content__arrows-nav#nav-featured-scripts
+                button.arrows-nav__arrow.arrows-nav__arrow--left
+                  span.visuallyhidden Назад
+                button.arrows-nav__arrow.arrows-nav__arrow--right
+                  span.visuallyhidden Вперед
             
-            .elementnav.general__elementnav
-              .elementnav__wrapper
-                ul.elementnav__list.general__list#featured-scripts  
-                  each item, index in arrNextScripts
-                    -var itemModClass = index === 2 ? ' elementnav__item--with-arrow' : '';
-                    li(class='featured-item elementnav__item general__item' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
-                      +item-list(item)
+            .elementnav.scripts__elementnav
+              .elementnav__wrapper.scripts__slider
+                block scripts
+                  -var listCount = 0
+                  -listCount = Math.ceil(arrScripts.length / 9)
+                  -var indexList = 0
+      
+                  while listCount !== 0
+                    -listCount-- 
+                    -indexList += 9
+                    -index = indexList-9
+      
+                    ul.elementnav__list.scripts__list 
+                      while index < indexList
+                        if (arrScripts[index])
+                          li(class="featured-item elementnav__item scripts__item" tabindex="0")
+                            +item-list(arrScripts[index])
+                        -index++
       
         
-        section.content.scripts.page__scripts
+        section.content.devices.page__devices
           .content__head 
-            .content__line.scripts__line
-                h1.content__headline Избранные сценарии
+            .content__line.devices__line
+              
+              .devices__headline
+                h1.content__headline Избранные устройства 
+              
+              .devices__nav
+                nav.featured-nav.nav
+                  .nav__toggle.devices__toggle
+                    button.button.button--active.featured-nav__button Все
+                      span.featured-nav__arrow
+      
+                  ul.nav__list.featured-nav__list
+                    li.featured-nav__item(data-filter-place="none")
+                      button.button.button--active Все
+                    li.featured-nav__item(data-filter-place=""+KITCHEN)
+                      button.button Кухня
+                    li.featured-nav__item(data-filter-place=""+HALL)
+                      button.button Зал
+                    li.featured-nav__item(data-filter-type=""+SUN)
+                      button.button Лампочки
+                    li.featured-nav__item(data-filter-type="cameras")
+                      button.button Камеры
 
-            nav.arrows-nav.content__arrows-nav#nav-featured-scripts
+                  
+            nav.arrows-nav.content__arrows-nav#nav-featured-devices
               button.arrows-nav__arrow.arrows-nav__arrow--left
                 span.visuallyhidden Назад
-              button.arrows-nav__arrow.arrows-nav__arrow--right
+              button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active
                 span.visuallyhidden Вперед
-          
-          .elementnav.scripts__elementnav
-            .elementnav__wrapper.scripts__slider
-              block scripts
-                -var listCount = 0
-                -listCount = Math.ceil(arrScripts.length / 9)
-                -var indexList = 0
-    
-                while listCount !== 0
-                  -listCount-- 
-                  -indexList += 9
-                  -index = indexList-9
-    
-                  ul.elementnav__list.scripts__list 
-                    while index < indexList
-                      if (arrScripts[index])
-                        li(class="featured-item elementnav__item scripts__item" tabindex="0")
-                          +item-list(arrScripts[index])
-                      -index++
-    
-      
-      section.content.devices.page__devices
-        .content__head 
-          .content__line.devices__line
-            
-            .devices__headline
-              h1.content__headline Избранные устройства 
-            
-            .devices__nav
-              nav.featured-nav.nav
-                .nav__toggle.devices__toggle
-                  button.button.button--active.featured-nav__button Все
-                    span.featured-nav__arrow
-    
-                ul.nav__list.featured-nav__list
-                  li.featured-nav__item(data-filter-place="none")
-                    button.button.button--active Все
-                  li.featured-nav__item(data-filter-place=""+KITCHEN)
-                    button.button Кухня
-                  li.featured-nav__item(data-filter-place=""+HALL)
-                    button.button Зал
-                  li.featured-nav__item(data-filter-type=""+SUN)
-                    button.button Лампочки
-                  li.featured-nav__item(data-filter-type="cameras")
-                    button.button Камеры
 
-                
-          nav.arrows-nav.content__arrows-nav#nav-featured-devices
-            button.arrows-nav__arrow.arrows-nav__arrow--left
-              span.visuallyhidden Назад
-            button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active
-              span.visuallyhidden Вперед
-
-        .elementnav.devices__elementnav
-          .elementnav__wrapper
-            ul.elementnav__list.devices__list#devices
-              each item in arrDevices
-                li.featured-item.elementnav__item.devices__item(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
-                  +item-list(item)
+          .elementnav.devices__elementnav
+            .elementnav__wrapper
+              ul.elementnav__list.devices__list#devices
+                each item in arrDevices
+                  li.featured-item.elementnav__item.devices__item(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+                    +item-list(item)
 
       footer.footer.page__footer
-        nav.footer__nav
+        nav
           ul.footer__menu-list
             li.footer__menu-item
               a(href="#") Помощь

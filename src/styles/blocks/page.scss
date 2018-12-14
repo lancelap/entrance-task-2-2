@@ -60,8 +60,18 @@
 }
 
 @media #{$desktop-width} {
+  .page__content{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page__main {
+    flex: 1;
+  }
+
   .page__footer {
-    position: fixed;
+    position: sticky;
     bottom: 0;
     width: 100%;
     z-index: 1000;
@@ -71,10 +81,6 @@
   .page__scripts,
   .page__devices {
     margin: 0;
-  }
-
-  .page__devices {
-    padding-bottom: 60px;
   }
 
   .page__row {
