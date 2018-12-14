@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build",
-    "start": "gulp default"
+    "build": "NODE_ENV=production gulp build",
+    "start": "NODE_ENV=development gulp default"
   },
   "homepage": "https://github.com/lancelap/entrance-task-2-2",
   "keywords": [],
@@ -16,6 +16,7 @@
     "browser-sync": "^2.26.3",
     "css-mqpacker": "^7.0.0",
     "del": "^3.0.0",
+    "eslint": "^5.10.0",
     "gulp": "^4.0.0",
     "gulp-csso": "^3.0.1",
     "gulp-gh-pages": "^0.5.4",
@@ -27,9 +28,11 @@
     "gulp-sass": "^4.0.2",
     "gulp-svgmin": "^2.1.0",
     "gulp-svgstore": "^7.0.0",
+    "gulplog": "^1.0.0",
     "node-sass": "^4.10.0",
     "stylelint": "^9.8.0",
     "stylelint-order": "^2.0.0",
-    "stylelint-scss": "^3.4.0"
+    "stylelint-scss": "^3.4.0",
+    "webpack": "^4.27.1"
   }
 }

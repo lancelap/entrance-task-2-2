@@ -14,8 +14,12 @@ const pug = require('gulp-pug');
 const del = require('del');
 const path = require('path');
 const ghPages = require('gulp-gh-pages');
+const webpack = require('webpack');
+const gulplog = require('gulplog');
 
 sass.compiler = require('node-sass');
+
+const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
 const bases = {
   src: 'src/',
@@ -55,8 +59,7 @@ gulp.task('views', function() {
         pretty: true
       })
     )
-    .pipe(gulp.dest(bases.build))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(gulp.dest(bases.build));
 });
 
 gulp.task('style', function() {
@@ -90,8 +93,7 @@ gulp.task('style', function() {
     .pipe(gulp.dest(bases.build + 'css'))
     .pipe(minify())
     .pipe(rename('style.min.css'))
-    .pipe(gulp.dest(bases.build + 'css'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(gulp.dest(bases.build + 'css'));
 });
 
 gulp.task('images', function() {
@@ -103,31 +105,68 @@ gulp.task('images', function() {
         imagemin.optipng({ optimizationLevel: 3 }),
         imagemin.jpegtran({ progressive: true })
       ])
-    )
-    .pipe(browserSync.reload({ stream: true }));
+    );
 });
 
 gulp.task('symbols', function() {
   return gulp.src(bases.src + 'img/icons/**/*.svg')
     .pipe(svgmin(function (file) {
       const prefix = path.basename(file.relative, path.extname(file.relative));
-        return {
-          plugins: [{
-            cleanupIDs: {
-              prefix: prefix + '-',
-              minify: true
-            }
-          }, {
-            removeDoctype: true
-          }, {
-            removeComments: true
-          }]
-        }
-      }))
+      return {
+        plugins: [{
+          cleanupIDs: {
+            prefix: prefix + '-',
+            minify: true
+          }
+        }, {
+          removeDoctype: true
+        }, {
+          removeComments: true
+        }]
+      };
+    }))
     .pipe(svgstore({ inlineSvg: true }))
     .pipe(rename('symbols.svg'))
-    .pipe(gulp.dest(bases.build + 'img'))
-    .pipe(browserSync.reload({stream: true}))
+    .pipe(gulp.dest(bases.build + 'img'));
+});
+
+gulp.task('webpack', function(callback) {
+
+  let options = {
+    entry: './src/js/main.js',
+    output: {
+      filename: 'main.js',
+      path: path.resolve(__dirname, bases.build + 'js')
+    },
+    watch:   isDevelopment,
+    mode: isDevelopment ? 'development' : 'production'
+  };
+
+  webpack(options, (err, stats) => {
+    if (err) {
+      console.error(err.stack || err);
+      if (err.details) {
+        console.error(err.details);
+      }
+      return;
+    }
+  
+    const info = stats.toJson();
+  
+    if (stats.hasErrors()) {
+      console.error(info.errors);
+    }
+  
+    if (stats.hasWarnings()) {
+      console.warn(info.warnings);
+    }
+  
+    if (!options.watch && err) {
+      callback(err);
+    } else {
+      callback();
+    }
+  });
 });
 
 gulp.task('clean', () => {
@@ -139,9 +178,9 @@ gulp.task('watch', function() {
   gulp.watch(bases.src + 'views/**/*.pug', gulp.series('views'));
 });
 
-gulp.task('build', gulp.series('clean', 'copy', 'copy-js', 'style', 'views'));
+gulp.task('build', gulp.series('clean', 'copy', 'copy-js', gulp.parallel('style', 'views', 'webpack')));
 
-gulp.task('prod', gulp.series('clean', 'copy', 'copy-js', 'images', 'style', 'views'));
+gulp.task('prod', gulp.series('clean', 'copy', 'copy-js', 'images', gulp.parallel('style', 'views', 'webpack')));
 
 gulp.task('serve', function() {
   browserSync.init({
@@ -150,6 +189,8 @@ gulp.task('serve', function() {
     open: false,
     port: 8888
   });
+  
+  browserSync.watch('build/**/*.*').on('change', browserSync.reload);
 });
 
 gulp.task('deploy', function() {

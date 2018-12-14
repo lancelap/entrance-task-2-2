@@ -542,7 +542,7 @@ function addButtonListner(element, func) {
     func();
   })
 }
-
+console.log('asdasds')
 function throttle(func, ms) {
 
   let isThrottled = false, savedArgs, savedThis;
