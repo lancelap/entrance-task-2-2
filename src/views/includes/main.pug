@@ -34,7 +34,7 @@ html(lang="ru")
           a.header__logo(href="#")
 
           .header__nav
-            nav.main-nav.nav
+            nav.main-nav.nav(id="main-nav")
               ul.nav__list
                 li.main-nav__item.main-nav__item--active
                   a(href="#") Сводка
@@ -44,7 +44,7 @@ html(lang="ru")
                   a(href="#") Сценарии
                   
               .header__nav-toggle
-                button.main-nav__burger.nav__toggle
+                button.main-nav__burger.nav__toggle(id="main-nav-toggle")
                   span.visuallyhidden Окрыть меню
           
         .page__row
@@ -118,12 +118,12 @@ html(lang="ru")
                 h1.content__headline Избранные устройства 
               
               .devices__nav
-                nav.featured-nav.nav
+                nav.featured-nav.nav(id="featured-nav")
                   .nav__toggle.devices__toggle
-                    button.button.button--active.featured-nav__button Все
+                    button.button.button--active.featured-nav__button(id="devices__toggle") Все
                       span.featured-nav__arrow
       
-                  ul.nav__list.featured-nav__list
+                  ul.nav__list.featured-nav__list(id="featured-nav-list")
                     li.featured-nav__item(data-filter-place="none")
                       button.button.button--active Все
                     li.featured-nav__item(data-filter-place=""+KITCHEN)
