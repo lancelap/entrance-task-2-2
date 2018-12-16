@@ -15,7 +15,8 @@ const del = require('del');
 const path = require('path');
 const ghPages = require('gulp-gh-pages');
 const webpack = require('webpack');
-const gulplog = require('gulplog');
+const weblog = require('webpack-log');
+// const gulplog = require('gulplog');
 
 sass.compiler = require('node-sass');
 
@@ -150,15 +151,15 @@ gulp.task('webpack', function(callback) {
       }
       return;
     }
-  
-    const info = stats.toJson();
-  
+
     if (stats.hasErrors()) {
-      console.error(info.errors);
+      const logger = weblog({ name: 'error', level: 'error' });
+      logger.error(stats.toJson().errors[0]);
     }
   
     if (stats.hasWarnings()) {
-      console.warn(info.warnings);
+      const logger = weblog({ name: 'warning', level: 'warning' });
+      logger.warnings(stats.toJson().warnings[0]);
     }
   
     if (!options.watch && err) {
