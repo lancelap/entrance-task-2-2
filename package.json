@@ -28,11 +28,11 @@
     "gulp-sass": "^4.0.2",
     "gulp-svgmin": "^2.1.0",
     "gulp-svgstore": "^7.0.0",
-    "gulplog": "^1.0.0",
     "node-sass": "^4.10.0",
     "stylelint": "^9.8.0",
     "stylelint-order": "^2.0.0",
     "stylelint-scss": "^3.4.0",
-    "webpack": "^4.27.1"
+    "webpack": "^4.27.1",
+    "webpack-log": "^2.0.0"
   }
 }
