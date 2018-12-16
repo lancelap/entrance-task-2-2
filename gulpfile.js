@@ -158,8 +158,8 @@ gulp.task('webpack', function(callback) {
     }
   
     if (stats.hasWarnings()) {
-      const logger = weblog({ name: 'warning', level: 'warning' });
-      logger.warnings(stats.toJson().warnings[0]);
+      const logger = weblog({ name: 'warning', level: 'warn' });
+      logger.warn(stats.toJson().warnings[0]);
     }
   
     if (!options.watch && err) {
