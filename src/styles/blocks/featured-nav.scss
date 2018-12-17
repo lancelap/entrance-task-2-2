@@ -67,6 +67,14 @@
 }
 
 @media #{$desktop-width} {
+  .featured-nav--opened .featured-nav__list  {
+    display: flex;
+  }
+
+  .featured-nav__arrow {
+    display: none;
+  }
+
   .featured-nav__list {
     position: static;
     background-color: transparent;
