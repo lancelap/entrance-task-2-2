@@ -2,38 +2,28 @@ export default function Filter(options) {
   const { element, list } = options;
 
   element.addEventListener('click', event => {
-    filter(event);
-  });
-
-  function filter(event) {
     let target = event.target;
     event.preventDefault();
 
-    while (target != element) {
-      const filterPlace = target.getAttribute('data-filter-place');
-      const filterType = target.getAttribute('data-filter-type');
-      const filter = filterPlace !== null ? filterPlace : filterType;
+    const item = target.closest('li');
+    if (!item) return;
+    const filter = item.dataset.filterPlace || item.dataset.filterType;
+    if (!filter) return;
 
-      if (filter) {
-        for (let index = 0; index < list.childNodes.length; index++) {
-          const element = list.childNodes[index];
-          if (element.nodeType != 1) continue;
+    list.childNodes.forEach(child => {
+      if (child.nodeType != 1) return;
 
-          const placeDevice = element.getAttribute('data-place');
-          const typeDevice = element.getAttribute('data-type-device');
-          element.style = 'display:none';
+      const placeDevice = child.dataset.place;
+      const typeDevice = child.dataset.typeDevice;
+      child.style = 'display:none';
 
-          if (
-            placeDevice === filter ||
-            typeDevice === filter ||
-            filter === 'none'
-          ) {
-            element.style = '';
-          }
-        }
-        return;
+      if (
+        placeDevice === filter ||
+        typeDevice === filter ||
+        filter === 'none'
+      ) {
+        child.style = '';
       }
-      target = target.parentNode;
-    }
-  }
+    });
+  });
 }
