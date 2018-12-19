@@ -6,9 +6,12 @@
   position: absolute;
   top: 32px;
   right: 0;
+  margin: 0;
+  padding: 0;
   background-color: #f2f1f0;
   border-radius: 20px;
   color: #333333;
+  list-style: none;
 }
 
 .featured-nav__item .button {
@@ -38,10 +41,6 @@
   transform: rotate(90deg);
 }
 
-.featured-nav--opened .featured-nav__list  {
-  display: block;
-}
-
 .featured-nav--opened .featured-nav__arrow {
   transform: rotate(270deg);
   animation-name: featured-nav__arrow-down;
@@ -66,8 +65,19 @@
   100% {transform:rotate(90deg);} 
 }
 
+@media #{$mobile-width-only} {
+  .featured-nav__list {
+    display: none;
+  }
+
+  .featured-nav--opened .featured-nav__list {
+    display: block;
+  }
+}
+
+
 @media #{$desktop-width} {
-  .featured-nav--opened .featured-nav__list  {
+  .featured-nav__list  {
     display: flex;
   }
 

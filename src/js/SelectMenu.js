@@ -22,5 +22,7 @@ SelectMenu.prototype.select = function(event) {
     const buttonActive = document.querySelector('li > .button--active');
     buttonActive.classList.remove('button--active');
     targetButton.classList.add('button--active');
+
+    this.toggle();
   }
 };

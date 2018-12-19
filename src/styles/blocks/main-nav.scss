@@ -1,3 +1,10 @@
+.main-nav {
+  
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .main-nav__item {
   display: block;
   background-color: #ffffff;
@@ -15,22 +22,12 @@
   text-decoration: none;
 }
 
-.main-nav__burger {
-  width: 26px;
-  height: 24px;
-  padding: 0;
-  @include bg('icon_list_m');
-  background-size: 16px 14px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-
 @media #{$desktop-width} {
+  .main-nav {
+    display: flex;
+    flex-direction: row;
+  }
+
   .main-nav__item  {
     margin-right: 28px;
     background-color: transparent;

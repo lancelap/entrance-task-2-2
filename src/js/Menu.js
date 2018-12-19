@@ -1,8 +1,9 @@
-export default function Menu({ nav, classNameNav }) {
+export default function Menu({ nav, toggleButton, classNameNav }) {
   this.nav = nav;
+  this.toggleButton = toggleButton;
   this.classNameNav = classNameNav;
   
-  this.nav.addEventListener('click', () => {
+  this.toggleButton.addEventListener('click', () => {
     this.toggle();
   });
 }

@@ -33,20 +33,19 @@ html(lang="ru")
         header.header.page__header
           a.header__logo(href="#")
 
-          .header__nav
-            nav.main-nav.nav(id="main-nav")
-              ul.nav__list
+          nav.header__nav(id="main-nav")
+            .nav.header__list-menu
+              ul.main-nav.nav__list
                 li.main-nav__item.main-nav__item--active
                   a(href="#") Сводка
                 li.main-nav__item
                   a(href="#") Устройства
                 li.main-nav__item
                   a(href="#") Сценарии
-                  
-              .header__nav-toggle
-                button.main-nav__burger.nav__toggle(id="main-nav-toggle")
-                  span.visuallyhidden Окрыть меню
-          
+
+            button.header__burger(id="main-nav-toggle")
+              span.visuallyhidden Окрыть меню
+            
         .page__row
           
           section.content.general.page__general
@@ -77,14 +76,13 @@ html(lang="ru")
                       -var itemModClass = index === 2 ? ' elementnav__item--with-arrow' : '';
                       li(class='featured-item elementnav__item general__item' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
                         +item-list(item)
-        
           
           section.content.scripts.page__scripts
             .content__head 
               .content__line.scripts__line
                   h1.content__headline Избранные сценарии
 
-              nav.arrows-nav.content__arrows-nav#nav-featured-scripts
+              .arrows-nav.content__arrows-nav#nav-featured-scripts
                 button.arrows-nav__arrow.arrows-nav__arrow--left(data-action="prev")
                   span.visuallyhidden Назад
                 button.arrows-nav__arrow.arrows-nav__arrow--right(data-action="next")
@@ -108,7 +106,6 @@ html(lang="ru")
                           li(class="featured-item elementnav__item scripts__item" tabindex="0")
                             +item-list(arrScripts[index])
                         -index++
-      
         
         section.content.devices.page__devices
           .content__head 
@@ -118,12 +115,12 @@ html(lang="ru")
                 h1.content__headline Избранные устройства 
               
               .devices__nav
-                nav.featured-nav.nav(id="featured-nav")
-                  .nav__toggle.devices__toggle
+                .featured-nav(id="featured-nav")
+                  .devices__toggle
                     button.button.button--active.featured-nav__button(id="devices__toggle") Все
                   span.featured-nav__arrow
       
-                  ul.nav__list.featured-nav__list(id="featured-nav-list")
+                  ul.featured-nav__list(id="featured-nav-list")
                     li.featured-nav__item(data-filter-place="none")
                       button.button.button--active Все
                     li.featured-nav__item(data-filter-place=""+KITCHEN)
@@ -134,9 +131,8 @@ html(lang="ru")
                       button.button Лампочки
                     li.featured-nav__item(data-filter-type="cameras")
                       button.button Камеры
-
                   
-            nav.arrows-nav.content__arrows-nav#nav-featured-devices
+            .arrows-nav.content__arrows-nav#nav-featured-devices
               button.arrows-nav__arrow.arrows-nav__arrow--left(data-action="prev")
                 span.visuallyhidden Назад
               button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active(data-action="next")

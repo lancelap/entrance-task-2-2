@@ -8,7 +8,12 @@ import addControllerListener from './addControllerListener';
 import addTermometrListеner from './addTermometrListеner';
 
 const mainNav = document.getElementById('main-nav');
-const mainMenu = new Menu({ nav: mainNav, classNameNav: 'nav' });
+const mainNavToggle = document.getElementById('main-nav-toggle');
+const mainMenu = new Menu({
+  nav: mainNav,
+  toggleButton: mainNavToggle,
+  classNameNav: 'header__nav'
+});
 
 const featuredNav = document.getElementById('featured-nav');
 const featuredNavToggle = document.getElementById('devices__toggle');
@@ -46,7 +51,7 @@ const navDevices = document.getElementById('nav-featured-devices');
 const devicessGallery = new Gallery({
   list: devicess,
   controls: navDevices,
-  width: 460  
+  width: 460
 });
 
 modal();
