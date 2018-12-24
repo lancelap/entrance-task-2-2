@@ -38,7 +38,7 @@ const filterNav = document.getElementById('featured-nav-list');
 const devicesList = document.getElementById('devices');
 const filter = new Filter({ element: filterNav, list: devicesList });
 
-const scripts = document.querySelector('.scripts__slider');
+const scripts = document.getElementById('scripts');
 const navScripts = document.getElementById('nav-featured-scripts');
 const scriptsGallery = new Gallery({
   list: scripts,

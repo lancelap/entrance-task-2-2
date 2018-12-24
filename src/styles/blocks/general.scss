@@ -38,42 +38,10 @@
   padding-left: 20px;
 }
 
-.general__item {
-  margin-left: 20px;
-}
-
 @media #{$desktop-width} {
   .general {
     display: flex;
     padding: 0;
-  }
-
-  .general__elementnav {
-    width: 200px;
-    height: 310px;
-    padding-top: 0;
-    padding-right: 30px;
-    padding-bottom: 20px;
-  }
-
-  .general__list {
-    flex-flow: column nowrap;
-    width: 200px;
-    height: 100%;
-    padding-top: 20px;
-    padding-right: 50px;
-    padding-bottom: 0;
-    padding-left: 10px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-
-  .general__item {
-    flex-basis: auto;
-    margin: 0;
-    margin-bottom: 15px;
-    margin-left: 0;
-    width: 170px;
   }
 
   .general__greeting {

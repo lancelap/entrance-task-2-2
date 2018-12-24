@@ -14,7 +14,7 @@ export default function featuredScripts() {
 }
 
 function addfeaturedScriptsListener(scripts) {
-  const items = scripts.querySelectorAll('.general__item');
+  const items = scripts.querySelectorAll('.elementnav__item');
 
   if (window.innerWidth < 1364) {
     return;

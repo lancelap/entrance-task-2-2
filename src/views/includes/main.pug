@@ -69,12 +69,12 @@ html(lang="ru")
                         p.weather__info.weather__info--with-icon +19
                           span.weather__icon.weather__icon--cloud-drizzle
                 
-                .elementnav.general__elementnav
+                .elementnav.elementnav--general
                   .elementnav__wrapper
-                    ul.elementnav__list.general__list#featured-scripts  
+                    ul.elementnav__list.elementnav__list--general(id="featured-scripts") 
                       each item, index in arrNextScripts
                         -var itemModClass = index === 2 ? ' elementnav__item--with-arrow' : '';
-                        li(class='featured-item elementnav__item general__item' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+                        li(class='featured-item elementnav__item elementnav__item--general' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
                           +item-list(item)
 
           section.content.page__scripts
@@ -89,23 +89,24 @@ html(lang="ru")
                     span.visuallyhidden Вперед
               
             .elementnav.content__scripts-elementnav
-              .elementnav__wrapper.scripts__slider
-                block scripts
-                  -var listCount = 0
-                  -listCount = Math.ceil(arrScripts.length / 9)
-                  -var indexList = 0
-      
-                  while listCount !== 0
-                    -listCount-- 
-                    -indexList += 9
-                    -index = indexList-9
-      
-                    ul.elementnav__list.scripts__list 
-                      while index < indexList
-                        if (arrScripts[index])
-                          li(class="featured-item elementnav__item scripts__item" tabindex="0")
-                            +item-list(arrScripts[index])
-                        -index++
+              .elementnav__wrapper
+                .elementnav__slider#scripts
+                  block scripts
+                    -var listCount = 0
+                    -listCount = Math.ceil(arrScripts.length / 9)
+                    -var indexList = 0
+        
+                    while listCount !== 0
+                      -listCount-- 
+                      -indexList += 9
+                      -index = indexList-9
+        
+                      ul.elementnav__list.elementnav__list--scripts
+                        while index < indexList
+                          if (arrScripts[index])
+                            li(class="featured-item elementnav__item elementnav__item--scripts" tabindex="0")
+                              +item-list(arrScripts[index])
+                          -index++
         
         section.content.page__devices
           .content__line.content__line--devices
@@ -136,7 +137,7 @@ html(lang="ru")
 
           .elementnav.content__devices-elementnav
             .elementnav__wrapper
-              ul.elementnav__list.devices__list#devices
+              ul.elementnav__list.elementnav__list--devices#devices
                 each item in arrDevices
                   li.featured-item.elementnav__item.devices__item(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
                     +item-list(item)
