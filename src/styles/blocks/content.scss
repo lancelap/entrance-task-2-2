@@ -1,8 +1,15 @@
-.content__head {
+
+.content__nav {
   position: relative;
+  width: 70px;
+  height: 30px;
+  z-index: 1000;
 }
 
 .content__headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
   
   &--general {
@@ -23,6 +30,17 @@
 }
 
 @media #{$desktop-width} {
+  .content__headline {
+    justify-content: flex-start;
+    align-content: center;
+  }
+
+  .content__nav {
+    width: auto;
+    height: auto;
+    margin-left: 13px;
+  }
+  
   .content__line {
     padding: 0;
 
@@ -50,15 +68,6 @@
   }
   
   .content__arrows-nav {
-    position: absolute;
-    display: block;
-    bottom: -5px;
-    right: 35px;
-  }
-
-  .content__headline {
-    &--general {
-      display: block;
-    }
+    margin-left: auto;
   }
 }

@@ -77,6 +77,10 @@
 
 
 @media #{$desktop-width} {
+  .featured-nav__button {
+    display: none;
+  }
+
   .featured-nav__list  {
     display: flex;
   }

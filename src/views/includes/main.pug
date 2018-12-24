@@ -79,8 +79,8 @@ html(lang="ru")
 
           section.content.page__scripts
             .content__line.content__line--scripts
-              .content__head
-                h1.headline.content__headline Избранные сценарии
+              .content__headline
+                h1.headline Избранные сценарии
 
                 .arrows-nav.content__arrows-nav#nav-featured-scripts
                   button.arrows-nav__arrow.arrows-nav__arrow--left(data-action="prev")
@@ -108,14 +108,10 @@ html(lang="ru")
                         -index++
         
         section.content.page__devices
-          
-          .content__head.content__headline
-            .content__line.devices__line
-              .devices__headline
-                  h1.headline Избранные устройства 
-              
-              .devices__nav
-                .featured-nav(id="featured-nav")
+          .content__line.content__line--devices
+            .content__headline
+              h1.headline Избранные устройства
+              .featured-nav.content__nav(id="featured-nav")
                   .devices__toggle
                     button.button.button--active.featured-nav__button(id="devices__toggle") Все
                   span.featured-nav__arrow
@@ -132,11 +128,11 @@ html(lang="ru")
                     li.featured-nav__item(data-filter-type="cameras")
                       button.button Камеры
                   
-            .arrows-nav.content__arrows-nav#nav-featured-devices
-              button.arrows-nav__arrow.arrows-nav__arrow--left(data-action="prev")
-                span.visuallyhidden Назад
-              button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active(data-action="next")
-                span.visuallyhidden Вперед
+              .arrows-nav.content__arrows-nav#nav-featured-devices
+                button.arrows-nav__arrow.arrows-nav__arrow--left(data-action="prev")
+                  span.visuallyhidden Назад
+                button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active(data-action="next")
+                  span.visuallyhidden Вперед
 
           .elementnav.content__devices-elementnav
             .elementnav__wrapper

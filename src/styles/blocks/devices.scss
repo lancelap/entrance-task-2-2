@@ -1,14 +1,3 @@
-.devices {
-  position: relative;
-}
-
-.devices__nav {
-  position: absolute;
-  z-index: 100;
-  top: -6px;
-  right: 20px;
-  width: 70px;
-}
 
 .devices__headline {
   margin-right: 70px;
@@ -26,27 +15,6 @@
     margin-right: 40px;
     margin-left: 40px;
   }
-
-  .devices__toggle {
-    display: none;
-  }
-
-  .devices__nav {
-    position: static;
-    width: auto;
-  }
-
-  .device__arrows {
-    position: relative;
-    top: 5px;
-    left: 5px;
-    margin-left: auto;
-  }
-
-  .devices__headline {
-    margin: 0;
-    margin-right: 13px;
-  }  
 
 
   .devices__list {
