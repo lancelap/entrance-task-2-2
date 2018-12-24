@@ -1,4 +1,4 @@
-.general__content {
+.general {
   padding-top: 22px;
   padding-bottom: 20px;
   color: #000000;
@@ -11,10 +11,6 @@
   @media #{$retina} {
     background-image: url('../img/bg@2x.png');
   }
-}
-
-.general__headline {
-  display: none;
 }
 
 .general__greeting {
@@ -47,7 +43,7 @@
 }
 
 @media #{$desktop-width} {
-  .general__content {
+  .general {
     display: flex;
     padding: 0;
   }
@@ -103,10 +99,5 @@
 
   .general__weather-item {
     margin-right: 20px;
-  }
-
-  .general__headline {
-    margin-bottom: 18px;
-    display: block;
   }
 }

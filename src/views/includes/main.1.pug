@@ -46,28 +46,28 @@ html(lang="ru")
             button.header__burger(id="main-nav-toggle")
               span.visuallyhidden Окрыть меню
             
-        .page__row
-          section.content.page__general
-            .content__line.content__line--general 
+        .content
+          .content__row
+            section.content__general
               h1.headline.content__headline.content__headline--general Главное
               .general
                 .general__info
                   .general__line
                     h2.headline.general__greeting
                       | Привет, Геннадий!
-
-                    p.general__condition
-                      | Двери и окна закрыты, сигнализация включена.
-
-                    .general__weather
-                      .general__weather-item.weather
-                        p.weather__place Дома
-                        p.weather__info +23
         
-                      .general__weather-item.weather
-                        p.weather__place За окном
-                        p.weather__info.weather__info--with-icon +19
-                          span.weather__icon.weather__icon--cloud-drizzle
+                  p.general__condition.general__line 
+                    | Двери и окна закрыты, сигнализация включена.
+        
+                  .general__weather.general__line
+                    .general__weather-item.weather
+                      p.weather__place Дома
+                      p.weather__info +23
+        
+                    .general__weather-item.weather
+                      p.weather__place За окном
+                      p.weather__info.weather__info--with-icon +19
+                        span.weather__icon.weather__icon--cloud-drizzle
                 
                 .elementnav.general__elementnav
                   .elementnav__wrapper
@@ -76,11 +76,11 @@ html(lang="ru")
                         -var itemModClass = index === 2 ? ' elementnav__item--with-arrow' : '';
                         li(class='featured-item elementnav__item general__item' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
                           +item-list(item)
-
-          section.content.page__scripts
-            .content__line.content__line--scripts
-              .content__head
-                h1.headline.content__headline Избранные сценарии
+            
+            section.scripts.page__scripts
+              .content__head 
+                .content__line.scripts__line
+                    h1.headline.content__headline Избранные сценарии
 
                 .arrows-nav.content__arrows-nav#nav-featured-scripts
                   button.arrows-nav__arrow.arrows-nav__arrow--left(data-action="prev")
@@ -88,7 +88,7 @@ html(lang="ru")
                   button.arrows-nav__arrow.arrows-nav__arrow--right(data-action="next")
                     span.visuallyhidden Вперед
               
-            .elementnav.content__scripts-elementnav
+              .elementnav.scripts__elementnav
               .elementnav__wrapper.scripts__slider
                 block scripts
                   -var listCount = 0
@@ -107,10 +107,10 @@ html(lang="ru")
                             +item-list(arrScripts[index])
                         -index++
         
-        section.content.page__devices
-          
-          .content__head.content__headline
+        section.content.devices.page__devices
+          .content__head.content__headline 
             .content__line.devices__line
+              
               .devices__headline
                   h1.headline Избранные устройства 
               
@@ -138,7 +138,7 @@ html(lang="ru")
               button.arrows-nav__arrow.arrows-nav__arrow--right.arrows-nav__arrow--active(data-action="next")
                 span.visuallyhidden Вперед
 
-          .elementnav.content__devices-elementnav
+          .elementnav.devices__elementnav
             .elementnav__wrapper
               ul.elementnav__list.devices__list#devices
                 each item in arrDevices

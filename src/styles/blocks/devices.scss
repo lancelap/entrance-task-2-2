@@ -19,10 +19,6 @@
 }
 
 @media #{$desktop-width} {
-  .devices__elementnav {
-    height: 126px;
-  }
-  
   .devices__line {
     display: flex;
     align-items: center;
