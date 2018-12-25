@@ -42,16 +42,14 @@ const scripts = document.getElementById('scripts');
 const navScripts = document.getElementById('nav-featured-scripts');
 const scriptsGallery = new Gallery({
   list: scripts,
-  controls: navScripts,
-  width: 685
+  controls: navScripts
 });
 
 const devicess = document.getElementById('devices');
 const navDevices = document.getElementById('nav-featured-devices');
 const devicessGallery = new Gallery({
   list: devicess,
-  controls: navDevices,
-  width: 460
+  controls: navDevices
 });
 
 modal();

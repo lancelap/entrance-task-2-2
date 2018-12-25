@@ -5,7 +5,6 @@ import animate from './utils/animate';
 export default function Gallery({ list, controls, width }) {
   this.list = list;
   this.controls = controls;
-  this.width = width;
   this.quadEaseOut = makeEaseOut(timeFraction => Math.pow(timeFraction, 2));
 
   this.controls.addEventListener('click', event => {
@@ -24,14 +23,20 @@ export default function Gallery({ list, controls, width }) {
 Gallery.prototype.check = function() {
   const prev = this.controls.querySelector('.arrows-nav__arrow--left');
   const next = this.controls.querySelector('.arrows-nav__arrow--right');
-  
-  if (this.list.scrollLeft === 0) {
+  const scrollLeft = this.list.scrollLeft;
+  const scrollWidth = this.list.scrollWidth;
+  const clientWidth = this.list.clientWidth;
+
+  if (scrollLeft === 0) {
     disable(prev);
   } else {
     enable(prev);
   }
 
-  if (this.list.scrollLeft + this.list.clientWidth >= this.list.scrollWidth) {
+  if (
+    scrollLeft + clientWidth >= scrollWidth ||
+    scrollWidth - scrollLeft < this.list.firstElementChild.clientWidth * 2
+  ) {
     disable(next);
   } else {
     enable(next);
@@ -41,35 +46,40 @@ Gallery.prototype.check = function() {
     arrow.setAttribute('disabled', 'disabled');
     arrow.setAttribute('tabindex', '-1');
     arrow.classList.remove('arrows-nav__arrow--active');
-  };
+  }
 
   function enable(arrow) {
     arrow.removeAttribute('disabled');
     arrow.setAttribute('tabindex', '0');
     arrow.classList.add('arrows-nav__arrow--active');
-  };
+  }
 };
 
 Gallery.prototype.next = function() {
-  const start = this.list.scrollLeft;
-
-  animate({
-    duration: 300,
-    timing: this.quadEaseOut,
-    draw: progress => {
-      this.list.scrollLeft = start + progress * this.width;
-    }
-  });
+  this.switch('NEXT');
 };
 
 Gallery.prototype.prev = function() {
+  this.switch('PREV');
+};
+
+Gallery.prototype.switch = function(action) {
   const start = this.list.scrollLeft;
+  const width = this.list.scrollWidth / this.list.children.length;
 
   animate({
     duration: 300,
     timing: this.quadEaseOut,
     draw: progress => {
-      this.list.scrollLeft = start - progress * this.width;
+      switch (action) {
+      case 'NEXT':
+        this.list.scrollLeft = start + progress * width;
+        break;
+
+      case 'PREV':
+        this.list.scrollLeft = start - progress * width;
+        break;
+      }
     }
   });
 };
