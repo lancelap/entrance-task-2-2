@@ -181,7 +181,7 @@ export default function modal() {
 
     items.forEach((item, index) => {
       const li = document.createElement('li');
-      li.classList.add('elementnav__item', 'controller__places-item');
+      li.classList.add('elementnav__item', 'elementnav__item--controller', 'controller__places-item');
       const button = document.createElement('button');
       button.classList.add('button');
 

@@ -48,8 +48,12 @@
 .elementnav__item {
   flex: 0 0 auto;
   width: 170px;
-  min-height: 70px;
+  height: 70px;
   margin-left: 15px;
+
+  &--controller {
+    width: auto;
+  }
 
   &--general {
     min-height: 90px;
