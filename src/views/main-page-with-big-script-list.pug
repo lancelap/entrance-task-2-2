@@ -8,9 +8,9 @@ block scripts
     -listCount-- 
     -indexList += 9
     -index = indexList-9
-    ul.elementnav__list.scripts__list 
+    ul.elementnav__list.elementnav__list--scripts
       while index < indexList
         if (bigArrScripts[index])
-          li(class="featured-item elementnav__item scripts__item" tabindex="0")
+          li(class="featured-item elementnav__item elementnav__item--scripts" tabindex="0")
             +item-list(bigArrScripts[index])
         -index++

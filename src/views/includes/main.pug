@@ -47,9 +47,10 @@ html(lang="ru")
               span.visuallyhidden Окрыть меню
             
         .page__row
-          section.content.page__general
+          section.content.page__block.page__block--general
             .content__line.content__line--general 
-              h1.headline.content__headline.content__headline--general Главное
+              .content__headline.content__headline--general
+                h1.headline Главное
               .general
                 .general__info
                   .general__line
@@ -77,7 +78,7 @@ html(lang="ru")
                         li(class='featured-item elementnav__item elementnav__item--general' + itemModClass tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
                           +item-list(item)
 
-          section.content.page__scripts
+          section.content.page__block
             .content__line.content__line--scripts
               .content__headline
                 h1.headline Избранные сценарии
@@ -108,7 +109,7 @@ html(lang="ru")
                               +item-list(arrScripts[index])
                           -index++
         
-        section.content.page__devices
+        section.content.page__block
           .content__line.content__line--devices
             .content__headline
               h1.headline Избранные устройства
