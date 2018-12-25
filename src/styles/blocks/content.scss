@@ -33,6 +33,10 @@
   .content__headline {
     justify-content: flex-start;
     align-content: center;
+
+    &--general {
+      display: flex;
+    }
   }
 
   .content__nav {
@@ -64,7 +68,9 @@
   }
 
   .content__scripts-elementnav {
-    height: 282px;
+    height: auto;
+    min-height: 331px;
+    margin-right: 25px;
   }
   
   .content__arrows-nav {

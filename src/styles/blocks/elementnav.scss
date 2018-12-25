@@ -70,8 +70,9 @@
 
   .elementnav__slider {
     overflow: hidden;
+    width: 670px;
     padding: 0;
-    padding-left: 11px;
+    // padding-left: 20px;
 
     &::after {
       display: none;
@@ -94,8 +95,9 @@
     &--scripts {
       flex-flow: row wrap;
       flex: 0 0 100%;
+      padding: 0;
+      padding-left: 26px;
       overflow: hidden;
-      padding-bottom: 0;    
   
       &::after {
         display: none;
@@ -122,8 +124,11 @@
     }
 
     &--scripts {
+      align-self: flex-start;
+      margin: 0;
+      margin-right: 15px;
       margin-bottom: 15px;
-      height: 70px;
+      
     }
 
     &--with-arrow {

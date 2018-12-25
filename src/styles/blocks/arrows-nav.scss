@@ -1,5 +1,7 @@
 .arrows-nav {
   display: none;
+  font-size: 0;
+  line-height: 0;
 }
 
 @media #{$desktop-width} {
@@ -9,7 +11,7 @@
 
   .arrows-nav__arrow {
     width: 26px;
-    height: 25px;
+    height: 21px;
     margin: 0;
     padding: 0;
     line-height: 0;
