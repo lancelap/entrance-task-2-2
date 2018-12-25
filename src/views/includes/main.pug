@@ -70,7 +70,7 @@ html(lang="ru")
                         p.weather__info.weather__info--with-icon +19
                           span.weather__icon.weather__icon--cloud-drizzle
                 
-                .elementnav.elementnav--general
+                .elementnav.elementnav--general.general__gallery
                   .elementnav__wrapper
                     ul.elementnav__list.elementnav__list--general(id="featured-scripts") 
                       each item, index in arrNextScripts
@@ -140,7 +140,7 @@ html(lang="ru")
             .elementnav__wrapper
               ul.elementnav__list.elementnav__list--devices#devices
                 each item in arrDevices
-                  li.featured-item.elementnav__item.devices__item(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
+                  li.featured-item.elementnav__item.elementnav__item--devices(tabindex="0" data-name=`${item.name}` data-type=`${item.type}` data-state=`${item.state}` data-type-device=`${item.typeIcon}` data-place=`${item.place}`)
                     +item-list(item)
 
       footer.footer.page__footer

@@ -42,6 +42,7 @@
   .general {
     display: flex;
     padding: 0;
+    justify-content: space-between;
   }
 
   .general__greeting {
@@ -52,7 +53,7 @@
 
   .general__line {
     padding-left: 25px;
-    padding-right: 25px;
+    padding-right: 0;
   }
 
   .general__condition {
@@ -61,8 +62,8 @@
     line-height: 16px;
   }
 
-  .general__info {
-    flex: 1 0 400px;
+  .general__gallery {
+    padding-right: 30px;
   }
 
   .general__weather-item {

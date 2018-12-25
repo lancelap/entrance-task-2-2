@@ -10,7 +10,7 @@
   }
 
   .arrows-nav__arrow {
-    width: 26px;
+    width: 21px;
     height: 21px;
     margin: 0;
     padding: 0;
@@ -24,11 +24,12 @@
   
     &--left {
       @include bg('icons/arrow_right');
-      transform: scale(-1, 1)
+      transform: scale(-1, 1);
     }
   
     &--right {
       @include bg('icons/arrow_right');
+      margin-left: 5px;
     }
   
     &--active {
