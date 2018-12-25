@@ -14,5 +14,9 @@ export default function animate(options) {
     if (timeFraction < 1) {
       requestAnimationFrame(animate);
     }
+
+    if (timeFraction >= 1) {
+      options.callback();
+    }
   });
 }

@@ -5,9 +5,13 @@ import animate from './utils/animate';
 export default function Gallery({ list, controls, width }) {
   this.list = list;
   this.controls = controls;
+  this.isAnimate = false;
   this.quadEaseOut = makeEaseOut(timeFraction => Math.pow(timeFraction, 2));
 
   this.controls.addEventListener('click', event => {
+    if(this.isAnimate) {
+      return;
+    }
     const target = event.target;
 
     const action = target.getAttribute('data-action');
@@ -67,6 +71,7 @@ Gallery.prototype.switch = function(action) {
   const start = this.list.scrollLeft;
   const width = this.list.scrollWidth / this.list.children.length;
 
+  this.isAnimate = true;
   animate({
     duration: 300,
     timing: this.quadEaseOut,
@@ -80,6 +85,10 @@ Gallery.prototype.switch = function(action) {
         this.list.scrollLeft = start - progress * width;
         break;
       }
+    },
+    callback: () => {
+      this.isAnimate = !this.isAnimate;
+      this.check();
     }
   });
 };
