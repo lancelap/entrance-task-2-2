@@ -67,7 +67,7 @@ Gallery.prototype.prev = function() {
 
 Gallery.prototype.switch = function(action) {
   const start = this.list.scrollLeft;
-  const width = this.list.scrollWidth / this.list.children.length;
+  const width = Math.ceil(this.list.scrollWidth / this.list.children.length);
 
   this.isAnimate = true;
   animate({
