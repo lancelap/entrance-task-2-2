@@ -1,4 +1,3 @@
-import throttle from './utils/throttle';
 import makeEaseOut from './utils/makeEaseOut';
 import animate from './utils/animate';
 
@@ -20,7 +19,6 @@ export default function Gallery({ list, controls, width }) {
     }
   });
 
-  this.list.addEventListener('scroll', throttle(() => this.check(), 200));
   this.check();
 }
 

@@ -9,7 +9,7 @@ import addTermometrListеner from './addTermometrListеner';
 
 const mainNav = document.getElementById('main-nav');
 const mainNavToggle = document.getElementById('main-nav-toggle');
-const mainMenu = new Menu({
+new Menu({
   nav: mainNav,
   toggleButton: mainNavToggle,
   classNameNav: 'header__nav'
@@ -17,7 +17,7 @@ const mainMenu = new Menu({
 
 const featuredNav = document.getElementById('featured-nav');
 const featuredNavToggle = document.getElementById('devices__toggle');
-const secondaryMenu = new SelectMenu({
+new SelectMenu({
   nav: featuredNav,
   toggleButton: featuredNavToggle,
   classNameNav: 'featured-nav'
@@ -34,23 +34,23 @@ if (termometr) {
   addTermometrListеner(termometr, termometrArrow);
 }
 
-const filterNav = document.getElementById('featured-nav-list');
-const devicesList = document.getElementById('devices');
-const filter = new Filter({ element: filterNav, list: devicesList });
-
 const scripts = document.getElementById('scripts');
 const navScripts = document.getElementById('nav-featured-scripts');
-const scriptsGallery = new Gallery({
+new Gallery({
   list: scripts,
   controls: navScripts
 });
 
-const devicess = document.getElementById('devices');
+const devices = document.getElementById('devices');
 const navDevices = document.getElementById('nav-featured-devices');
-const devicessGallery = new Gallery({
-  list: devicess,
+const devicesGallery = new Gallery({
+  list: devices,
   controls: navDevices
 });
+
+const filterNav = document.getElementById('featured-nav-list');
+const devicesList = document.getElementById('devices');
+new Filter({ element: filterNav, list: devicesList, gallery: devicesGallery });
 
 modal();
 featuredScripts();

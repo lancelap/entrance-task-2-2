@@ -15,7 +15,7 @@ export default function animate(options) {
       requestAnimationFrame(animate);
     }
 
-    if (timeFraction >= 1) {
+    if (timeFraction >= 1 && options.callback) {
       options.callback();
     }
   });

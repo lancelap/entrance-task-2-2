@@ -1,5 +1,5 @@
 export default function Filter(options) {
-  const { element, list } = options;
+  const { element, list, gallery } = options;
 
   element.addEventListener('click', event => {
     let target = event.target;
@@ -25,5 +25,7 @@ export default function Filter(options) {
         child.style = '';
       }
     });
+
+    gallery.check();
   });
 }
