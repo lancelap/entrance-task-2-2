@@ -76,16 +76,21 @@
   .page__block {
     margin: 0;
 
+    
     &--general {
       width: 670px;
       flex-grow: 1;
+    }
+
+    &--scripts {
+      margin-bottom: -15px;
     }
   }
 
   .page__row {
     display: flex;
     flex-flow: row nowrap;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
   }
 }
 
