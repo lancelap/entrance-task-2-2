@@ -23,16 +23,16 @@ mixin modal(name, type, state)
         .elementnav.controller__elementnav
           .elementnav__wrapper
             ul.elementnav__list.controller__places-list
-              li.elementnav__item.controller__places-item 
+              li.elementnav__item.elementnav__item--controller.controller__places-item
                 button.button.button--active Вручную
-              li.elementnav__item.controller__places-item 
+              li.elementnav__item.elementnav__item--controller.controller__places-item
                 button.button Холодно
-              li.elementnav__item.controller__places-item 
+              li.elementnav__item.elementnav__item--controller.controller__places-item
                 button.button Тепло
-              li.elementnav__item.controller__places-item.controller__only-desktop
+              li.elementnav__item.elementnav__item--controller.controller__places-item.controller__only-desktop
                 button.button Жарко
-        .device-bar.device-bar--temp.controller__bar
-          .device-bar__track(style="top: 95px")
+        .input-range.controller__bar
+          input.input-range__slider.input-range__slider--temp(type="range" id="switch-temp")
       else if (type === SUN)
         .controller__line.controller__temp-info
           h1.controller__title #{name}
@@ -46,17 +46,17 @@ mixin modal(name, type, state)
         .elementnav.controller__elementnav
           .elementnav__wrapper
             ul.elementnav__list.controller__places-list
-              li.elementnav__item.controller__places-item 
+              li.elementnav__item.elementnav__item--controller.controller__places-item 
                 button.button.button--active Вручную
-              li.elementnav__item.controller__places-item 
+              li.elementnav__item.elementnav__item--controller.controller__places-item 
                 button.button Дневной свет
-              li.elementnav__item.controller__places-item 
+              li.elementnav__item.elementnav__item--controller.controller__places-item 
                 button.button Вечерний свет
-              li.elementnav__item.controller__places-item.controller__only-desktop
+              li.elementnav__item.elementnav__item--controller.controller__places-item.controller__only-desktop
                 button.button Рассвет
                 
-        .device-bar.device-bar--light.controller__bar
-          .device-bar__track(style="top: 105px")
+        .input-range.controller__bar
+          input.input-range__slider.input-range__slider--light(type="range" id="switch-light")
       else
         .controller__line.controller__temp-info
           h1.controller__title #{name}

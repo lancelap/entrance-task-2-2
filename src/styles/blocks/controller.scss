@@ -28,6 +28,8 @@
 }
 
 .controller__bar {
+  height: 336px;
+  width: 60px;
   margin: 0 auto;
 }
 
@@ -78,6 +80,12 @@
   .controller__temp-info {
     position: relative;
     padding-right: 110px;
+  }
+
+  .controller__bar {
+    height: 60px;
+    width: 580px;
+    margin: 0 auto;
   }
 
   .controller__weather {
