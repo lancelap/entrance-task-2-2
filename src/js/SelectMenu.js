@@ -1,22 +1,22 @@
-import Menu from './Menu';
+import Switch from './Switch';
 
-export default function SelectMenu({ toggleButton }) {
-  Menu.apply(this, arguments);
-  this.toggleButton = toggleButton;
+export default function SelectMenu({ toggleElement }) {
+  Switch.apply(this, arguments);
+  this.toggleElement = toggleElement;
 
-  this.nav.addEventListener('click', event => {
+  this.obj.addEventListener('click', event => {
     this.select(event);
   });
 }
 
-SelectMenu.prototype = Object.create(Menu.prototype);
+SelectMenu.prototype = Object.create(Switch.prototype);
 SelectMenu.prototype.constructor = SelectMenu;
 
 SelectMenu.prototype.select = function(event) {
   const targetButton = event.target.closest('li > button');
   if (targetButton) {
     event.preventDefault();
-    this.toggleButton.innerHTML = targetButton.innerHTML;
+    this.toggleElement.innerHTML = targetButton.innerHTML;
 
     // переключаем состояние кнопок
     const buttonActive = document.querySelector('li > .button--active');

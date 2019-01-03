@@ -15,16 +15,8 @@
 }
 
 .page__content {
-  animation-fill-mode: forwards;
-  animation-duration: 0.23s;
-  animation-timing-function: linear;
-
   &--blured {
-    animation-name: page__blur-in;
-  }
-
-  &--blured-out {
-    animation-name: page__blur-out;
+    filter: blur(5px) saturate(2);
   }
 }
 
@@ -91,23 +83,5 @@
     display: flex;
     flex-flow: row nowrap;
     margin-bottom: 30px;
-  }
-}
-
-@keyframes page__blur-in {
-  0% {
-    filter: blur(0) saturate(1);
-  }
-  100% {
-    filter: blur(5px) saturate(2);
-  }
-}
-
-@keyframes page__blur-out {
-  0% {
-    filter: blur(5px) saturate(2);
-  }
-  100% {
-    filter: blur(0) saturate(1);
   }
 }

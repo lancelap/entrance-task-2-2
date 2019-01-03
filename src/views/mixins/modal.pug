@@ -2,24 +2,30 @@
 -var SUN = 'sun'
 -var TEMP = 'temperature'
 
-mixin modal(name, type, state)
-  -var modalClass = 'modal__content'
-  if (type === TEMP || type === SUN)
-    -modalClass += ' modal__bar'
-  else 
-    -modalClass += ' modal__termometr'
-  section(class='' + modalClass)#modal-content
-    .controller.modal__line
-      if (type === TEMP)
-        .controller__line.controller__temp-info
-          h1.controller__title #{name}
-          
-          .weather.controller__weather.controller__only-desktop
-            p.weather__info.weather__info--with-icon.controller__weather-info +23
-              span.weather__icon.weather__icon--temperature2.controller__weather-icon
-        
-          p.controller__state #{state}
+mixin modal(name = 'Xiaomi Yeelight LED Smart Bulb', type, state = 'Включится в 00:00')
+  -var controllerClass = 'controller'
+  if (type === FLOOR)
+    -controllerClass += ' controller--floor'
+  else if (type === SUN)
+    -controllerClass += ' controller--sun'
+  else if (type === TEMP)
+    -controllerClass += ' controller--temperature'
+  section(class='modal__content')#modal-content
+    div(class='' + controllerClass + ' modal__line')#controller
 
+      .controller__line
+        .controller__temp-info
+          h1.controller__title#controller__title #{name}
+          
+          .controller__only-desktop
+            .weather.controller__weather
+              p.weather__info.weather__info--with-icon.controller__weather-info 
+                span#weather-info-temperature +23
+                span.weather__icon.controller__weather-icon#weather-info-icon
+          
+          p.controller__state#controller__state #{state}
+
+      .controller__temperature-block
         .elementnav.controller__elementnav
           .elementnav__wrapper
             ul.elementnav__list.controller__places-list
@@ -33,16 +39,8 @@ mixin modal(name, type, state)
                 button.button Жарко
         .input-range.controller__bar
           input.input-range__slider.input-range__slider--temp(type="range" id="switch-temp")
-      else if (type === SUN)
-        .controller__line.controller__temp-info
-          h1.controller__title #{name}
 
-          .weather.controller__weather.controller__only-desktop
-            p.weather__info.weather__info--with-icon.controller__weather-info
-              span.weather__icon.weather__icon--sun.controller__weather-icon
-
-          p.controller__state #{state}
-
+      .controller__sun-block
         .elementnav.controller__elementnav
           .elementnav__wrapper
             ul.elementnav__list.controller__places-list
@@ -57,16 +55,8 @@ mixin modal(name, type, state)
                 
         .input-range.controller__bar
           input.input-range__slider.input-range__slider--light(type="range" id="switch-light")
-      else
-        .controller__line.controller__temp-info
-          h1.controller__title #{name}
 
-          .weather.controller__weather.controller__only-desktop
-            p.weather__info.weather__info--with-icon.controller__weather-info +23
-              span.weather__icon.weather__icon--temperature2.controller__weather-icon
-
-          p.controller__state #{state}
-
+      .controller__floor-block
         .termometr.controller__termometr
           .termometr__scale
             svg(xmlns="http://www.w3.org/2000/svg" class="termometr__svg" viewBox="0 0 32 32")
@@ -76,5 +66,5 @@ mixin modal(name, type, state)
           .termometr__arrow
 
     .modal__block-btn
-      button.button.button--active.modal__btn.modal__btn--active Применить
-      button.button.modal__btn Закрыть
+      button.button.button--active.modal__btn.modal__btn--active#modal-accept Применить
+      button.button.modal__btn#modal-close Закрыть

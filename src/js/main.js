@@ -1,4 +1,4 @@
-import Menu from './Menu';
+import Switch from './Switch';
 import SelectMenu from './SelectMenu';
 import modal from './modal';
 import Gallery from './Gallery';
@@ -9,17 +9,17 @@ import addTermometrListеner from './addTermometrListеner';
 
 const mainNav = document.getElementById('main-nav');
 const mainNavToggle = document.getElementById('main-nav-toggle');
-new Menu({
-  nav: mainNav,
-  toggleButton: mainNavToggle,
+new Switch({
+  obj: mainNav,
+  toggleElement: mainNavToggle,
   classNameNav: 'header__nav'
 });
 
 const featuredNav = document.getElementById('featured-nav');
 const featuredNavToggle = document.getElementById('devices__toggle');
 new SelectMenu({
-  nav: featuredNav,
-  toggleButton: featuredNavToggle,
+  obj: featuredNav,
+  toggleElement: featuredNavToggle,
   classNameNav: 'featured-nav'
 });
 
