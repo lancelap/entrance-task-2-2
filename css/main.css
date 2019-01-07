@@ -80,19 +80,9 @@
 .page__block {
   margin-bottom: 30px; }
 
-.page__content {
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-duration: 0.23s;
-          animation-duration: 0.23s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear; }
-  .page__content--blured {
-    -webkit-animation-name: page__blur-in;
-            animation-name: page__blur-in; }
-  .page__content--blured-out {
-    -webkit-animation-name: page__blur-out;
-            animation-name: page__blur-out; }
+.page__content--blured {
+  -webkit-filter: blur(5px) saturate(2);
+          filter: blur(5px) saturate(2); }
 
 .page__modal {
   position: fixed;
@@ -115,38 +105,6 @@
     height: 100%;
     overflow-y: scroll; } }
 
-@-webkit-keyframes page__blur-in {
-  0% {
-    -webkit-filter: blur(0) saturate(1);
-            filter: blur(0) saturate(1); }
-  100% {
-    -webkit-filter: blur(5px) saturate(2);
-            filter: blur(5px) saturate(2); } }
-
-@keyframes page__blur-in {
-  0% {
-    -webkit-filter: blur(0) saturate(1);
-            filter: blur(0) saturate(1); }
-  100% {
-    -webkit-filter: blur(5px) saturate(2);
-            filter: blur(5px) saturate(2); } }
-
-@-webkit-keyframes page__blur-out {
-  0% {
-    -webkit-filter: blur(5px) saturate(2);
-            filter: blur(5px) saturate(2); }
-  100% {
-    -webkit-filter: blur(0) saturate(1);
-            filter: blur(0) saturate(1); } }
-
-@keyframes page__blur-out {
-  0% {
-    -webkit-filter: blur(5px) saturate(2);
-            filter: blur(5px) saturate(2); }
-  100% {
-    -webkit-filter: blur(0) saturate(1);
-            filter: blur(0) saturate(1); } }
-
 .button {
   padding: 7px 16px 8px 16px;
   font-size: 13px;
@@ -160,6 +118,94 @@
   border: none; }
   .button--active {
     background-color: #ffd93e; }
+
+.input-range__slider {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 336px;
+  height: 60px;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+  -webkit-transform: rotate(90deg) translate(0, -60px);
+          transform: rotate(90deg) translate(0, -60px);
+  -webkit-transform-origin: top left;
+          transform-origin: top left; }
+  .input-range__slider:focus {
+    outline: none; }
+  .input-range__slider--temp {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 21px;
+    color: #ffffff; }
+    .input-range__slider--temp::after {
+      content: '+30';
+      z-index: 500;
+      position: absolute;
+      left: 10px;
+      bottom: 20px;
+      -webkit-transform: rotate(-90deg);
+              transform: rotate(-90deg); }
+    .input-range__slider--temp::before {
+      content: '–10';
+      z-index: 500;
+      position: absolute;
+      right: 10px;
+      bottom: 20px;
+      -webkit-transform: rotate(-90deg);
+              transform: rotate(-90deg); }
+  .input-range__slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+            appearance: none; }
+  .input-range__slider::-webkit-slider-thumb {
+    position: relative;
+    z-index: 1000;
+    height: 68px;
+    width: 68px;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    margin-top: -8px;
+    -webkit-transform: translate(0, 4px);
+            transform: translate(0, 4px);
+    border: 4px solid #FFFFFF;
+    box-shadow: inset 0 0 0 3px rgba(51, 51, 51, 0.1); }
+  .input-range__slider::-moz-range-thumb {
+    position: relative;
+    z-index: 1000;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    border: 4px solid #FFFFFF;
+    box-shadow: inset 0 0 0 3px rgba(51, 51, 51, 0.1); }
+  .input-range__slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 35px; }
+  .input-range__slider::-moz-range-track {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 35px; }
+  .input-range__slider--temp::-webkit-slider-runnable-track {
+    background-image: linear-gradient(to right, #F76B1C 0%, #FFD800 50%, #068FFF 100%); }
+  .input-range__slider--temp::-moz-range-track {
+    background-image: linear-gradient(to right, #F76B1C 0%, #FFD800 50%, #068FFF 100%); }
+  .input-range__slider--light::-webkit-slider-runnable-track {
+    background-image: url("../img/icon_sun_min.svg"), url("../img/icon_sun_max.svg"), linear-gradient(to left, #ffb100, #ffe88c);
+    background-position: center left 15px, center right 15px, center center;
+    background-size: 36px 36px, 36px 36px, cover;
+    background-repeat: no-repeat, no-repeat, no-repeat; }
+  .input-range__slider--light::-moz-range-track {
+    background-image: url("../img/icon_sun_min.svg"), url("../img/icon_sun_max.svg"), linear-gradient(to left, #ffb100, #ffe88c);
+    background-position: center left 15px, center right 15px, center center;
+    background-size: 36px 36px, 36px 36px, cover;
+    background-repeat: no-repeat, no-repeat, no-repeat; }
 
 .featured-item {
   display: flex;
@@ -470,6 +516,16 @@
   color: #333333;
   border-radius: 20px; }
 
+.controller__floor-block,
+.controller__sun-block,
+.controller__temperature-block {
+  display: none; }
+
+.controller--floor .controller__floor-block,
+.controller--sun .controller__sun-block,
+.controller--temperature .controller__temperature-block {
+  display: block; }
+
 .controller__line {
   margin-right: 20px;
   margin-left: 20px; }
@@ -489,6 +545,8 @@
   color: #333333; }
 
 .controller__bar {
+  height: 336px;
+  width: 60px;
   margin: 0 auto; }
 
 .controller__termometr {
@@ -511,101 +569,29 @@
 .controller__only-desktop {
   display: none; }
 
-.device-bar {
-  position: relative;
-  width: 60px;
-  height: 336px;
-  overflow: hidden;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 21px;
-  color: #ffffff;
-  background-color: #ffb100;
-  border-radius: 35px; }
-  .device-bar::after {
-    content: ' ';
-    position: absolute; }
-  .device-bar::before {
-    content: ' ';
-    position: absolute; }
-  .device-bar--light {
-    background: linear-gradient(to bottom, #ffb100, #ffe88c); }
-    .device-bar--light::after {
-      top: 13px;
-      left: 12px;
-      width: 36px;
-      height: 36px;
-      background-image: url("../img/icon_sun_max@1x.png");
-      background-image: url("../img/icon_sun_max.svg");
-      background-repeat: no-repeat; }
-    .device-bar--light::before {
-      bottom: 13px;
-      left: 12px;
-      width: 36px;
-      height: 36px;
-      background-image: url("../img/icon_sun_min@1x.png");
-      background-image: url("../img/icon_sun_min.svg");
-      background-repeat: no-repeat; }
-  .device-bar--temp {
-    background: linear-gradient(#F76B1C 0%, #FFD800 50%, #068FFF 100%); }
-    .device-bar--temp::after {
-      content: '+30';
-      top: 17px;
-      left: 15px; }
-    .device-bar--temp::before {
-      content: '–10';
-      bottom: 13px;
-      left: 15px; }
-
-.device-bar__track {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  box-sizing: border-box;
-  width: 60px;
-  height: 60px;
-  border: 3px solid rgba(51, 51, 51, 0.1);
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px #ffffff; }
-
 .modal {
-  display: none;
+  display: flex;
   justify-content: center;
   z-index: 9000;
+  overflow-x: hidden;
   overflow-y: scroll;
   background-color: #333333;
   background-color: rgba(51, 51, 51, 0.5); }
   .modal--closed {
-    display: flex;
-    -webkit-animation-name: modal-fade-out;
-            animation-name: modal-fade-out;
-    -webkit-animation-duration: .23s;
-            animation-duration: .23s;
-    -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear; }
+    display: none; }
   .modal--opened {
     display: flex; }
 
 .modal__content {
-  width: 334px;
   margin-top: 21px;
-  -webkit-animation-duration: .23s;
-          animation-duration: .23s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear; }
+  width: 334px; }
 
 .modal--opened .modal__content {
-  -webkit-animation-name: modal-content-fade-in;
-          animation-name: modal-content-fade-in; }
-
-.modal--closed .modal__content {
-  -webkit-animation-name: modal-content-fade-out;
-          animation-name: modal-content-fade-out; }
+  opacity: 1;
+  -webkit-transform: translate(0%, 0%) scale(1) !important;
+          transform: translate(0%, 0%) scale(1) !important;
+  top: 0% !important;
+  left: 0% !important; }
 
 .modal__line {
   margin-bottom: 15px; }
@@ -623,61 +609,12 @@
   .modal__btn--active {
     color: #000000; }
 
-@-webkit-keyframes modal-content-fade-in {
-  0% {
-    -webkit-transform: scale(0.23);
-            transform: scale(0.23); }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
-
-@keyframes modal-content-fade-in {
-  0% {
-    -webkit-transform: scale(0.23);
-            transform: scale(0.23); }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
-
-@-webkit-keyframes modal-content-fade-out {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1); }
-  100% {
-    -webkit-transform: scale(0.23);
-            transform: scale(0.23); } }
-
-@keyframes modal-content-fade-out {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1); }
-  100% {
-    -webkit-transform: scale(0.23);
-            transform: scale(0.23); } }
-
-@-webkit-keyframes modal-fade-out {
-  0% {
-    opacity: 1; }
-  100% {
-    opacity: 0;
-    z-index: -1; } }
-
-@keyframes modal-fade-out {
-  0% {
-    opacity: 1; }
-  100% {
-    opacity: 0;
-    z-index: -1; } }
-
 .termometr {
   position: relative;
   width: 221px;
   height: 221px;
   color: #333333;
-  background-color: #ffffff;
-  background-image: url("../img/oval@1x.png");
-  background-image: url("../img/oval.svg");
-  background-repeat: no-repeat; }
+  background-color: #ffffff; }
 
 .termometr__svg {
   width: 221px;
@@ -740,12 +677,7 @@
 .termometr__scale {
   width: 221px;
   height: 221px;
-  background-image: url("../img/oval_copy@1x.png");
-  background-image: url("../img/oval_copy.svg");
-  background-repeat: no-repeat;
-  background-position: bottom 15px right 3px;
-  z-index: -1;
-  border-radius: 50%; }
+  z-index: -1; }
 
 .arrows-nav {
   display: none;
@@ -805,6 +737,31 @@
     margin-bottom: 30px; }
   .button {
     font-weight: 700; }
+  .input-range__slider {
+    width: 580px;
+    height: 60px;
+    -webkit-transform: rotate(0deg) translate(0, 0);
+            transform: rotate(0deg) translate(0, 0); }
+    .input-range__slider--temp {
+      -webkit-transform: scale(-1, 1) rotate(0deg) translate(-580px, 0);
+              transform: scale(-1, 1) rotate(0deg) translate(-580px, 0);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: normal;
+      line-height: 21px;
+      color: #ffffff; }
+      .input-range__slider--temp::after {
+        content: '+30';
+        left: 20px;
+        bottom: 18px;
+        -webkit-transform: scale(-1, 1) rotate(0deg);
+                transform: scale(-1, 1) rotate(0deg); }
+      .input-range__slider--temp::before {
+        content: '–10';
+        bottom: 18px;
+        right: 20px;
+        -webkit-transform: scale(-1, 1) rotate(0deg);
+                transform: scale(-1, 1) rotate(0deg); }
   .featured-item:hover, .featured-item:focus {
     background: #FFFFFF;
     box-shadow: 0 2px 6px 0 rgba(197, 186, 186, 0.5); }
@@ -988,6 +945,10 @@
   .controller__temp-info {
     position: relative;
     padding-right: 110px; }
+  .controller__bar {
+    height: 60px;
+    width: 580px;
+    margin: 0 auto; }
   .controller__weather {
     position: absolute;
     top: 0px;
@@ -1012,38 +973,28 @@
   .controller__termometr {
     margin: 0 auto;
     margin-top: 20px; }
-  .device-bar {
-    width: 580px;
-    height: 60px; }
-    .device-bar--light {
-      background: linear-gradient(to left, #ffb100, #ffe88c); }
-      .device-bar--light::after {
-        right: 20px;
-        left: auto; }
-      .device-bar--light::before {
-        top: 12px;
-        bottom: auto; }
-    .device-bar--temp {
-      background: linear-gradient(to left, #F76B1C 0%, #FFD800 50%, #068FFF 100%); }
-      .device-bar--temp::after {
-        content: '+30';
-        top: 21px;
-        right: 20px;
-        left: auto; }
-      .device-bar--temp::before {
-        content: '–10';
-        top: 21px;
-        bottom: auto;
-        left: 20px; }
-  .device-bar__track {
-    top: 0 !important; }
   .modal__content {
+    position: absolute;
     width: 630px;
-    margin: 0; }
-  .modal__bar {
-    margin-top: 189px; }
-  .modal__termometr {
-    margin-top: 100px; }
+    margin: 0;
+    opacity: 0;
+    -webkit-transform-origin: left top;
+            transform-origin: left top;
+    transition-property: left, top, opacity, -webkit-transform;
+    transition-property: left, top, transform, opacity;
+    transition-property: left, top, transform, opacity, -webkit-transform;
+    transition-duration: .35s;
+    transition-timing-function: ease-in;
+    -webkit-transform: scale(0.33);
+            transform: scale(0.33);
+    will-change: left, top, transform, filter; }
+  .modal--opened .modal__content {
+    position: absolute;
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) scale(1) !important;
+            transform: translate(-50%, -50%) scale(1) !important;
+    top: 50% !important;
+    left: 50% !important; }
   .modal__block-btn {
     display: flex;
     justify-content: space-between; }
@@ -1150,21 +1101,12 @@
     .featured-nav__arrow {
       background-image: url("../img/icons/arrow_right@2x.png");
       background-image: url("../img/icons/arrow_right.svg"); }
-        .device-bar--light::after {
-          background-image: url("../img/icon_sun_max@2x.png");
-          background-image: url("../img/icon_sun_max.svg"); }
-        .device-bar--light::before {
-          background-image: url("../img/icon_sun_min@2x.png");
-          background-image: url("../img/icon_sun_min.svg"); }
     .termometr__bg {
       background-image: url("../img/background@2x.png");
       background-image: url("../img/background.svg"); }
     .termometr__arrow {
       background-image: url("../img/icons/icon_arrow@2x.png");
-      background-image: url("../img/icons/icon_arrow.svg"); }
-    .termometr__scale {
-      background-image: url("../img/oval_copy@2x.png");
-      background-image: url("../img/oval_copy.svg"); } }
+      background-image: url("../img/icons/icon_arrow.svg"); } }
 
 @media (max-width: 1365px) {
   .button {
@@ -1172,6 +1114,4 @@
   .featured-nav__list {
     display: none; }
   .featured-nav--opened .featured-nav__list {
-    display: block; }
-  .device-bar__track {
-    left: 0 !important; } }
+    display: block; } }

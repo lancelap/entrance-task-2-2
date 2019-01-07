@@ -267,28 +267,87 @@
       </footer>
     </div>
     <div class="modal page__modal modal--opened">
-      <section class="modal__content modal__termometr" id="modal-content">
-        <div class="controller modal__line">
-          <div class="controller__line controller__temp-info">
-            <h1 class="controller__title">Xiaomi Warm Floor</h1>
-            <div class="weather controller__weather controller__only-desktop">
-              <p class="weather__info weather__info--with-icon controller__weather-info">+23<span class="weather__icon weather__icon--temperature2 controller__weather-icon"></span></p>
+      <section class="modal__content" id="modal-content">
+        <div class="controller controller--floor modal__line" id="controller">
+          <div class="controller__line">
+            <div class="controller__temp-info">
+              <h1 class="controller__title" id="controller__title">Xiaomi Warm Floor</h1>
+              <div class="controller__only-desktop">
+                <div class="weather controller__weather">
+                  <p class="weather__info weather__info--with-icon controller__weather-info"> <span id="weather-info-temperature">+23</span><span class="weather__icon controller__weather-icon" id="weather-info-icon"></span></p>
+                </div>
+              </div>
+              <p class="controller__state" id="controller__state">Включено</p>
             </div>
-            <p class="controller__state">Включено</p>
           </div>
-          <div class="termometr controller__termometr">
-            <div class="termometr__scale">
-              <svg class="termometr__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                <circle class="termometr__circle" r="16" cx="16" cy="16"></circle>
-              </svg>
+          <div class="controller__temperature-block">
+            <div class="elementnav controller__elementnav">
+              <div class="elementnav__wrapper">
+                <ul class="elementnav__list controller__places-list">
+                  <li class="elementnav__item elementnav__item--controller controller__places-item">
+                    <button class="button button--active" data-value="custom">Вручную</button>
+                  </li>
+                  <li class="elementnav__item elementnav__item--controller controller__places-item">
+                    <button class="button" data-value="0">Холодно</button>
+                  </li>
+                  <li class="elementnav__item elementnav__item--controller controller__places-item">
+                    <button class="button" data-value="50">Тепло</button>
+                  </li>
+                  <li class="elementnav__item elementnav__item--controller controller__places-item controller__only-desktop">
+                    <button class="button" data-value="100">Жарко</button>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="termometr__bg"></div><b class="termometr__value">+23</b>
-            <div class="termometr__arrow"></div>
+            <div class="input-range controller__bar">
+              <input class="input-range__slider input-range__slider--temp" type="range" id="switch-temp"/>
+            </div>
+          </div>
+          <div class="controller__sun-block">
+            <div class="elementnav controller__elementnav">
+              <div class="elementnav__wrapper">
+                <ul class="elementnav__list controller__places-list">
+                  <li class="elementnav__item elementnav__item--controller controller__places-item"> 
+                    <button class="button button--active" data-value="custom">Вручную</button>
+                  </li>
+                  <li class="elementnav__item elementnav__item--controller controller__places-item"> 
+                    <button class="button" data-value="50">Дневной свет</button>
+                  </li>
+                  <li class="elementnav__item elementnav__item--controller controller__places-item"> 
+                    <button class="button" data-value="100">Вечерний свет</button>
+                  </li>
+                  <li class="elementnav__item elementnav__item--controller controller__places-item controller__only-desktop">
+                    <button class="button" data-value="0">Рассвет</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="input-range controller__bar">
+              <input class="input-range__slider input-range__slider--light" type="range" id="switch-light"/>
+            </div>
+          </div>
+          <div class="controller__floor-block">
+            <div class="termometr controller__termometr">
+              <div class="termometr__scale"><svg width="221" height="221" viewBox="15 15 170 170">
+<defs>
+<mask id="mask1">
+<circle r="70" cx="100" cy="100" fill="none" stroke="white" stroke-width="30" stroke-dasharray="1 3" stroke-dashoffset="-154"></circle>    
+</mask>
+</defs>
+<g mask="url(#mask1)">
+<circle r="70" cx="100" cy="100" fill="none" stroke="#ccc" stroke-width="30" stroke-dashoffset="-154" stroke-dasharray="352 88"></circle>
+<circle id="termometr-svg" r="70" cx="100" cy="100" fill="none" stroke="orange" stroke-width="50" stroke-dashoffset="-154" style="stroke-dasharray: 360, 90;"></circle>
+</g>
+</svg>
+              </div>
+              <div class="termometr__bg"></div><b class="termometr__value">+23</b>
+              <div class="termometr__arrow"></div>
+            </div>
           </div>
         </div>
         <div class="modal__block-btn">
-          <button class="button button--active modal__btn modal__btn--active">Применить</button>
-          <button class="button modal__btn">Закрыть</button>
+          <button class="button button--active modal__btn modal__btn--active" id="modal-accept">Применить</button>
+          <button class="button modal__btn" id="modal-close">Закрыть</button>
         </div>
       </section>
     </div>
