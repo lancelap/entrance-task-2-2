@@ -30,13 +30,13 @@ mixin modal(name = 'Xiaomi Yeelight LED Smart Bulb', type, state = 'Включи
           .elementnav__wrapper
             ul.elementnav__list.controller__places-list
               li.elementnav__item.elementnav__item--controller.controller__places-item
-                button.button.button--active Вручную
+                button.button.button--active(data-value="custom") Вручную
               li.elementnav__item.elementnav__item--controller.controller__places-item
-                button.button Холодно
+                button.button(data-value="0") Холодно
               li.elementnav__item.elementnav__item--controller.controller__places-item
-                button.button Тепло
+                button.button(data-value="50") Тепло
               li.elementnav__item.elementnav__item--controller.controller__places-item.controller__only-desktop
-                button.button Жарко
+                button.button(data-value="100") Жарко
         .input-range.controller__bar
           input.input-range__slider.input-range__slider--temp(type="range" id="switch-temp")
 
@@ -45,13 +45,13 @@ mixin modal(name = 'Xiaomi Yeelight LED Smart Bulb', type, state = 'Включи
           .elementnav__wrapper
             ul.elementnav__list.controller__places-list
               li.elementnav__item.elementnav__item--controller.controller__places-item 
-                button.button.button--active Вручную
+                button.button.button--active(data-value="custom") Вручную
               li.elementnav__item.elementnav__item--controller.controller__places-item 
-                button.button Дневной свет
+                button.button(data-value="50") Дневной свет
               li.elementnav__item.elementnav__item--controller.controller__places-item 
-                button.button Вечерний свет
+                button.button(data-value="100") Вечерний свет
               li.elementnav__item.elementnav__item--controller.controller__places-item.controller__only-desktop
-                button.button Рассвет
+                button.button(data-value="0") Рассвет
                 
         .input-range.controller__bar
           input.input-range__slider.input-range__slider--light(type="range" id="switch-light")
@@ -59,11 +59,22 @@ mixin modal(name = 'Xiaomi Yeelight LED Smart Bulb', type, state = 'Включи
       .controller__floor-block
         .termometr.controller__termometr
           .termometr__scale
-            svg(xmlns="http://www.w3.org/2000/svg" class="termometr__svg" viewBox="0 0 32 32")
-              circle.termometr__circle(r="16" cx="16" cy="16")
+            <svg width="221" height="221" viewBox="15 15 170 170">
+              <defs>
+                  <mask id="mask1">
+                      <circle r="70" cx="100" cy="100" fill="none" stroke="white" stroke-width="30" stroke-dasharray="1 3" stroke-dashoffset="-154"></circle>    
+                  </mask>
+              </defs>
+
+              <g mask="url(#mask1)">
+                  <circle r="70" cx="100" cy="100" fill="none" stroke="#ccc" stroke-width="30" stroke-dashoffset="-154" stroke-dasharray="352 88"></circle>
+                  <circle id="termometr-svg" r="70" cx="100" cy="100" fill="none" stroke="orange" stroke-width="50" stroke-dashoffset="-154" style="stroke-dasharray: 360, 90;"></circle>
+              </g>
+            </svg>
           .termometr__bg
           b.termometr__value +23
           .termometr__arrow
+
 
     .modal__block-btn
       button.button.button--active.modal__btn.modal__btn--active#modal-accept Применить

@@ -4,14 +4,9 @@
   height: 221px;
   color: #333333;
   background-color: #ffffff;
-  background-image:  url('../img/oval@1x.png');
-  background-image: url('../img/oval.svg');
-  background-repeat: no-repeat;
 } 
 
 .termometr__svg {
-  // position: absolute;
-
   width: 221px; height: 221px;
   transform: rotate(-90deg);
   background: transparent;
@@ -71,15 +66,5 @@
 .termometr__scale {
   width: 221px;
   height: 221px;
-  background-image: url('../img/oval_copy@1x.png');
-  background-image: url('../img/oval_copy.svg');
-  background-repeat: no-repeat;
-  background-position: bottom 15px right 3px;
   z-index: -1;
-  border-radius: 50%;
-  
-  @media #{$retina} {
-    background-image: url('../img/oval_copy@2x.png');
-    background-image: url('../img/oval_copy.svg');
-  }
 }

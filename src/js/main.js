@@ -1,5 +1,6 @@
 import Switch from './Switch';
-import SelectMenu from './SelectMenu';
+import ControllerMenu from './ControllerMenu';
+import FeaturedNav from './FeaturedNav';
 import modal from './modal';
 import Gallery from './Gallery';
 import Filter from './Filter';
@@ -17,7 +18,7 @@ new Switch({
 
 const featuredNav = document.getElementById('featured-nav');
 const featuredNavToggle = document.getElementById('devices__toggle');
-new SelectMenu({
+new FeaturedNav({
   obj: featuredNav,
   toggleElement: featuredNavToggle,
   classNameNav: 'featured-nav'
@@ -51,6 +52,11 @@ const devicesGallery = new Gallery({
 const filterNav = document.getElementById('featured-nav-list');
 const devicesList = document.getElementById('devices');
 new Filter({ element: filterNav, list: devicesList, gallery: devicesGallery });
+
+const temperatureMenu = document.querySelector('.controller__temperature-block');
+const sunMenu = document.querySelector('.controller__sun-block');
+new ControllerMenu(temperatureMenu);
+new ControllerMenu(sunMenu);
 
 modal();
 featuredScripts();
